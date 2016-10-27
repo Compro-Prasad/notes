@@ -1,0 +1,163 @@
+% Created 2016-10-27 Thu 12:15
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fixltx2e}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\author{Compro Prasad}
+\date{\today}
+\title{Socket Programming}
+\hypersetup{
+ pdfauthor={Compro Prasad},
+ pdftitle={Socket Programming},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 24.5.1 (Org mode 8.3.6)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\section{Create a socket}
+\label{sec:orgheadline1}
+\begin{verbatim}
+int socket_desc = socket(AF_INET, SOCK_STREAM, 0);
+
+if (socket_desc == -1) {
+	printf("Could not create socket");
+}
+\end{verbatim}
+The above code will create a socket with following properties:
+\begin{verbatim}
+Address Family - AF_INET (this is IP version 4)
+Type - SOCK_STREAM (this means connection oriented TCP protocol)
+Protocol - 0 [ or IPPROTO_IP This is IP protocol]
+\end{verbatim}
+\section{Connect socket to a server}
+\label{sec:orgheadline6}
+We connect to a remote server on a certain port number. So we need
+2 things, \textbf{ip address} and \textbf{port number}.
+\subsection{\texttt{sockaddr\_in} structure}
+\label{sec:orgheadline2}
+To connect to a remote server firstly we create \texttt{sockaddr\_in}
+structure with proper values.
+\begin{verbatim}
+struct sockaddr_in server;
+\end{verbatim}
+The structure definations are as follows:
+\begin{verbatim}
+// IPv4 AF_INET sockets:
+struct sockaddr_in {
+	short          sin_family;    // e.g. AF_INET, AF_INET6
+	unsigned short sin_port;      // e.g. htons(3490)
+	struct in_addr sin_addr;      // see struct in_addr, below
+	char           sin_zero[8];   // zero this if needed
+};
+
+struct in_addr {
+	unsigned long s_addr;         // load with inet_pton()
+};
+
+struct sockaddr {
+	unsigned short sa_faminly;    // address family, AF_xxx
+	char           sa_data;       // 14 bytes of protocol address
+}
+\end{verbatim}
+\texttt{s\_addr} of \texttt{in\_addr} structure will contain the \textbf{IP address} in \uline{long format}.
+\subsection{\texttt{inet\_addr} function}
+\label{sec:orgheadline3}
+To convert an \textbf{IP address} to a \uline{long format} \texttt{inet\_addr(const char *)}
+function is used.
+
+For example,
+\begin{verbatim}
+server.sin_addr.s_addr = inet_addr("176.34.135.167");
+\end{verbatim}
+can be used for connecting to \href{http://176.34.135.167}{DuckDuckGo} search engine where \texttt{176.34.135.167} is
+the \textbf{IP address} passed as a \texttt{string} parameter.
+\subsection{\texttt{connect} function}
+\label{sec:orgheadline5}
+\texttt{connect} is a function for connecting to a remote server. A sample code is
+given below:
+\begin{verbatim}
+server.sin_family = AF_INET;
+server.sin_port = htons(80);
+
+// Connect to remote server
+if (connect(socket_desc, (struct sockaddr *)&server, sizeof(server)) < 0) {
+	puts("connect error\n");
+	return 1;
+}
+
+puts("Connected\n");
+\end{verbatim}
+So, we have \textbf{created} a socket and \textbf{connected} it to a server. Now we are going
+to \textbf{send} / \textbf{transmit} data to the remote server.
+\subsubsection{Note: \textbf{Connections are present only in TCP sockets}}
+\label{sec:orgheadline4}
+Concept of '\textbf{connections}' apply to \texttt{SOCK\_STREAM} / \texttt{TCP} type of sockets. Connection
+means a reliable '\textbf{stream}' of data such that there can be multiple such streams
+communication of its own. It can be considered a pipe \textbf{not interfered} by other data.
+
+UDP(\href{https://en.wikipedia.org/wiki/User_Datagram_Protocol}{User Datagram Protocol}), ICMP(\href{https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol}{Internet Control Message Protocol}), ARP(\href{https://en.wikipedia.org/wiki/Address_Resolution_Protocol}{Address Resolution Protocol})
+are \textbf{non-connection} based communication which means packets can be sent to anybody
+and everybody.
+\section{Sending data over socket}
+\label{sec:orgheadline8}
+\subsection{\texttt{send} function}
+\label{sec:orgheadline7}
+It needs the \textbf{socket descriptor} returned after creating a socket, the \textbf{data to
+send} and \textbf{its size}. We have the following code which sends data to \href{http://176.34.135.167}{DuckDuckGo}.
+\begin{verbatim}
+// Send some data
+char *message = "GET /HTTP/1.1\n";
+if (send(socket_desc, message, strlen(message), 0) < 0) {
+	puts("Send failed\n");
+	return 1;
+}
+puts("Data sent\n");
+\end{verbatim}
+The \texttt{message} string is actually commanding the server to \textbf{get} the mainpage
+of a website.\\
+In the next section we try to recieve a reply from the server.
+\section{Recieve data on socket}
+\label{sec:orgheadline11}
+\subsection{\texttt{recv} function}
+\label{sec:orgheadline10}
+The \texttt{recv} function will try recieving data through socket from a web server.
+\begin{verbatim}
+// Receive a reply from the server
+char server_reply[2000];
+if (recv(socket_desc, server_reply, 2000, 0) < 0) {
+	puts("recv failed\n");
+}
+puts("Reply received\n");
+puts(server_reply);
+\end{verbatim}
+\subsubsection{Note:}
+\label{sec:orgheadline9}
+When receiving data on a socket, we are basically \textbf{reading} it. This is similar
+to reading data from a file(remember the Unix philosophy?). So we can use the
+\texttt{read} function to read data on a socket. For example:
+\begin{verbatim}
+read(socket_desc, server)
+\end{verbatim}
+\section{Closing a socket}
+\label{sec:orgheadline12}
+Just like files, sockets also need to be closed. We can use the primary \texttt{close}
+function which accepts a \textbf{file descriptor} as an argument.
+\begin{verbatim}
+close(socket_desc);
+\end{verbatim}
+\end{document}

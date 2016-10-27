@@ -1,0 +1,140 @@
+#+TITLE: Socket Programming
+#+AUTHOR: Compro Prasad
+#+NAME: socket-header
+#+BEGIN_SRC C -i :exports none
+#include <stdio.h>
+#include <sys/socket.h>
+#include <arpa/inet.h> // inet_addr
+
+int main(int argc, char **argv)
+{
+#+END_SRC
+#+NAME: socket-footer
+#+BEGIN_SRC C -i :exports none
+	return 0;
+}
+#+END_SRC
+* Create a socket
+  #+NAME: socket-creation
+  #+BEGIN_SRC C -i :exports code
+int socket_desc = socket(AF_INET, SOCK_STREAM, 0);
+
+if (socket_desc == -1) {
+	printf("Could not create socket");
+}
+  #+END_SRC
+  The above code will create a socket with following properties:
+  #+BEGIN_EXAMPLE
+  Address Family - AF_INET (this is IP version 4)
+  Type - SOCK_STREAM (this means connection oriented TCP protocol)
+  Protocol - 0 [ or IPPROTO_IP This is IP protocol]
+  #+END_EXAMPLE
+* Connect socket to a server
+  We connect to a remote server on a certain port number. So we need
+  2 things, *ip address* and *port number*.
+** =sockaddr_in= structure
+   To connect to a remote server firstly we create =sockaddr_in=
+   structure with proper values.
+   #+NAME: sockaddr_in-declaration
+   #+BEGIN_SRC C :exports code
+     struct sockaddr_in server;
+   #+END_SRC
+   The structure definations are as follows:
+   #+NAME: structure-definations
+   #+BEGIN_SRC C -i :exports code
+// IPv4 AF_INET sockets:
+struct sockaddr_in {
+	short          sin_family;    // e.g. AF_INET, AF_INET6
+	unsigned short sin_port;      // e.g. htons(3490)
+	struct in_addr sin_addr;      // see struct in_addr, below
+	char           sin_zero[8];   // zero this if needed
+};
+
+struct in_addr {
+	unsigned long s_addr;         // load with inet_pton()
+};
+
+struct sockaddr {
+	unsigned short sa_faminly;    // address family, AF_xxx
+	char           sa_data;       // 14 bytes of protocol address
+}
+   #+END_SRC
+   =s_addr= of =in_addr= structure will contain the *IP address* in _long format_.
+** =inet_addr= function
+   To convert an *IP address* to a _long format_ =inet_addr(const char *)=
+   function is used.
+
+   For example,
+   #+NAME: socket-inet_addr
+   #+BEGIN_SRC C :exports code
+     server.sin_addr.s_addr = inet_addr("176.34.135.167");
+   #+END_SRC
+   can be used for connecting to [[http://176.34.135.167][DuckDuckGo]] search engine where =176.34.135.167= is
+   the *IP address* passed as a =string= parameter.
+** =connect= function
+   =connect= is a function for connecting to a remote server. A sample code is
+   given below:
+   #+NAME: socket-connection
+   #+BEGIN_SRC C -i :exports code
+server.sin_family = AF_INET;
+server.sin_port = htons(80);
+
+// Connect to remote server
+if (connect(socket_desc, (struct sockaddr *)&server, sizeof(server)) < 0) {
+	puts("connect error\n");
+	return 1;
+}
+
+puts("Connected\n");
+   #+END_SRC
+   So, we have *created* a socket and *connected* it to a server. Now we are going
+   to *send* / *transmit* data to the remote server.
+*** Note: *Connections are present only in TCP sockets*
+	Concept of '*connections*' apply to =SOCK_STREAM= / =TCP= type of sockets. Connection
+	means a reliable '*stream*' of data such that there can be multiple such streams
+	communication of its own. It can be considered a pipe *not interfered* by other data.
+
+	UDP([[https://en.wikipedia.org/wiki/User_Datagram_Protocol][User Datagram Protocol]]), ICMP([[https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol][Internet Control Message Protocol]]), ARP([[https://en.wikipedia.org/wiki/Address_Resolution_Protocol][Address Resolution Protocol]])
+	are *non-connection* based communication which means packets can be sent to anybody
+	and everybody.
+* Sending data over socket
+** =send= function
+   It needs the *socket descriptor* returned after creating a socket, the *data to
+   send* and *its size*. We have the following code which sends data to [[http://176.34.135.167][DuckDuckGo]].
+   #+BEGIN_SRC C -i :exports code
+// Send some data
+char *message = "GET /HTTP/1.1\n";
+if (send(socket_desc, message, strlen(message), 0) < 0) {
+	puts("Send failed\n");
+	return 1;
+}
+puts("Data sent\n");
+   #+END_SRC
+   The =message= string is actually commanding the server to *get* the mainpage
+   of a website.\\
+   In the next section we try to recieve a reply from the server.
+* Recieve data on socket
+** =recv= function
+   The =recv= function will try recieving data through socket from a web server.
+   #+BEGIN_SRC C -i :exports code
+// Receive a reply from the server
+char server_reply[2000];
+if (recv(socket_desc, server_reply, 2000, 0) < 0) {
+	puts("recv failed\n");
+}
+puts("Reply received\n");
+puts(server_reply);
+   #+END_SRC
+*** Note:
+	When receiving data on a socket, we are basically *reading* it. This is similar
+	to reading data from a file(remember the Unix philosophy?). So we can use the
+	=read= function to read data on a socket. For example:
+	#+BEGIN_SRC C :exports code
+      read(socket_desc, server)
+	#+END_SRC
+* Closing a socket
+  Just like files, sockets also need to be closed. We can use the primary =close=
+  function which accepts a *file descriptor* as an argument.
+  #+BEGIN_SRC C :exports code
+    close(socket_desc);
+  #+END_SRC
