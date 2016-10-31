@@ -1,4 +1,4 @@
-% Created 2016-10-31 Mon 16:57
+% Created 2016-10-31 Mon 19:12
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -115,15 +115,15 @@ describe information_schema.collations;
 \begin{tabular}{ll}
 Type & Description\\
 \hline
-\texttt{char(n)} & A string of characters of length \texttt{n}.\\
+char(n) & A string of characters of length \texttt{n}.\\
  & Same memory consumption for different\\
  & strings.\\
-\texttt{varchar(n)} & A string of characters of length \texttt{n}.\\
+varchar(n) & A string of characters of length \texttt{n}.\\
  & Memory consumption according to length\\
-\texttt{int} & An integer field\\
-\texttt{bigint} & An integer field with a large range\\
-\texttt{date} & A date of the form \texttt{YYYY-MM-DD}\\
-\texttt{datetime} & A field addressing a date and time\\
+int & An integer field\\
+bigint & An integer field with a large range\\
+date & A date of the form \texttt{YYYY-MM-DD}\\
+datetime & A field addressing a date and time\\
  & value.\\
 \end{tabular}
 \end{center}
@@ -179,4 +179,16 @@ create database login_db;
 \label{sec:orgheadline13}
 \subsubsection{Basic table}
 \label{sec:orgheadline12}
+\begin{verbatim}
+create table info(
+	username varchar(20),
+	login_time timestamp,
+	id bigint
+);
+\end{verbatim}
+\texttt{info} is the name of the table to be created. Then
+comes \texttt{username} which is the name of the field/column.
+It is of type =varchar(20)=(see table in \hyperref[sec:orgheadline7]{columns mostly used}).
+A similar approach is followed for every column. First
+the name of the column then the type of field.
 \end{document}

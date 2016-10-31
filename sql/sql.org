@@ -75,18 +75,18 @@
    describe information_schema.collations;
    #+END_SRC
 *** Most used types of columns:
-	| Type         | Description                            |
-	|--------------+----------------------------------------|
-	| =char(n)=    | A string of characters of length =n=.  |
-	|              | Same memory consumption for different  |
-	|              | strings.                               |
-	| =varchar(n)= | A string of characters of length =n=.  |
-	|              | Memory consumption according to length |
-	| =int=        | An integer field                       |
-	| =bigint=     | An integer field with a large range    |
-	| =date=       | A date of the form =YYYY-MM-DD=        |
-	| =datetime=   | A field addressing a date and time     |
-	|              | value.                                 |
+	| Type       | Description                            |
+	|------------+----------------------------------------|
+	| char(n)    | A string of characters of length =n=.  |
+	|            | Same memory consumption for different  |
+	|            | strings.                               |
+	| varchar(n) | A string of characters of length =n=.  |
+	|            | Memory consumption according to length |
+	| int        | An integer field                       |
+	| bigint     | An integer field with a large range    |
+	| date       | A date of the form =YYYY-MM-DD=        |
+	| datetime   | A field addressing a date and time     |
+	|            | value.                                 |
 ** Using databases
    Databases are less in comparison to the tables in
    each database. Therefore, writing =<database>.<table>=
@@ -133,6 +133,15 @@
    #+END_SRC
 ** Tables
 *** Basic table
-	#+BEGIN_SRC sql
-	
+	#+BEGIN_SRC sql -i
+create table info(
+	username varchar(20),
+	login_time timestamp,
+	id bigint
+);
 	#+END_SRC
+	=info= is the name of the table to be created. Then
+	comes =username= which is the name of the field/column.
+	It is of type =varchar(20)=(see table in [[*Most used types of columns:][columns mostly used]]).
+	A similar approach is followed for every column. First
+	the name of the column then the type of field.

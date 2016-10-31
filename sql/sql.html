@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-10-31 Mon 16:57 -->
+<!-- 2016-10-31 Mon 19:12 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Structured Query Language(SQL)</title>
@@ -330,7 +330,7 @@ Want a shorter form? Use the following approach:
 </thead>
 <tbody>
 <tr>
-<td class="org-left"><code>char(n)</code></td>
+<td class="org-left">char(n)</td>
 <td class="org-left">A string of characters of length <code>n</code>.</td>
 </tr>
 
@@ -345,7 +345,7 @@ Want a shorter form? Use the following approach:
 </tr>
 
 <tr>
-<td class="org-left"><code>varchar(n)</code></td>
+<td class="org-left">varchar(n)</td>
 <td class="org-left">A string of characters of length <code>n</code>.</td>
 </tr>
 
@@ -355,22 +355,22 @@ Want a shorter form? Use the following approach:
 </tr>
 
 <tr>
-<td class="org-left"><code>int</code></td>
+<td class="org-left">int</td>
 <td class="org-left">An integer field</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>bigint</code></td>
+<td class="org-left">bigint</td>
 <td class="org-left">An integer field with a large range</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>date</code></td>
+<td class="org-left">date</td>
 <td class="org-left">A date of the form <code>YYYY-MM-DD</code></td>
 </tr>
 
 <tr>
-<td class="org-left"><code>datetime</code></td>
+<td class="org-left">datetime</td>
 <td class="org-left">A field addressing a date and time</td>
 </tr>
 
@@ -478,8 +478,20 @@ Filter specific set of rows and columns from a table:
 <div class="outline-text-4" id="text-3-2-1">
 <div class="org-src-container">
 
-<pre class="src src-sql"></pre>
+<pre class="src src-sql"><span style="color: #5FB7CC;">create</span> <span style="color: #5FB7CC;">table</span> <span style="color: #1D68C4; font-weight: bold;">info</span>(
+    username <span style="color: #7FFFD4;">varchar</span>(20),
+    login_time <span style="color: #7FFFD4;">timestamp</span>,
+    id bigint
+);
+</pre>
 </div>
+<p>
+<code>info</code> is the name of the table to be created. Then
+comes <code>username</code> which is the name of the field/column.
+It is of type =varchar(20)=(see table in <a href="#orgheadline7">columns mostly used</a>).
+A similar approach is followed for every column. First
+the name of the column then the type of field.
+</p>
 </div>
 </div>
 </div>
@@ -487,7 +499,7 @@ Filter specific set of rows and columns from a table:
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Compro Prasad</p>
-<p class="date">Created: 2016-10-31 Mon 16:57</p>
+<p class="date">Created: 2016-10-31 Mon 19:12</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
