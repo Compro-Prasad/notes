@@ -145,3 +145,16 @@ create table info(
 	It is of type =varchar(20)=(see table in [[*Most used types of columns:][columns mostly used]]).
 	A similar approach is followed for every column. First
 	the name of the column then the type of field.
+*** =NOT NULL= contraint
+	By default you can insert =NULL= values in any
+	field. But if a field has to has a value then
+	a =NOT NULL= contraint has to be added like:
+	#+BEGIN_SRC sql -i
+create table info(
+    username varchar(20),
+    login_time timestamp not null,
+    id bigint not null
+);  
+	#+END_SRC
+	The above query will prevent login_time and id
+	from having =NULL= values.

@@ -1,4 +1,4 @@
-% Created 2016-10-31 Mon 19:12
+% Created 2016-10-31 Mon 19:22
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -169,14 +169,14 @@ Filter specific set of rows and columns from a table:
 select is_default, sortlen from collations where id < 50 and is_default='Yes';
 \end{verbatim}
 \section{Creating}
-\label{sec:orgheadline14}
+\label{sec:orgheadline15}
 \subsection{Databases}
 \label{sec:orgheadline11}
 \begin{verbatim}
 create database login_db;
 \end{verbatim}
 \subsection{Tables}
-\label{sec:orgheadline13}
+\label{sec:orgheadline14}
 \subsubsection{Basic table}
 \label{sec:orgheadline12}
 \begin{verbatim}
@@ -191,4 +191,18 @@ comes \texttt{username} which is the name of the field/column.
 It is of type =varchar(20)=(see table in \hyperref[sec:orgheadline7]{columns mostly used}).
 A similar approach is followed for every column. First
 the name of the column then the type of field.
+\subsubsection{\texttt{NOT NULL} contraint}
+\label{sec:orgheadline13}
+By default you can insert \texttt{NULL} values in any
+field. But if a field has to has a value then
+a \texttt{NOT NULL} contraint has to be added like:
+\begin{verbatim}
+create table info(
+    username varchar(20),
+    login_time timestamp not null,
+    id bigint not null
+);
+\end{verbatim}
+The above query will prevent login\(_{\text{time}}\) and id
+from having \texttt{NULL} values.
 \end{document}
