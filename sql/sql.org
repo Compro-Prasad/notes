@@ -1,0 +1,75 @@
+#+TITLE: Structured Query Language(SQL)
+#+AUTHOR: Compro Prasad
+* Introduction
+  =SQL= is the interface for communicating to a binary file
+  which is called a =database= in terms of =SQL=. So, keep in
+  mind that if you change the binary file using an editor like
+  [[http://hexedit.com/][=hexedit=]] then you could run into problems. So, don't mess
+  with such kinds of files on your computer.\\
+  A *database* is further divided into *tables*. Tables are further
+  divided into two categories: *columns* and *rows*.
+  Please make sure a =SQL= is installed on your machine before
+  starting this tutorial.
+* Basics
+** Logging in
+   It is necessary to login to access the whole/part of your
+   =SQL=. Now you would say that there is no use of login. But
+   what if the frontend developer of [[https://facebook.com][Facebook]] gets into the
+   database and steals information of everybody.\\
+   So, there is a concept of users in =SQL=. This removes the
+   necessity of having different things in the same place.
+   Instead, =SQL= just puts everything in the same place and
+   permits the specific user to the specific information.
+
+   Here, is a simple command for logging into =SQL= using
+   *tom* as the username:
+   #+BEGIN_SRC sh
+   mysql -u tom -p
+   #+END_SRC
+   After pressing *=RETURN=* mysql would ask for a password.
+   Enter your password and you are good to go.
+
+   Note: During the time of installation the default user is *root*.
+** What is a query?
+   Query is a successful statement in =SQL= that gets a job done
+   by the end user. It can be creating tables or inserting values
+   or modifying values etc. The following are some examples of
+   queries in =MySQL=:
+   #+NAME: sql-query-examples
+   #+BEGIN_SRC sql
+   create table information(column1 int);
+   use login_db;
+   select 1+2 from dual;
+   #+END_SRC
+** Accessing Databases/Schemas
+   Now, since you have logged in you have the control over what
+   you have access to. You may not have been permitted to access
+   even a single database. To see the schemas run this query:
+   #+BEGIN_SRC sql
+   show databases;
+   #+END_SRC
+** Accessing Table
+   Don't you know tables?!
+   There can be many tables inside a database. Thats enough
+   introduction to tables in =SQL=
+   #+BEGIN_SRC sql
+   show tables from information_schema;
+   #+END_SRC
+   Replace *=information_schema=* with the database of your
+   choice.
+** Accessing columns
+   #+BEGIN_SRC sql
+   show columns from information_schema.collations;
+   #+END_SRC
+   It is of the form =<database>.<table>=.\\
+   Want a shorter form? Use the following approach:
+   #+BEGIN_SRC sql
+   describe information_schema.collations;
+   #+END_SRC
+** Using databases
+   Databases are less in comparison to the tables in
+   each database. Therefore, writing =<database>.<table>=
+   can be a bit tedious. So, there is a feature in sql
+   #+BEGIN_SRC sql
+   use information_schema;
+   #+END_SRC
