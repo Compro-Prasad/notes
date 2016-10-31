@@ -8,6 +8,9 @@
   with such kinds of files on your computer.\\
   A *database* is further divided into *tables*. Tables are further
   divided into two categories: *columns* and *rows*.\\
+  It also has concepts of =RDBMS= in which you can link two
+  distinct tables using similar columns in each of them. This
+  can create a pretty huge relationships just like in the real world.\\
   Please make sure a =SQL= is installed on your machine before
   starting this tutorial.
 * Basics
@@ -57,7 +60,7 @@
    #+END_SRC
    Replace *information_schema* with the database of your
    choice.\\
-   You can use:
+   You can also use:
    #+BEGIN_SRC sql
    show tables;
    #+END_SRC

@@ -1,4 +1,4 @@
-% Created 2016-10-31 Mon 16:42
+% Created 2016-10-31 Mon 16:57
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -38,6 +38,9 @@ mind that if you change the binary file using an editor like
 with such kinds of files on your computer.\\
 A \textbf{database} is further divided into \textbf{tables}. Tables are further
 divided into two categories: \textbf{columns} and \textbf{rows}.\\
+It also has concepts of \texttt{RDBMS} in which you can link two
+distinct tables using similar columns in each of them. This
+can create a pretty huge relationships just like in the real world.\\
 Please make sure a \texttt{SQL} is installed on your machine before
 starting this tutorial.
 \section{Basics}
@@ -91,7 +94,7 @@ show tables from information_schema;
 \end{verbatim}
 Replace \textbf{information\(_{\text{schema}}\)} with the database of your
 choice.\\
-You can use:
+You can also use:
 \begin{verbatim}
 show tables;
 \end{verbatim}
