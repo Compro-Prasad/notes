@@ -1,4 +1,4 @@
-% Created 2016-10-31 Mon 19:39
+% Created 2016-10-31 Mon 19:46
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -176,7 +176,7 @@ select is_default, sortlen from collations where id < 50 and is_default='Yes';
 create database login_db;
 \end{verbatim}
 \subsection{Tables}
-\label{sec:orgheadline15}
+\label{sec:orgheadline13}
 \subsubsection{Basic table}
 \label{sec:orgheadline12}
 \begin{verbatim}
@@ -192,7 +192,7 @@ It is of type =varchar(20)=(see table in \hyperref[sec:orgheadline7]{columns mos
 A similar approach is followed for every column. First
 the name of the column then the type of field.
 \subsubsection{\texttt{NOT NULL} contraint}
-\label{sec:orgheadline13}
+\label{sec:orgheadline14}
 By default you can insert \texttt{NULL} values in any
 field. But if a field has to has a value then
 a \texttt{NOT NULL} contraint has to be added like:
@@ -203,10 +203,12 @@ create table info(
     id bigint not null
 );
 \end{verbatim}
+You would get an error while doing that. See
+\hyperref[sec:orgheadline13]{Droping Tables} and rerun the above query.\\
 The above query will prevent login\(_{\text{time}}\) and id
 from having \texttt{NULL} values.
 \subsubsection{\texttt{UNIQUE} contraint}
-\label{sec:orgheadline14}
+\label{sec:orgheadline15}
 What if you wanted to create a field that had
 unique values. For example, \href{https://mail.google.com}{Gmail} uses this to
 identify whether a user has already created an
@@ -221,5 +223,13 @@ create table info(
 	login_time timestamp not null,
 	id bigint not null unique
 );
+\end{verbatim}
+\section{Droping}
+\label{sec:orgheadline18}
+Droping is same as deleting/removing
+\subsection{Tables}
+\label{sec:orgheadline17}
+\begin{verbatim}
+drop table info;
 \end{verbatim}
 \end{document}

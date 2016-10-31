@@ -156,6 +156,8 @@ create table info(
     id bigint not null
 );  
 	#+END_SRC
+	You would get an error while doing that. See
+	[[*Tables][Droping Tables]] and rerun the above query.\\
 	The above query will prevent login_time and id
 	from having =NULL= values.
 *** =UNIQUE= contraint
@@ -174,3 +176,9 @@ create table info(
 	id bigint not null unique
 );
 	#+END_SRC
+* Droping
+  Droping is same as deleting/removing
+** Tables
+   #+BEGIN_SRC sql
+   drop table info;
+   #+END_SRC

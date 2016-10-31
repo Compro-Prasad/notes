@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-10-31 Mon 19:39 -->
+<!-- 2016-10-31 Mon 19:46 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Structured Query Language(SQL)</title>
@@ -167,13 +167,18 @@ for the JavaScript code in this tag.
 <li><a href="#orgheadline16">3. Creating</a>
 <ul>
 <li><a href="#orgheadline11">3.1. Databases</a></li>
-<li><a href="#orgheadline15">3.2. Tables</a>
+<li><a href="#orgheadline13">3.2. Tables</a>
 <ul>
 <li><a href="#orgheadline12">3.2.1. Basic table</a></li>
-<li><a href="#orgheadline13">3.2.2. <code>NOT NULL</code> contraint</a></li>
-<li><a href="#orgheadline14">3.2.3. <code>UNIQUE</code> contraint</a></li>
+<li><a href="#orgheadline14">3.2.2. <code>NOT NULL</code> contraint</a></li>
+<li><a href="#orgheadline15">3.2.3. <code>UNIQUE</code> contraint</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li><a href="#orgheadline18">4. Droping</a>
+<ul>
+<li><a href="#orgheadline17">4.1. Tables</a></li>
 </ul>
 </li>
 </ul>
@@ -472,8 +477,8 @@ Filter specific set of rows and columns from a table:
 </div>
 </div>
 </div>
-<div id="outline-container-orgheadline15" class="outline-3">
-<h3 id="orgheadline15"><span class="section-number-3">3.2</span> Tables</h3>
+<div id="outline-container-orgheadline13" class="outline-3">
+<h3 id="orgheadline13"><span class="section-number-3">3.2</span> Tables</h3>
 <div class="outline-text-3" id="text-3-2">
 </div><div id="outline-container-orgheadline12" class="outline-4">
 <h4 id="orgheadline12"><span class="section-number-4">3.2.1</span> Basic table</h4>
@@ -496,8 +501,8 @@ the name of the column then the type of field.
 </p>
 </div>
 </div>
-<div id="outline-container-orgheadline13" class="outline-4">
-<h4 id="orgheadline13"><span class="section-number-4">3.2.2</span> <code>NOT NULL</code> contraint</h4>
+<div id="outline-container-orgheadline14" class="outline-4">
+<h4 id="orgheadline14"><span class="section-number-4">3.2.2</span> <code>NOT NULL</code> contraint</h4>
 <div class="outline-text-4" id="text-3-2-2">
 <p>
 By default you can insert <code>NULL</code> values in any
@@ -514,13 +519,15 @@ a <code>NOT NULL</code> contraint has to be added like:
 </pre>
 </div>
 <p>
+You would get an error while doing that. See
+<a href="#orgheadline13">Droping Tables</a> and rerun the above query.<br  />
 The above query will prevent login<sub>time</sub> and id
 from having <code>NULL</code> values.
 </p>
 </div>
 </div>
-<div id="outline-container-orgheadline14" class="outline-4">
-<h4 id="orgheadline14"><span class="section-number-4">3.2.3</span> <code>UNIQUE</code> contraint</h4>
+<div id="outline-container-orgheadline15" class="outline-4">
+<h4 id="orgheadline15"><span class="section-number-4">3.2.3</span> <code>UNIQUE</code> contraint</h4>
 <div class="outline-text-4" id="text-3-2-3">
 <p>
 What if you wanted to create a field that had
@@ -545,10 +552,28 @@ name of the users then it would be pretty awkward.
 </div>
 </div>
 </div>
+<div id="outline-container-orgheadline18" class="outline-2">
+<h2 id="orgheadline18"><span class="section-number-2">4</span> Droping</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+Droping is same as deleting/removing
+</p>
+</div>
+<div id="outline-container-orgheadline17" class="outline-3">
+<h3 id="orgheadline17"><span class="section-number-3">4.1</span> Tables</h3>
+<div class="outline-text-3" id="text-4-1">
+<div class="org-src-container">
+
+<pre class="src src-sql"><span style="color: #5FB7CC;">drop</span> <span style="color: #5FB7CC;">table</span> <span style="color: #1D68C4; font-weight: bold;">info</span>;
+</pre>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Compro Prasad</p>
-<p class="date">Created: 2016-10-31 Mon 19:39</p>
+<p class="date">Created: 2016-10-31 Mon 19:46</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
