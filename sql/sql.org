@@ -7,7 +7,7 @@
   [[http://hexedit.com/][hexedit]] then you could run into problems. So, don't mess
   with such kinds of files on your computer.\\
   A *database* is further divided into *tables*. Tables are further
-  divided into two categories: *columns* and *rows*.
+  divided into two categories: *columns* and *rows*.\\
   Please make sure a =SQL= is installed on your machine before
   starting this tutorial.
 * Basics
@@ -55,8 +55,13 @@
    #+BEGIN_SRC sql
    show tables from information_schema;
    #+END_SRC
-   Replace *=information_schema=* with the database of your
-   choice.
+   Replace *information_schema* with the database of your
+   choice.\\
+   You can use:
+   #+BEGIN_SRC sql
+   show tables;
+   #+END_SRC
+   when you are using a specific database. See [[*Using databases][Using databases]].
 ** Accessing columns
    #+BEGIN_SRC sql
    show columns from information_schema.collations;
@@ -66,10 +71,65 @@
    #+BEGIN_SRC sql
    describe information_schema.collations;
    #+END_SRC
+*** Most used types of columns:
+	| Type         | Description                            |
+	|--------------+----------------------------------------|
+	| =char(n)=    | A string of characters of length =n=.  |
+	|              | Same memory consumption for different  |
+	|              | strings.                               |
+	| =varchar(n)= | A string of characters of length =n=.  |
+	|              | Memory consumption according to length |
+	| =int=        | An integer field                       |
+	| =bigint=     | An integer field with a large range    |
+	| =date=       | A date of the form =YYYY-MM-DD=        |
+	| =datetime=   | A field addressing a date and time     |
+	|              | value.                                 |
 ** Using databases
    Databases are less in comparison to the tables in
    each database. Therefore, writing =<database>.<table>=
    can be a bit tedious. So, there is a feature in sql
+   and that is using a database:
    #+BEGIN_SRC sql
    use information_schema;
    #+END_SRC
+   You can now see columns using:
+   #+BEGIN_SRC sql
+   describe collations;
+   #+END_SRC
+   Since you are using the database, you cannot operate
+   on a table thats inside another database using a normal
+   syntax.
+   But you can do two things outside the database. 
+   They are:
+   #+BEGIN_SRC sql
+   show databases;
+   use performance_schema;
+   #+END_SRC
+   Here *performance_schema* can be another database you
+   would like to use.
+   From now on it will be assumed that you are using a
+   database and then the respective query can be run after
+   that.
+** Accessing rows
+   See all rows and columns from a table:
+   #+BEGIN_SRC sql
+   select * from collations;
+   #+END_SRC
+   Filter specific set of rows from a table:
+   #+BEGIN_SRC sql
+   select is_default, sortlen from collations;
+   #+END_SRC
+   Filter specific set of rows and columns from a table:
+   #+BEGIN_SRC sql
+   select is_default, sortlen from collations where id < 50 and is_default='Yes';
+   #+END_SRC
+* Creating
+** Databases
+   #+BEGIN_SRC sql
+   create database login_db;
+   #+END_SRC
+** Tables
+*** Basic table
+	#+BEGIN_SRC sql
+	
+	#+END_SRC
