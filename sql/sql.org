@@ -4,7 +4,7 @@
   =SQL= is the interface for communicating to a binary file
   which is called a =database= in terms of =SQL=. So, keep in
   mind that if you change the binary file using an editor like
-  =[[http://hexedit.com/][hexedit]]= then you could run into problems. So, don't mess
+  [[http://hexedit.com/][hexedit]] then you could run into problems. So, don't mess
   with such kinds of files on your computer.\\
   A *database* is further divided into *tables*. Tables are further
   divided into two categories: *columns* and *rows*.
