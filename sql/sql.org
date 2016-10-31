@@ -158,3 +158,19 @@ create table info(
 	#+END_SRC
 	The above query will prevent login_time and id
 	from having =NULL= values.
+*** =UNIQUE= contraint
+	What if you wanted to create a field that had
+	unique values. For example, [[https://mail.google.com][Gmail]] uses this to
+	identify whether a user has already created an
+	account using the same e-mail.\\
+	But not all fields must be unique. For example,
+	you may find friends with same name on [[https://www.facebook.com][Facebook]].
+	And if [[https://www.facebook.com][Facebook]] used =UNIQUE= contraint on the
+	name of the users then it would be pretty awkward.
+	#+BEGIN_SRC sql -i
+create table info(
+	username varchar(20),
+	login_time timestamp not null,
+	id bigint not null unique
+);
+	#+END_SRC

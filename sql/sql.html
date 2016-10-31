@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-10-31 Mon 19:22 -->
+<!-- 2016-10-31 Mon 19:39 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Structured Query Language(SQL)</title>
@@ -164,13 +164,14 @@ for the JavaScript code in this tag.
 <li><a href="#orgheadline9">2.7. Accessing rows</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline15">3. Creating</a>
+<li><a href="#orgheadline16">3. Creating</a>
 <ul>
 <li><a href="#orgheadline11">3.1. Databases</a></li>
-<li><a href="#orgheadline14">3.2. Tables</a>
+<li><a href="#orgheadline15">3.2. Tables</a>
 <ul>
 <li><a href="#orgheadline12">3.2.1. Basic table</a></li>
 <li><a href="#orgheadline13">3.2.2. <code>NOT NULL</code> contraint</a></li>
+<li><a href="#orgheadline14">3.2.3. <code>UNIQUE</code> contraint</a></li>
 </ul>
 </li>
 </ul>
@@ -458,8 +459,8 @@ Filter specific set of rows and columns from a table:
 </div>
 </div>
 </div>
-<div id="outline-container-orgheadline15" class="outline-2">
-<h2 id="orgheadline15"><span class="section-number-2">3</span> Creating</h2>
+<div id="outline-container-orgheadline16" class="outline-2">
+<h2 id="orgheadline16"><span class="section-number-2">3</span> Creating</h2>
 <div class="outline-text-2" id="text-3">
 </div><div id="outline-container-orgheadline11" class="outline-3">
 <h3 id="orgheadline11"><span class="section-number-3">3.1</span> Databases</h3>
@@ -471,8 +472,8 @@ Filter specific set of rows and columns from a table:
 </div>
 </div>
 </div>
-<div id="outline-container-orgheadline14" class="outline-3">
-<h3 id="orgheadline14"><span class="section-number-3">3.2</span> Tables</h3>
+<div id="outline-container-orgheadline15" class="outline-3">
+<h3 id="orgheadline15"><span class="section-number-3">3.2</span> Tables</h3>
 <div class="outline-text-3" id="text-3-2">
 </div><div id="outline-container-orgheadline12" class="outline-4">
 <h4 id="orgheadline12"><span class="section-number-4">3.2.1</span> Basic table</h4>
@@ -518,12 +519,36 @@ from having <code>NULL</code> values.
 </p>
 </div>
 </div>
+<div id="outline-container-orgheadline14" class="outline-4">
+<h4 id="orgheadline14"><span class="section-number-4">3.2.3</span> <code>UNIQUE</code> contraint</h4>
+<div class="outline-text-4" id="text-3-2-3">
+<p>
+What if you wanted to create a field that had
+unique values. For example, <a href="https://mail.google.com/">Gmail</a> uses this to
+identify whether a user has already created an
+account using the same e-mail.<br  />
+But not all fields must be unique. For example,
+you may find friends with same name on <a href="https://www.facebook.com/">Facebook</a>.
+And if <a href="https://www.facebook.com/">Facebook</a> used <code>UNIQUE</code> contraint on the
+name of the users then it would be pretty awkward.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sql"><span style="color: #5FB7CC;">create</span> <span style="color: #5FB7CC;">table</span> <span style="color: #1D68C4; font-weight: bold;">info</span>(
+    username <span style="color: #7FFFD4;">varchar</span>(20),
+    login_time <span style="color: #7FFFD4;">timestamp</span> <span style="color: #5FB7CC;">not</span> <span style="color: #5FB7CC;">null</span>,
+    id bigint <span style="color: #5FB7CC;">not</span> <span style="color: #5FB7CC;">null</span> <span style="color: #5FB7CC;">unique</span>
+);
+</pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Compro Prasad</p>
-<p class="date">Created: 2016-10-31 Mon 19:22</p>
+<p class="date">Created: 2016-10-31 Mon 19:39</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

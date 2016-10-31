@@ -1,4 +1,4 @@
-% Created 2016-10-31 Mon 19:22
+% Created 2016-10-31 Mon 19:39
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -169,14 +169,14 @@ Filter specific set of rows and columns from a table:
 select is_default, sortlen from collations where id < 50 and is_default='Yes';
 \end{verbatim}
 \section{Creating}
-\label{sec:orgheadline15}
+\label{sec:orgheadline16}
 \subsection{Databases}
 \label{sec:orgheadline11}
 \begin{verbatim}
 create database login_db;
 \end{verbatim}
 \subsection{Tables}
-\label{sec:orgheadline14}
+\label{sec:orgheadline15}
 \subsubsection{Basic table}
 \label{sec:orgheadline12}
 \begin{verbatim}
@@ -205,4 +205,21 @@ create table info(
 \end{verbatim}
 The above query will prevent login\(_{\text{time}}\) and id
 from having \texttt{NULL} values.
+\subsubsection{\texttt{UNIQUE} contraint}
+\label{sec:orgheadline14}
+What if you wanted to create a field that had
+unique values. For example, \href{https://mail.google.com}{Gmail} uses this to
+identify whether a user has already created an
+account using the same e-mail.\\
+But not all fields must be unique. For example,
+you may find friends with same name on \href{https://www.facebook.com}{Facebook}.
+And if \href{https://www.facebook.com}{Facebook} used \texttt{UNIQUE} contraint on the
+name of the users then it would be pretty awkward.
+\begin{verbatim}
+create table info(
+	username varchar(20),
+	login_time timestamp not null,
+	id bigint not null unique
+);
+\end{verbatim}
 \end{document}
