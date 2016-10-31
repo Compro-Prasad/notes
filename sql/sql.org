@@ -26,7 +26,7 @@
    #+BEGIN_SRC sh
    mysql -u tom -p
    #+END_SRC
-   After pressing *=RETURN=* mysql would ask for a password.
+   After pressing =RETURN= mysql would ask for a password.
    Enter your password and you are good to go.
 
    Note: During the time of installation the default user is *root*.

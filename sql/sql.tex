@@ -1,0 +1,179 @@
+% Created 2016-10-31 Mon 16:42
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fixltx2e}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\author{Compro Prasad}
+\date{\today}
+\title{Structured Query Language(SQL)}
+\hypersetup{
+ pdfauthor={Compro Prasad},
+ pdftitle={Structured Query Language(SQL)},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 24.5.1 (Org mode 8.3.6)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\section{Introduction}
+\label{sec:orgheadline1}
+\texttt{SQL} is the interface for communicating to a binary file
+which is called a \texttt{database} in terms of \texttt{SQL}. So, keep in
+mind that if you change the binary file using an editor like
+\href{http://hexedit.com/}{hexedit} then you could run into problems. So, don't mess
+with such kinds of files on your computer.\\
+A \textbf{database} is further divided into \textbf{tables}. Tables are further
+divided into two categories: \textbf{columns} and \textbf{rows}.\\
+Please make sure a \texttt{SQL} is installed on your machine before
+starting this tutorial.
+\section{Basics}
+\label{sec:orgheadline10}
+\subsection{Logging in}
+\label{sec:orgheadline2}
+It is necessary to login to access the whole/part of your
+\texttt{SQL}. Now you would say that there is no use of login. But
+what if the frontend developer of \href{https://facebook.com}{Facebook} gets into the
+database and steals information of everybody.\\
+So, there is a concept of users in \texttt{SQL}. This removes the
+necessity of having different things in the same place.
+Instead, \texttt{SQL} just puts everything in the same place and
+permits the specific user to the specific information.
+
+Here, is a simple command for logging into \texttt{SQL} using
+\textbf{tom} as the username:
+\begin{verbatim}
+mysql -u tom -p
+\end{verbatim}
+After pressing \texttt{RETURN} mysql would ask for a password.
+Enter your password and you are good to go.
+
+Note: During the time of installation the default user is \textbf{root}.
+\subsection{What is a query?}
+\label{sec:orgheadline3}
+Query is a successful statement in \texttt{SQL} that gets a job done
+by the end user. It can be creating tables or inserting values
+or modifying values etc. The following are some examples of
+queries in \texttt{MySQL}:
+\begin{verbatim}
+create table information(column1 int);
+use login_db;
+select 1+2 from dual;
+\end{verbatim}
+\subsection{Accessing Databases/Schemas}
+\label{sec:orgheadline4}
+Now, since you have logged in you have the control over what
+you have access to. You may not have been permitted to access
+even a single database. To see the schemas run this query:
+\begin{verbatim}
+show databases;
+\end{verbatim}
+\subsection{Accessing Table}
+\label{sec:orgheadline6}
+Don't you know tables?!
+There can be many tables inside a database. Thats enough
+introduction to tables in \texttt{SQL}
+\begin{verbatim}
+show tables from information_schema;
+\end{verbatim}
+Replace \textbf{information\(_{\text{schema}}\)} with the database of your
+choice.\\
+You can use:
+\begin{verbatim}
+show tables;
+\end{verbatim}
+when you are using a specific database. See \hyperref[sec:orgheadline5]{Using databases}.
+\subsection{Accessing columns}
+\label{sec:orgheadline8}
+\begin{verbatim}
+show columns from information_schema.collations;
+\end{verbatim}
+It is of the form \texttt{<database>.<table>}.\\
+Want a shorter form? Use the following approach:
+\begin{verbatim}
+describe information_schema.collations;
+\end{verbatim}
+\subsubsection{Most used types of columns:}
+\label{sec:orgheadline7}
+\begin{center}
+\begin{tabular}{ll}
+Type & Description\\
+\hline
+\texttt{char(n)} & A string of characters of length \texttt{n}.\\
+ & Same memory consumption for different\\
+ & strings.\\
+\texttt{varchar(n)} & A string of characters of length \texttt{n}.\\
+ & Memory consumption according to length\\
+\texttt{int} & An integer field\\
+\texttt{bigint} & An integer field with a large range\\
+\texttt{date} & A date of the form \texttt{YYYY-MM-DD}\\
+\texttt{datetime} & A field addressing a date and time\\
+ & value.\\
+\end{tabular}
+\end{center}
+\subsection{Using databases}
+\label{sec:orgheadline5}
+Databases are less in comparison to the tables in
+each database. Therefore, writing \texttt{<database>.<table>}
+can be a bit tedious. So, there is a feature in sql
+and that is using a database:
+\begin{verbatim}
+use information_schema;
+\end{verbatim}
+You can now see columns using:
+\begin{verbatim}
+describe collations;
+\end{verbatim}
+Since you are using the database, you cannot operate
+on a table thats inside another database using a normal
+syntax.
+But you can do two things outside the database. 
+They are:
+\begin{verbatim}
+show databases;
+use performance_schema;
+\end{verbatim}
+Here \textbf{performance\(_{\text{schema}}\)} can be another database you
+would like to use.
+From now on it will be assumed that you are using a
+database and then the respective query can be run after
+that.
+\subsection{Accessing rows}
+\label{sec:orgheadline9}
+See all rows and columns from a table:
+\begin{verbatim}
+select * from collations;
+\end{verbatim}
+Filter specific set of rows from a table:
+\begin{verbatim}
+select is_default, sortlen from collations;
+\end{verbatim}
+Filter specific set of rows and columns from a table:
+\begin{verbatim}
+select is_default, sortlen from collations where id < 50 and is_default='Yes';
+\end{verbatim}
+\section{Creating}
+\label{sec:orgheadline14}
+\subsection{Databases}
+\label{sec:orgheadline11}
+\begin{verbatim}
+create database login_db;
+\end{verbatim}
+\subsection{Tables}
+\label{sec:orgheadline13}
+\subsubsection{Basic table}
+\label{sec:orgheadline12}
+\end{document}
