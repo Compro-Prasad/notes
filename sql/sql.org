@@ -178,7 +178,7 @@ create table info(
 	#+END_SRC
 * Modifying
   The point in modifying a table in =SQL= is just
-  remembering the' =alter table=' words. Then comes
+  remembering the '=alter table=' words. Then comes
   the table name, then the operation to be done on
   the table then the full description of the column.
 ** Tables
