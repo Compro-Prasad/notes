@@ -3,12 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-10-31 Mon 19:46 -->
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<!-- 2016-11-04 Fri 22:32 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Structured Query Language(SQL)</title>
-<meta  name="generator" content="Org-mode" />
-<meta  name="author" content="Compro Prasad" />
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Compro Prasad" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -53,13 +53,97 @@
     border: 1px solid black;
   }
   pre.src:hover:before { display: inline;}
-  pre.src-sh:before    { content: 'sh'; }
-  pre.src-bash:before  { content: 'sh'; }
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
   pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
-  pre.src-R:before     { content: 'R'; }
-  pre.src-perl:before  { content: 'Perl'; }
-  pre.src-java:before  { content: 'Java'; }
-  pre.src-sql:before   { content: 'SQL'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
 
   table { border-collapse:collapse; }
   caption.t-above { caption-side: top; }
@@ -92,6 +176,7 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
 <script type="text/javascript">
@@ -148,44 +233,56 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgheadline1">1. Introduction</a></li>
-<li><a href="#orgheadline10">2. Basics</a>
+<li><a href="#orgc517926">1. Introduction</a></li>
+<li><a href="#orgede6ed9">2. Basics</a>
 <ul>
-<li><a href="#orgheadline2">2.1. Logging in</a></li>
-<li><a href="#orgheadline3">2.2. What is a query?</a></li>
-<li><a href="#orgheadline4">2.3. Accessing Databases/Schemas</a></li>
-<li><a href="#orgheadline6">2.4. Accessing Table</a></li>
-<li><a href="#orgheadline8">2.5. Accessing columns</a>
+<li><a href="#org66047ca">2.1. Logging in</a></li>
+<li><a href="#orgd6b96b0">2.2. What is a query?</a></li>
+<li><a href="#org68226c7">2.3. Accessing Databases/Schemas</a></li>
+<li><a href="#org6e29e0d">2.4. Accessing Table</a></li>
+<li><a href="#orgd51e414">2.5. Accessing columns</a>
 <ul>
-<li><a href="#orgheadline7">2.5.1. Most used types of columns:</a></li>
+<li><a href="#orgcd2c653">2.5.1. Most used types of columns:</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline5">2.6. Using databases</a></li>
-<li><a href="#orgheadline9">2.7. Accessing rows</a></li>
+<li><a href="#org7dd19ec">2.6. Using databases</a></li>
+<li><a href="#orgd95c1e7">2.7. Accessing rows</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline16">3. Creating</a>
+<li><a href="#orgb5ddc56">3. Creating</a>
 <ul>
-<li><a href="#orgheadline11">3.1. Databases</a></li>
-<li><a href="#orgheadline13">3.2. Tables</a>
+<li><a href="#orgd80d6f7">3.1. Databases</a></li>
+<li><a href="#org85db6f3">3.2. Tables</a>
 <ul>
-<li><a href="#orgheadline12">3.2.1. Basic table</a></li>
-<li><a href="#orgheadline14">3.2.2. <code>NOT NULL</code> contraint</a></li>
-<li><a href="#orgheadline15">3.2.3. <code>UNIQUE</code> contraint</a></li>
+<li><a href="#org6752f2f">3.2.1. Basic table</a></li>
+<li><a href="#org7b33cb1">3.2.2. <code>NOT NULL</code> contraint</a></li>
+<li><a href="#orgda18a4d">3.2.3. <code>UNIQUE</code> contraint</a></li>
+<li><a href="#orgd88f3e5">3.2.4. <code>PRIMARY KEY</code> constraint</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgheadline18">4. Droping</a>
+<li><a href="#org046e1fe">4. Modifying</a>
 <ul>
-<li><a href="#orgheadline17">4.1. Tables</a></li>
+<li><a href="#org8648442">4.1. Tables</a>
+<ul>
+<li><a href="#orgec6d366">4.1.1. Columns</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org1a6ac0d">5. Droping</a>
+<ul>
+<li><a href="#orga0c2bde">5.1. Columns</a></li>
+<li><a href="#org2d9784c">5.2. Tables</a></li>
+<li><a href="#org693686e">5.3. Database</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgheadline1" class="outline-2">
-<h2 id="orgheadline1"><span class="section-number-2">1</span> Introduction</h2>
+<div id="outline-container-orgc517926" class="outline-2">
+<h2 id="orgc517926"><span class="section-number-2">1</span> Introduction</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 <code>SQL</code> is the interface for communicating to a binary file
@@ -203,11 +300,11 @@ starting this tutorial.
 </p>
 </div>
 </div>
-<div id="outline-container-orgheadline10" class="outline-2">
-<h2 id="orgheadline10"><span class="section-number-2">2</span> Basics</h2>
+<div id="outline-container-orgede6ed9" class="outline-2">
+<h2 id="orgede6ed9"><span class="section-number-2">2</span> Basics</h2>
 <div class="outline-text-2" id="text-2">
-</div><div id="outline-container-orgheadline2" class="outline-3">
-<h3 id="orgheadline2"><span class="section-number-3">2.1</span> Logging in</h3>
+</div><div id="outline-container-org66047ca" class="outline-3">
+<h3 id="org66047ca"><span class="section-number-3">2.1</span> Logging in</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 It is necessary to login to access the whole/part of your
@@ -225,7 +322,6 @@ Here, is a simple command for logging into <code>SQL</code> using
 <b>tom</b> as the username:
 </p>
 <div class="org-src-container">
-
 <pre class="src src-sh">mysql -u tom -p
 </pre>
 </div>
@@ -239,8 +335,8 @@ Note: During the time of installation the default user is <b>root</b>.
 </p>
 </div>
 </div>
-<div id="outline-container-orgheadline3" class="outline-3">
-<h3 id="orgheadline3"><span class="section-number-3">2.2</span> What is a query?</h3>
+<div id="outline-container-orgd6b96b0" class="outline-3">
+<h3 id="orgd6b96b0"><span class="section-number-3">2.2</span> What is a query?</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 Query is a successful statement in <code>SQL</code> that gets a job done
@@ -249,16 +345,15 @@ or modifying values etc. The following are some examples of
 queries in <code>MySQL</code>:
 </p>
 <div class="org-src-container">
-
-<pre class="src src-sql" id="orgsrcblock1"><span style="color: #5FB7CC;">create</span> <span style="color: #5FB7CC;">table</span> <span style="color: #1D68C4; font-weight: bold;">information</span>(column1 <span style="color: #7FFFD4;">int</span>);
+<pre class="src src-sql" id="org251d8a0"><span style="color: #CC7833;">create</span> <span style="color: #CC7833;">table</span> <span style="color: #FFC66D;">information</span>(column1 <span style="color: #6D9CBE;">int</span>);
 use login_db;
-<span style="color: #5FB7CC;">select</span> 1+2 <span style="color: #5FB7CC;">from</span> dual;
+<span style="color: #CC7833;">select</span> 1+2 <span style="color: #CC7833;">from</span> dual;
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orgheadline4" class="outline-3">
-<h3 id="orgheadline4"><span class="section-number-3">2.3</span> Accessing Databases/Schemas</h3>
+<div id="outline-container-org68226c7" class="outline-3">
+<h3 id="org68226c7"><span class="section-number-3">2.3</span> Accessing Databases/Schemas</h3>
 <div class="outline-text-3" id="text-2-3">
 <p>
 Now, since you have logged in you have the control over what
@@ -266,14 +361,13 @@ you have access to. You may not have been permitted to access
 even a single database. To see the schemas run this query:
 </p>
 <div class="org-src-container">
-
 <pre class="src src-sql">show databases;
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orgheadline6" class="outline-3">
-<h3 id="orgheadline6"><span class="section-number-3">2.4</span> Accessing Table</h3>
+<div id="outline-container-org6e29e0d" class="outline-3">
+<h3 id="org6e29e0d"><span class="section-number-3">2.4</span> Accessing Table</h3>
 <div class="outline-text-3" id="text-2-4">
 <p>
 Don't you know tables?!
@@ -281,8 +375,7 @@ There can be many tables inside a database. Thats enough
 introduction to tables in <code>SQL</code>
 </p>
 <div class="org-src-container">
-
-<pre class="src src-sql">show tables <span style="color: #5FB7CC;">from</span> information_schema;
+<pre class="src src-sql">show tables <span style="color: #CC7833;">from</span> information_schema;
 </pre>
 </div>
 <p>
@@ -291,21 +384,19 @@ choice.<br  />
 You can also use:
 </p>
 <div class="org-src-container">
-
 <pre class="src src-sql">show tables;
 </pre>
 </div>
 <p>
-when you are using a specific database. See <a href="#orgheadline5">Using databases</a>.
+when you are using a specific database. See <a href="#org7dd19ec">Using databases</a>.
 </p>
 </div>
 </div>
-<div id="outline-container-orgheadline8" class="outline-3">
-<h3 id="orgheadline8"><span class="section-number-3">2.5</span> Accessing columns</h3>
+<div id="outline-container-orgd51e414" class="outline-3">
+<h3 id="orgd51e414"><span class="section-number-3">2.5</span> Accessing columns</h3>
 <div class="outline-text-3" id="text-2-5">
 <div class="org-src-container">
-
-<pre class="src src-sql">show columns <span style="color: #5FB7CC;">from</span> information_schema.collations;
+<pre class="src src-sql">show columns <span style="color: #CC7833;">from</span> information_schema.collations;
 </pre>
 </div>
 <p>
@@ -313,13 +404,12 @@ It is of the form <code>&lt;database&gt;.&lt;table&gt;</code>.<br  />
 Want a shorter form? Use the following approach:
 </p>
 <div class="org-src-container">
-
-<pre class="src src-sql"><span style="color: #5FB7CC;">describe</span> information_schema.collations;
+<pre class="src src-sql"><span style="color: #CC7833;">describe</span> information_schema.collations;
 </pre>
 </div>
 </div>
-<div id="outline-container-orgheadline7" class="outline-4">
-<h4 id="orgheadline7"><span class="section-number-4">2.5.1</span> Most used types of columns:</h4>
+<div id="outline-container-orgcd2c653" class="outline-4">
+<h4 id="orgcd2c653"><span class="section-number-4">2.5.1</span> Most used types of columns:</h4>
 <div class="outline-text-4" id="text-2-5-1">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -390,8 +480,8 @@ Want a shorter form? Use the following approach:
 </div>
 </div>
 </div>
-<div id="outline-container-orgheadline5" class="outline-3">
-<h3 id="orgheadline5"><span class="section-number-3">2.6</span> Using databases</h3>
+<div id="outline-container-org7dd19ec" class="outline-3">
+<h3 id="org7dd19ec"><span class="section-number-3">2.6</span> Using databases</h3>
 <div class="outline-text-3" id="text-2-6">
 <p>
 Databases are less in comparison to the tables in
@@ -400,7 +490,6 @@ can be a bit tedious. So, there is a feature in sql
 and that is using a database:
 </p>
 <div class="org-src-container">
-
 <pre class="src src-sql">use information_schema;
 </pre>
 </div>
@@ -408,8 +497,7 @@ and that is using a database:
 You can now see columns using:
 </p>
 <div class="org-src-container">
-
-<pre class="src src-sql"><span style="color: #5FB7CC;">describe</span> collations;
+<pre class="src src-sql"><span style="color: #CC7833;">describe</span> collations;
 </pre>
 </div>
 <p>
@@ -420,7 +508,6 @@ But you can do two things outside the database.
 They are:
 </p>
 <div class="org-src-container">
-
 <pre class="src src-sql">show databases;
 use performance_schema;
 </pre>
@@ -434,60 +521,55 @@ that.
 </p>
 </div>
 </div>
-<div id="outline-container-orgheadline9" class="outline-3">
-<h3 id="orgheadline9"><span class="section-number-3">2.7</span> Accessing rows</h3>
+<div id="outline-container-orgd95c1e7" class="outline-3">
+<h3 id="orgd95c1e7"><span class="section-number-3">2.7</span> Accessing rows</h3>
 <div class="outline-text-3" id="text-2-7">
 <p>
 See all rows and columns from a table:
 </p>
 <div class="org-src-container">
-
-<pre class="src src-sql"><span style="color: #5FB7CC;">select</span> * <span style="color: #5FB7CC;">from</span> collations;
+<pre class="src src-sql"><span style="color: #CC7833;">select</span> * <span style="color: #CC7833;">from</span> collations;
 </pre>
 </div>
 <p>
 Filter specific set of rows from a table:
 </p>
 <div class="org-src-container">
-
-<pre class="src src-sql"><span style="color: #5FB7CC;">select</span> is_default, sortlen <span style="color: #5FB7CC;">from</span> collations;
+<pre class="src src-sql"><span style="color: #CC7833;">select</span> is_default, sortlen <span style="color: #CC7833;">from</span> collations;
 </pre>
 </div>
 <p>
 Filter specific set of rows and columns from a table:
 </p>
 <div class="org-src-container">
-
-<pre class="src src-sql"><span style="color: #5FB7CC;">select</span> is_default, sortlen <span style="color: #5FB7CC;">from</span> collations <span style="color: #5FB7CC;">where</span> id &lt; 50 <span style="color: #5FB7CC;">and</span> is_default=<span style="color: #aa3939;">'Yes'</span>;
+<pre class="src src-sql"><span style="color: #CC7833;">select</span> is_default, sortlen <span style="color: #CC7833;">from</span> collations <span style="color: #CC7833;">where</span> id &lt; 50 <span style="color: #CC7833;">and</span> is_default=<span style="color: #A5C261;">'Yes'</span>;
 </pre>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-orgheadline16" class="outline-2">
-<h2 id="orgheadline16"><span class="section-number-2">3</span> Creating</h2>
+<div id="outline-container-orgb5ddc56" class="outline-2">
+<h2 id="orgb5ddc56"><span class="section-number-2">3</span> Creating</h2>
 <div class="outline-text-2" id="text-3">
-</div><div id="outline-container-orgheadline11" class="outline-3">
-<h3 id="orgheadline11"><span class="section-number-3">3.1</span> Databases</h3>
+</div><div id="outline-container-orgd80d6f7" class="outline-3">
+<h3 id="orgd80d6f7"><span class="section-number-3">3.1</span> Databases</h3>
 <div class="outline-text-3" id="text-3-1">
 <div class="org-src-container">
-
-<pre class="src src-sql"><span style="color: #5FB7CC;">create</span> database login_db;
+<pre class="src src-sql"><span style="color: #CC7833;">create</span> database login_db;
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orgheadline13" class="outline-3">
-<h3 id="orgheadline13"><span class="section-number-3">3.2</span> Tables</h3>
+<div id="outline-container-org85db6f3" class="outline-3">
+<h3 id="org85db6f3"><span class="section-number-3">3.2</span> Tables</h3>
 <div class="outline-text-3" id="text-3-2">
-</div><div id="outline-container-orgheadline12" class="outline-4">
-<h4 id="orgheadline12"><span class="section-number-4">3.2.1</span> Basic table</h4>
+</div><div id="outline-container-org6752f2f" class="outline-4">
+<h4 id="org6752f2f"><span class="section-number-4">3.2.1</span> Basic table</h4>
 <div class="outline-text-4" id="text-3-2-1">
 <div class="org-src-container">
-
-<pre class="src src-sql"><span style="color: #5FB7CC;">create</span> <span style="color: #5FB7CC;">table</span> <span style="color: #1D68C4; font-weight: bold;">info</span>(
-    username <span style="color: #7FFFD4;">varchar</span>(20),
-    login_time <span style="color: #7FFFD4;">timestamp</span>,
+<pre class="src src-sql"><span style="color: #CC7833;">create</span> <span style="color: #CC7833;">table</span> <span style="color: #FFC66D;">info</span>(
+    username <span style="color: #6D9CBE;">varchar</span>(20),
+    login_time <span style="color: #6D9CBE;">timestamp</span>,
     id bigint
 );
 </pre>
@@ -495,14 +577,14 @@ Filter specific set of rows and columns from a table:
 <p>
 <code>info</code> is the name of the table to be created. Then
 comes <code>username</code> which is the name of the field/column.
-It is of type =varchar(20)=(see table in <a href="#orgheadline7">columns mostly used</a>).
+It is of type =varchar(20)=(see table in <a href="#orgcd2c653">columns mostly used</a>).
 A similar approach is followed for every column. First
 the name of the column then the type of field.
 </p>
 </div>
 </div>
-<div id="outline-container-orgheadline14" class="outline-4">
-<h4 id="orgheadline14"><span class="section-number-4">3.2.2</span> <code>NOT NULL</code> contraint</h4>
+<div id="outline-container-org7b33cb1" class="outline-4">
+<h4 id="org7b33cb1"><span class="section-number-4">3.2.2</span> <code>NOT NULL</code> contraint</h4>
 <div class="outline-text-4" id="text-3-2-2">
 <p>
 By default you can insert <code>NULL</code> values in any
@@ -510,24 +592,23 @@ field. But if a field has to has a value then
 a <code>NOT NULL</code> contraint has to be added like:
 </p>
 <div class="org-src-container">
-
-<pre class="src src-sql"><span style="color: #5FB7CC;">create</span> <span style="color: #5FB7CC;">table</span> <span style="color: #1D68C4; font-weight: bold;">info</span>(
-    username <span style="color: #7FFFD4;">varchar</span>(20),
-    login_time <span style="color: #7FFFD4;">timestamp</span> <span style="color: #5FB7CC;">not</span> <span style="color: #5FB7CC;">null</span>,
-    id bigint <span style="color: #5FB7CC;">not</span> <span style="color: #5FB7CC;">null</span>
+<pre class="src src-sql"><span style="color: #CC7833;">create</span> <span style="color: #CC7833;">table</span> <span style="color: #FFC66D;">info</span>(
+    username <span style="color: #6D9CBE;">varchar</span>(20),
+    login_time <span style="color: #6D9CBE;">timestamp</span> <span style="color: #CC7833;">not</span> <span style="color: #CC7833;">null</span>,
+    id bigint <span style="color: #CC7833;">not</span> <span style="color: #CC7833;">null</span>
 );
 </pre>
 </div>
 <p>
 You would get an error while doing that. See
-<a href="#orgheadline13">Droping Tables</a> and rerun the above query.<br  />
+<a href="#orgd415f81">Droping Tables</a> and rerun the above query.<br  />
 The above query will prevent login<sub>time</sub> and id
 from having <code>NULL</code> values.
 </p>
 </div>
 </div>
-<div id="outline-container-orgheadline15" class="outline-4">
-<h4 id="orgheadline15"><span class="section-number-4">3.2.3</span> <code>UNIQUE</code> contraint</h4>
+<div id="outline-container-orgda18a4d" class="outline-4">
+<h4 id="orgda18a4d"><span class="section-number-4">3.2.3</span> <code>UNIQUE</code> contraint</h4>
 <div class="outline-text-4" id="text-3-2-3">
 <p>
 What if you wanted to create a field that had
@@ -540,31 +621,75 @@ And if <a href="https://www.facebook.com/">Facebook</a> used <code>UNIQUE</code>
 name of the users then it would be pretty awkward.
 </p>
 <div class="org-src-container">
-
-<pre class="src src-sql"><span style="color: #5FB7CC;">create</span> <span style="color: #5FB7CC;">table</span> <span style="color: #1D68C4; font-weight: bold;">info</span>(
-    username <span style="color: #7FFFD4;">varchar</span>(20),
-    login_time <span style="color: #7FFFD4;">timestamp</span> <span style="color: #5FB7CC;">not</span> <span style="color: #5FB7CC;">null</span>,
-    id bigint <span style="color: #5FB7CC;">not</span> <span style="color: #5FB7CC;">null</span> <span style="color: #5FB7CC;">unique</span>
+<pre class="src src-sql"><span style="color: #CC7833;">create</span> <span style="color: #CC7833;">table</span> <span style="color: #FFC66D;">info</span>(
+    username <span style="color: #6D9CBE;">varchar</span>(20),
+    login_time <span style="color: #6D9CBE;">timestamp</span> <span style="color: #CC7833;">not</span> <span style="color: #CC7833;">null</span>,
+    id bigint <span style="color: #CC7833;">not</span> <span style="color: #CC7833;">null</span> <span style="color: #CC7833;">unique</span>
 );
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd88f3e5" class="outline-4">
+<h4 id="orgd88f3e5"><span class="section-number-4">3.2.4</span> <code>PRIMARY KEY</code> constraint</h4>
+</div>
+</div>
+</div>
+<div id="outline-container-org046e1fe" class="outline-2">
+<h2 id="org046e1fe"><span class="section-number-2">4</span> Modifying</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+The point in modifying a table in <code>SQL</code> is just
+remembering the '<code>alter table</code>' words. Then comes
+the table name, then the operation to be done on
+the table then the full description of the column.
+</p>
+</div>
+<div id="outline-container-org8648442" class="outline-3">
+<h3 id="org8648442"><span class="section-number-3">4.1</span> Tables</h3>
+<div class="outline-text-3" id="text-4-1">
+</div><div id="outline-container-orgec6d366" class="outline-4">
+<h4 id="orgec6d366"><span class="section-number-4">4.1.1</span> Columns</h4>
+<div class="outline-text-4" id="text-4-1-1">
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #CC7833;">alter</span> <span style="color: #CC7833;">table</span> <span style="color: #FFC66D;">info</span> <span style="color: #CC7833;">add</span> birth_date <span style="color: #6D9CBE;">date</span> <span style="color: #CC7833;">not</span> <span style="color: #CC7833;">null</span>;
+<span style="color: #CC7833;">alter</span> <span style="color: #CC7833;">table</span> <span style="color: #FFC66D;">info</span> <span style="color: #CC7833;">modify</span> username <span style="color: #6D9CBE;">varchar</span>(20) <span style="color: #CC7833;">unique</span>;
 </pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-orgheadline18" class="outline-2">
-<h2 id="orgheadline18"><span class="section-number-2">4</span> Droping</h2>
-<div class="outline-text-2" id="text-4">
+<div id="outline-container-org1a6ac0d" class="outline-2">
+<h2 id="org1a6ac0d"><span class="section-number-2">5</span> Droping</h2>
+<div class="outline-text-2" id="text-5">
 <p>
 Droping is same as deleting/removing
 </p>
 </div>
-<div id="outline-container-orgheadline17" class="outline-3">
-<h3 id="orgheadline17"><span class="section-number-3">4.1</span> Tables</h3>
-<div class="outline-text-3" id="text-4-1">
+<div id="outline-container-orga0c2bde" class="outline-3">
+<h3 id="orga0c2bde"><span class="section-number-3">5.1</span> Columns</h3>
+<div class="outline-text-3" id="text-5-1">
 <div class="org-src-container">
-
-<pre class="src src-sql"><span style="color: #5FB7CC;">drop</span> <span style="color: #5FB7CC;">table</span> <span style="color: #1D68C4; font-weight: bold;">info</span>;
+<pre class="src src-sql"><span style="color: #CC7833;">alter</span> <span style="color: #CC7833;">table</span> <span style="color: #FFC66D;">info</span> <span style="color: #CC7833;">drop</span> username;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org2d9784c" class="outline-3">
+<h3 id="org2d9784c"><span class="section-number-3">5.2</span> Tables</h3>
+<div class="outline-text-3" id="text-5-2">
+<div class="org-src-container">
+<pre class="src src-sql" id="orgd415f81"><span style="color: #CC7833;">drop</span> <span style="color: #CC7833;">table</span> <span style="color: #FFC66D;">info</span>;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org693686e" class="outline-3">
+<h3 id="org693686e"><span class="section-number-3">5.3</span> Database</h3>
+<div class="outline-text-3" id="text-5-3">
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #CC7833;">drop</span> database login_db;
 </pre>
 </div>
 </div>
@@ -573,7 +698,7 @@ Droping is same as deleting/removing
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Compro Prasad</p>
-<p class="date">Created: 2016-10-31 Mon 19:46</p>
+<p class="date">Created: 2016-11-04 Fri 22:32</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

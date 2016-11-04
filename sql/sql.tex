@@ -1,8 +1,8 @@
-% Created 2016-10-31 Mon 19:46
+% Created 2016-11-04 Fri 22:32
+% Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage{fixltx2e}
 \usepackage{graphicx}
 \usepackage{grffile}
 \usepackage{longtable}
@@ -22,7 +22,7 @@
  pdftitle={Structured Query Language(SQL)},
  pdfkeywords={},
  pdfsubject={},
- pdfcreator={Emacs 24.5.1 (Org mode 8.3.6)}, 
+ pdfcreator={Emacs 24.5.1 (Org mode 9.0)}, 
  pdflang={English}}
 \begin{document}
 
@@ -30,7 +30,7 @@
 \tableofcontents
 
 \section{Introduction}
-\label{sec:orgheadline1}
+\label{sec:org90b5d32}
 \texttt{SQL} is the interface for communicating to a binary file
 which is called a \texttt{database} in terms of \texttt{SQL}. So, keep in
 mind that if you change the binary file using an editor like
@@ -44,9 +44,9 @@ can create a pretty huge relationships just like in the real world.\\
 Please make sure a \texttt{SQL} is installed on your machine before
 starting this tutorial.
 \section{Basics}
-\label{sec:orgheadline10}
+\label{sec:orgf1a7fc7}
 \subsection{Logging in}
-\label{sec:orgheadline2}
+\label{sec:org737b541}
 It is necessary to login to access the whole/part of your
 \texttt{SQL}. Now you would say that there is no use of login. But
 what if the frontend developer of \href{https://facebook.com}{Facebook} gets into the
@@ -66,7 +66,7 @@ Enter your password and you are good to go.
 
 Note: During the time of installation the default user is \textbf{root}.
 \subsection{What is a query?}
-\label{sec:orgheadline3}
+\label{sec:org04b6374}
 Query is a successful statement in \texttt{SQL} that gets a job done
 by the end user. It can be creating tables or inserting values
 or modifying values etc. The following are some examples of
@@ -77,7 +77,7 @@ use login_db;
 select 1+2 from dual;
 \end{verbatim}
 \subsection{Accessing Databases/Schemas}
-\label{sec:orgheadline4}
+\label{sec:org38fbf5d}
 Now, since you have logged in you have the control over what
 you have access to. You may not have been permitted to access
 even a single database. To see the schemas run this query:
@@ -85,7 +85,7 @@ even a single database. To see the schemas run this query:
 show databases;
 \end{verbatim}
 \subsection{Accessing Table}
-\label{sec:orgheadline6}
+\label{sec:orgc936a6d}
 Don't you know tables?!
 There can be many tables inside a database. Thats enough
 introduction to tables in \texttt{SQL}
@@ -98,9 +98,9 @@ You can also use:
 \begin{verbatim}
 show tables;
 \end{verbatim}
-when you are using a specific database. See \hyperref[sec:orgheadline5]{Using databases}.
+when you are using a specific database. See \hyperref[sec:org8226490]{Using databases}.
 \subsection{Accessing columns}
-\label{sec:orgheadline8}
+\label{sec:org5d83a91}
 \begin{verbatim}
 show columns from information_schema.collations;
 \end{verbatim}
@@ -110,7 +110,7 @@ Want a shorter form? Use the following approach:
 describe information_schema.collations;
 \end{verbatim}
 \subsubsection{Most used types of columns:}
-\label{sec:orgheadline7}
+\label{sec:org23c0eed}
 \begin{center}
 \begin{tabular}{ll}
 Type & Description\\
@@ -128,7 +128,7 @@ datetime & A field addressing a date and time\\
 \end{tabular}
 \end{center}
 \subsection{Using databases}
-\label{sec:orgheadline5}
+\label{sec:org8226490}
 Databases are less in comparison to the tables in
 each database. Therefore, writing \texttt{<database>.<table>}
 can be a bit tedious. So, there is a feature in sql
@@ -155,7 +155,7 @@ From now on it will be assumed that you are using a
 database and then the respective query can be run after
 that.
 \subsection{Accessing rows}
-\label{sec:orgheadline9}
+\label{sec:orgedac794}
 See all rows and columns from a table:
 \begin{verbatim}
 select * from collations;
@@ -169,16 +169,16 @@ Filter specific set of rows and columns from a table:
 select is_default, sortlen from collations where id < 50 and is_default='Yes';
 \end{verbatim}
 \section{Creating}
-\label{sec:orgheadline16}
+\label{sec:org969fd05}
 \subsection{Databases}
-\label{sec:orgheadline11}
+\label{sec:org7fc84ad}
 \begin{verbatim}
 create database login_db;
 \end{verbatim}
 \subsection{Tables}
-\label{sec:orgheadline13}
+\label{sec:org7273247}
 \subsubsection{Basic table}
-\label{sec:orgheadline12}
+\label{sec:orga2b4373}
 \begin{verbatim}
 create table info(
 	username varchar(20),
@@ -188,11 +188,11 @@ create table info(
 \end{verbatim}
 \texttt{info} is the name of the table to be created. Then
 comes \texttt{username} which is the name of the field/column.
-It is of type =varchar(20)=(see table in \hyperref[sec:orgheadline7]{columns mostly used}).
+It is of type =varchar(20)=(see table in \hyperref[sec:org23c0eed]{columns mostly used}).
 A similar approach is followed for every column. First
 the name of the column then the type of field.
 \subsubsection{\texttt{NOT NULL} contraint}
-\label{sec:orgheadline14}
+\label{sec:org8adfcc6}
 By default you can insert \texttt{NULL} values in any
 field. But if a field has to has a value then
 a \texttt{NOT NULL} contraint has to be added like:
@@ -204,11 +204,11 @@ create table info(
 );
 \end{verbatim}
 You would get an error while doing that. See
-\hyperref[sec:orgheadline13]{Droping Tables} and rerun the above query.\\
+\hyperref[org824e6fe]{Droping Tables} and rerun the above query.\\
 The above query will prevent login\(_{\text{time}}\) and id
 from having \texttt{NULL} values.
 \subsubsection{\texttt{UNIQUE} contraint}
-\label{sec:orgheadline15}
+\label{sec:orgd331e12}
 What if you wanted to create a field that had
 unique values. For example, \href{https://mail.google.com}{Gmail} uses this to
 identify whether a user has already created an
@@ -224,12 +224,38 @@ create table info(
 	id bigint not null unique
 );
 \end{verbatim}
-\section{Droping}
-\label{sec:orgheadline18}
-Droping is same as deleting/removing
+\subsubsection{\texttt{PRIMARY KEY} constraint}
+\label{sec:org2c94931}
+\section{Modifying}
+\label{sec:org0e2f576}
+The point in modifying a table in \texttt{SQL} is just
+remembering the '\texttt{alter table}' words. Then comes
+the table name, then the operation to be done on
+the table then the full description of the column.
 \subsection{Tables}
-\label{sec:orgheadline17}
+\label{sec:org3a58b08}
+\subsubsection{Columns}
+\label{sec:orgd875405}
+\begin{verbatim}
+alter table info add birth_date date not null;
+alter table info modify username varchar(20) unique;
+\end{verbatim}
+\section{Droping}
+\label{sec:orgc4e4871}
+Droping is same as deleting/removing
+\subsection{Columns}
+\label{sec:org68564ba}
+\begin{verbatim}
+alter table info drop username;
+\end{verbatim}
+\subsection{Tables}
+\label{sec:org28a210e}
 \begin{verbatim}
 drop table info;
+\end{verbatim}
+\subsection{Database}
+\label{sec:org63ef02a}
+\begin{verbatim}
+drop database login_db;
 \end{verbatim}
 \end{document}
