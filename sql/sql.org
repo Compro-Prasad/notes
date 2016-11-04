@@ -154,10 +154,10 @@ create table info(
     username varchar(20),
     login_time timestamp not null,
     id bigint not null
-);  
+);
 	#+END_SRC
 	You would get an error while doing that. See
-	[[*Tables][Droping Tables]] and rerun the above query.\\
+	[[droping-tables][Droping Tables]] and rerun the above query.\\
 	The above query will prevent login_time and id
 	from having =NULL= values.
 *** =UNIQUE= contraint
@@ -176,6 +176,7 @@ create table info(
 	id bigint not null unique
 );
 	#+END_SRC
+*** =PRIMARY KEY= constraint
 * Modifying
   The point in modifying a table in =SQL= is just
   remembering the '=alter table=' words. Then comes
@@ -194,6 +195,7 @@ create table info(
    alter table info drop username;
    #+END_SRC
 ** Tables
+   #+NAME: droping-tables
    #+BEGIN_SRC sql
    drop table info;
    #+END_SRC
