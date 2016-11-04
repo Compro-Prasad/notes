@@ -176,9 +176,28 @@ create table info(
 	id bigint not null unique
 );
 	#+END_SRC
+* Modifying
+  The point in modifying a table in =SQL= is just
+  remembering the' =alter table=' words. Then comes
+  the table name, then the operation to be done on
+  the table then the full description of the column.
+** Tables
+*** Columns
+   #+BEGIN_SRC sql
+     alter table info add birth_date date not null;
+     alter table info modify username varchar(20) unique;
+   #+END_SRC
 * Droping
   Droping is same as deleting/removing
+** Columns
+   #+BEGIN_SRC sql
+   alter table info drop username;
+   #+END_SRC
 ** Tables
    #+BEGIN_SRC sql
    drop table info;
+   #+END_SRC
+** Database
+   #+BEGIN_SRC sql
+   drop database login_db;
    #+END_SRC
