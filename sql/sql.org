@@ -1,38 +1,38 @@
 #+TITLE: Structured Query Language(SQL)
 #+AUTHOR: Compro Prasad
+#+OPTIONS: toc:1
+#+REVEAL_EXTRA_CSS: ../custom_reveal.css
 * Introduction
-  =SQL= is the interface for communicating to a binary file
-  which is called a =database= in terms of =SQL=. So, keep in
-  mind that if you change the binary file using an editor like
-  [[http://hexedit.com/][hexedit]] then you could run into problems. So, don't mess
-  with such kinds of files on your computer.\\
-  A *database* is further divided into *tables*. Tables are further
-  divided into two categories: *columns* and *rows*.\\
-  It also has concepts of =RDBMS= in which you can link two
-  distinct tables using similar columns in each of them. This
-  can create a pretty huge relationships just like in the real world.\\
-  Please make sure a =SQL= is installed on your machine before
-  starting this tutorial.
+  - =SQL= is an interface for communicating to a binary file which
+    is called a *database* in terms of =SQL=.
+  - A *database* is further divided into *tables*.
+  - Tables are further divided into two categories: *columns* and *rows*.
+  - Tables can also be linked in a *relation* to each other.
+* How to read this?
+  This is a very basic tutorial for getting accustomed with the way
+  you should use =SQL=. This should not be considered as a standard
+  manual for mastering in =SQL=. But you can start mastering =SQL=
+  after going through this short tutorial. For this reason please
+  make sure =SQL= is installed on your machine before starting this
+  tutorial.
 * Basics
 ** Logging in
-   It is necessary to login to access the whole/part of your
-   =SQL=. Now you would say that there is no use of login. But
-   what if the frontend developer of [[https://facebook.com][Facebook]] gets into the
-   database and steals information of everybody.\\
-   So, there is a concept of users in =SQL=. This removes the
-   necessity of having different things in the same place.
-   Instead, =SQL= just puts everything in the same place and
-   permits the specific user to the specific information.
+   In =SQL= it is necessary to login to access the whole/part of your
+   databases.
+** Why is it important?
+	- Everybody doesn't have the same area of expertise. So,
+	  its better to lock them in their fields to keep all data safe.
+	- Prevent unauthorised access to private data.
+** How to Log In?
+	Here, is a simple command for logging into =SQL= using
+	*tom* as the username:
+    #+BEGIN_SRC sh
+	mysql -u tom -p
+    #+END_SRC
+	After pressing =RETURN= mysql would ask for a password.
+	Enter your password and you are good to go.
 
-   Here, is a simple command for logging into =SQL= using
-   *tom* as the username:
-   #+BEGIN_SRC sh
-   mysql -u tom -p
-   #+END_SRC
-   After pressing =RETURN= mysql would ask for a password.
-   Enter your password and you are good to go.
-
-   Note: During the time of installation the default user is *root*.
+	Note: The default(and the most powerful) user is *root*.
 ** What is a query?
    Query is a successful statement in =SQL= that gets a job done
    by the end user. It can be creating tables or inserting values
@@ -52,67 +52,68 @@
    show databases;
    #+END_SRC
 ** Accessing Table
-   Don't you know tables?!
-   There can be many tables inside a database. Thats enough
-   introduction to tables in =SQL=
+   Databases contain tables.
    #+BEGIN_SRC sql
    show tables from information_schema;
    #+END_SRC
-   Replace *information_schema* with the database of your
-   choice.\\
-   You can also use:
+   Replace *information\under{}schema* with the database of your
+   choice.
+** Another way to access a table
+   You can also use the follwing if you are using a specific database.
    #+BEGIN_SRC sql
    show tables;
    #+END_SRC
-   when you are using a specific database. See [[*Using databases][Using databases]].
+   See [[*Using databases][Using databases]].
 ** Accessing columns
-   #+BEGIN_SRC sql
-   show columns from information_schema.collations;
-   #+END_SRC
-   It is of the form =<database>.<table>=.\\
-   Want a shorter form? Use the following approach:
-   #+BEGIN_SRC sql
-   describe information_schema.collations;
-   #+END_SRC
-*** Most used types of columns:
-	| Type       | Description                            |
-	|------------+----------------------------------------|
-	| char(n)    | A string of characters of length =n=.  |
-	|            | Same memory consumption for different  |
-	|            | strings.                               |
-	| varchar(n) | A string of characters of length =n=.  |
-	|            | Memory consumption according to length |
-	| int        | An integer field                       |
-	| bigint     | An integer field with a large range    |
-	| date       | A date of the form =YYYY-MM-DD=        |
-	| datetime   | A field addressing a date and time     |
-	|            | value.                                 |
+*** Syntax
+	#+BEGIN_EXAMPLE
+	show columns from <database_name>.<table_name>
+	#+END_EXAMPLE
+*** Example
+    #+BEGIN_SRC sql
+	show columns from information_schema.collations;
+    #+END_SRC
+*** Shorter Command
+    #+BEGIN_SRC sql
+	describe information_schema.collations;
+    #+END_SRC
+*** Most used columns types:
+	| Type       | Description                                |
+	|------------+--------------------------------------------|
+	| char(n)    | A string of characters of length =n=.      |
+	|            | Default memory consumption for each record |
+	| varchar(n) | A string of characters of length =n=.      |
+	|            | Memory consumption according to string     |
+	| int        | An integer field                           |
+	| bigint     | A large range integer field                |
+	| date       | A date of the form =YYYY-MM-DD=            |
+	| datetime   | A field addressing a date and time value   |
 ** Using databases
    Databases are less in comparison to the tables in
-   each database. Therefore, writing =<database>.<table>=
-   can be a bit tedious. So, there is a feature in sql
-   and that is using a database:
+   each database. Therefore, writing
+   #+BEGIN_EXAMPLE
+   <database>.<table>
+   #+END_EXAMPLE
+   can be a bit tedious. So, there is a feature in =SQL= to
+   reduce the work.
+*** Syntax
+	#+BEGIN_EXAMPLE
+	use <database_name>;
+	#+END_EXAMPLE
+*** Example
    #+BEGIN_SRC sql
    use information_schema;
    #+END_SRC
-   You can now see columns using:
-   #+BEGIN_SRC sql
-   describe collations;
-   #+END_SRC
-   Since you are using the database, you cannot operate
-   on a table thats inside another database using a normal
-   syntax.
-   But you can do two things outside the database. 
-   They are:
-   #+BEGIN_SRC sql
-   show databases;
-   use performance_schema;
-   #+END_SRC
-   Here *performance_schema* can be another database you
-   would like to use.
-   From now on it will be assumed that you are using a
-   database and then the respective query can be run after
-   that.
+*** The magic
+	You can now see column descriptions without using the
+	database name:
+    #+BEGIN_SRC sql
+	describe collations;
+    #+END_SRC
+*** You will always need it
+	From now on it will be assumed that you are using a
+	database and then the respective query can be run after
+	that.
 ** Accessing rows
    See all rows and columns from a table:
    #+BEGIN_SRC sql
@@ -142,7 +143,7 @@ create table info(
 	#+END_SRC
 	=info= is the name of the table to be created. Then
 	comes =username= which is the name of the field/column.
-	It is of type =varchar(20)=(see table in [[*Most used types of columns:][columns mostly used]]).
+	It is of type =varchar(20)= (see table in [[*Most used types of columns:][columns mostly used]]).
 	A similar approach is followed for every column. First
 	the name of the column then the type of field.
 *** =NOT NULL= contraint
@@ -177,6 +178,17 @@ create table info(
 );
 	#+END_SRC
 *** =PRIMARY KEY= constraint
+	Using this contraint is same as using =NOT NULL= and
+	=UNIQUE= constraints together on the same column.
+	#+BEGIN_SRC sql -i
+create table info(
+	username varchar(20),
+	login_time timestamp not null,
+	id bigint primary key
+);
+	#+END_SRC
+*** =FOREIGN KEY= constraint
+
 * Modifying
   The point in modifying a table in =SQL= is just
   remembering the '=alter table=' words. Then comes
