@@ -4,61 +4,61 @@
 #+REVEAL_ROOT: http://cdn.jsdelivr.net/reveal.js/3.0.0/
 #+REVEAL_EXTRA_CSS: ../custom_reveal.css
 * Introduction
-  - =SQL= is an interface for communicating to a binary file which
-    is called a *database* in terms of =SQL=.
-  - A *database* is further divided into *tables*.
-  - Tables are further divided into two categories: *columns* and *rows*.
-  - Tables can also be linked in a *relation* to each other.
+- =SQL= is an interface for communicating to a binary file which
+  is called a *database* in terms of =SQL=.
+- A *database* is further divided into *tables*.
+- Tables are further divided into two categories: *columns* and *rows*.
+- Tables can also be linked in a *relation* to each other.
 * How to read this?
-  This is a very basic tutorial for getting accustomed with the way
-  you should use =SQL=. This should not be considered as a standard
-  manual for mastering in =SQL=. But you can start mastering =SQL=
-  after going through this short tutorial. For this reason please
-  make sure =SQL= is installed on your machine before starting this
-  tutorial.
+This is a very basic tutorial for getting accustomed with the way
+you should use =SQL=. This should not be considered as a standard
+manual for mastering in =SQL=. But you can start mastering =SQL=
+after going through this short tutorial. For this reason please
+make sure =SQL= is installed on your machine before starting this
+tutorial.
 * Basics
 ** Logging in
-   In =SQL= it is necessary to login to access the whole/part of your
-   databases.
+In =SQL= it is necessary to login to access the whole/part of your
+databases.
 ** Why is it important?
 - Everybody doesn't have the same area of expertise. So,
   its better to lock them in their fields to keep all data safe.
 - Prevent unauthorised access to private data.
 ** How to Log In?
-	Here, is a simple command for logging into =SQL= using
-	*tom* as the username:
-    #+BEGIN_SRC sh
+Here, is a simple command for logging into =SQL= using
+*tom* as the username:
+#+BEGIN_SRC sh
 	mysql -u tom -p
-    #+END_SRC
-	After pressing =RETURN= mysql would ask for a password.
-	Enter your password and you are good to go.
+#+END_SRC
+After pressing =RETURN= mysql would ask for a password.
+Enter your password and you are good to go.
 
-	Note: The default(and the most powerful) user is *root*.
+Note: The default(and the most powerful) user is *root*.
 ** What is a query?
-   Query is a successful statement in =SQL= that gets a job done
-   by the end user. It can be creating tables or inserting values
-   or modifying values etc. The following are some examples of
-   queries in =MySQL=:
-   #+NAME: sql-query-examples
-   #+BEGIN_SRC sql
+Query is a successful statement in =SQL= that gets a job done
+by the end user. It can be creating tables or inserting values
+or modifying values etc. The following are some examples of
+queries in =MySQL=:
+#+NAME: sql-query-examples
+#+BEGIN_SRC sql
    create table information(column1 int);
    use login_db;
    select 1+2 from dual;
-   #+END_SRC
+#+END_SRC
 ** Accessing Databases/Schemas
-   Now, since you have logged in you have the control over what
-   you have access to. You may not have been permitted to access
-   even a single database. To see the schemas run this query:
-   #+BEGIN_SRC sql
+Now, since you have logged in you have the control over what
+you have access to. You may not have been permitted to access
+even a single database. To see the schemas run this query:
+#+BEGIN_SRC sql
    show databases;
-   #+END_SRC
+#+END_SRC
 ** Accessing Table
-   Databases contain tables.
-   #+BEGIN_SRC sql
+Databases contain tables.
+#+BEGIN_SRC sql
    show tables from information_schema;
-   #+END_SRC
-   Replace *information\under{}schema* with the database of your
-   choice.
+#+END_SRC
+Replace *information\under{}schema* with the database of your
+choice.
 ** Another way to access a table
 You can also use the follwing if you are using a specific database.
 #+BEGIN_SRC sql
@@ -135,87 +135,87 @@ create database login_db;
 #+END_SRC
 ** Tables
 *** Basic table
-	#+BEGIN_SRC sql -i
+#+BEGIN_SRC sql -i
 create table info(
 	username varchar(20),
 	login_time timestamp,
 	id bigint
 );
-	#+END_SRC
-	=info= is the name of the table to be created. Then
-	comes =username= which is the name of the field/column.
-	It is of type =varchar(20)= (see table in [[*Most used columns types:][columns mostly used]]).
-	A similar approach is followed for every column. First
-	the name of the column then the type of field.
+#+END_SRC
+=info= is the name of the table to be created. Then
+comes =username= which is the name of the field/column.
+It is of type =varchar(20)= (see table in [[*Most used columns types:][columns mostly used]]).
+A similar approach is followed for every column. First
+the name of the column then the type of field.
 *** =NOT NULL= contraint
-	By default you can insert =NULL= values in any
-	field. But if a field has to has a value then
-	a =NOT NULL= contraint has to be added like:
-	#+BEGIN_SRC sql -i
+By default you can insert =NULL= values in any
+field. But if a field has to has a value then
+a =NOT NULL= contraint has to be added like:
+#+BEGIN_SRC sql -i
 create table info(
     username varchar(20),
     login_time timestamp not null,
     id bigint not null
 );
-	#+END_SRC
-	You would get an error while doing that. See
-	[[droping-tables][Droping Tables]] and rerun the above query.\\
-	The above query will prevent login_time and id
-	from having =NULL= values.
+#+END_SRC
+You would get an error while doing that. See
+[[droping-tables][Droping Tables]] and rerun the above query.\\
+The above query will prevent login_time and id
+from having =NULL= values.
 *** =UNIQUE= contraint
-	What if you wanted to create a field that had
-	unique values. For example, [[https://mail.google.com][Gmail]] uses this to
-	identify whether a user has already created an
-	account using the same e-mail.\\
-	But not all fields must be unique. For example,
-	you may find friends with same name on [[https://www.facebook.com][Facebook]].
-	And if [[https://www.facebook.com][Facebook]] used =UNIQUE= contraint on the
-	name of the users then it would be pretty awkward.
-	#+BEGIN_SRC sql -i
+What if you wanted to create a field that had
+unique values. For example, [[https://mail.google.com][Gmail]] uses this to
+identify whether a user has already created an
+account using the same e-mail.\\
+But not all fields must be unique. For example,
+you may find friends with same name on [[https://www.facebook.com][Facebook]].
+And if [[https://www.facebook.com][Facebook]] used =UNIQUE= contraint on the
+name of the users then it would be pretty awkward.
+#+BEGIN_SRC sql -i
 create table info(
 	username varchar(20),
 	login_time timestamp not null,
 	id bigint not null unique
 );
-	#+END_SRC
+#+END_SRC
 *** =PRIMARY KEY= constraint
-	Using this contraint is same as using =NOT NULL= and
-	=UNIQUE= constraints together on the same column.
-	#+BEGIN_SRC sql -i
+Using this contraint is same as using =NOT NULL= and
+=UNIQUE= constraints together on the same column.
+#+BEGIN_SRC sql -i
 create table info(
 	username varchar(20),
 	login_time timestamp not null,
 	id bigint primary key
 );
-	#+END_SRC
+#+END_SRC
 *** =FOREIGN KEY= constraint
 
 * Modifying
-  The point in modifying a table in =SQL= is just
-  remembering the '=alter table=' words. Then comes
-  the table name, then the operation to be done on
-  the table then the full description of the column.
+The point in modifying a table in =SQL= is just
+remembering the '=alter table=' words. Then comes
+the table name, then the operation to be done on
+the table then the full description of the column.
 ** Tables
 *** Columns
-   #+BEGIN_SRC sql
+#+BEGIN_SRC sql
      alter table info add birth_date date not null;
      alter table info modify username varchar(20) unique;
-   #+END_SRC
+#+END_SRC
 * Droping
-  Droping is same as deleting/removing
+Droping is same as deleting/removing
 ** Columns
-   #+BEGIN_SRC sql
+#+BEGIN_SRC sql
    alter table info drop username;
-   #+END_SRC
+#+END_SRC
 ** Tables
-   #+NAME: droping-tables
-   #+BEGIN_SRC sql
+#+NAME: droping-tables
+#+BEGIN_SRC sql
    drop table info;
-   #+END_SRC
+#+END_SRC
 ** Database
-   #+BEGIN_SRC sql
+#+BEGIN_SRC sql
    drop database login_db;
-   #+END_SRC
+#+END_SRC
 * Selecting
 Selecting is the process of printing out the records in a table.
 ** The most basic form
