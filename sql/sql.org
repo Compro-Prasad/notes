@@ -250,5 +250,8 @@ from     plugins
 where    plugin_author='MySQL AB'
 order by plugin_name asc;
 #+END_SRC
-We have src_sql{asc} for ascending order(which is default and optional) and src_sql{desc}
+We have
+src_sql[:exports code]{asc}
+for ascending order(which is default and optional) and
+src_sql[:exports code]{desc}
 for descending order.
