@@ -1,4 +1,4 @@
-% Created 2016-11-04 Fri 22:32
+% Created 2016-11-17 Thu 12:30
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -27,35 +27,41 @@
 \begin{document}
 
 \maketitle
+\setcounter{tocdepth}{1}
 \tableofcontents
 
 \section{Introduction}
-\label{sec:org90b5d32}
-\texttt{SQL} is the interface for communicating to a binary file
-which is called a \texttt{database} in terms of \texttt{SQL}. So, keep in
-mind that if you change the binary file using an editor like
-\href{http://hexedit.com/}{hexedit} then you could run into problems. So, don't mess
-with such kinds of files on your computer.\\
-A \textbf{database} is further divided into \textbf{tables}. Tables are further
-divided into two categories: \textbf{columns} and \textbf{rows}.\\
-It also has concepts of \texttt{RDBMS} in which you can link two
-distinct tables using similar columns in each of them. This
-can create a pretty huge relationships just like in the real world.\\
-Please make sure a \texttt{SQL} is installed on your machine before
-starting this tutorial.
+\label{sec:org09a15a1}
+\begin{itemize}
+\item \texttt{SQL} is an interface for communicating to a binary file which
+is called a \textbf{database} in terms of \texttt{SQL}.
+\item A \textbf{database} is further divided into \textbf{tables}.
+\item Tables are further divided into two categories: \textbf{columns} and \textbf{rows}.
+\item Tables can also be linked in a \textbf{relation} to each other.
+\end{itemize}
+\section{How to read this?}
+\label{sec:orgb5c651e}
+This is a very basic tutorial for getting accustomed with the way
+you should use \texttt{SQL}. This should not be considered as a standard
+manual for mastering in \texttt{SQL}. But you can start mastering \texttt{SQL}
+after going through this short tutorial. For this reason please
+make sure \texttt{SQL} is installed on your machine before starting this
+tutorial.
 \section{Basics}
-\label{sec:orgf1a7fc7}
+\label{sec:orgdc52380}
 \subsection{Logging in}
-\label{sec:org737b541}
-It is necessary to login to access the whole/part of your
-\texttt{SQL}. Now you would say that there is no use of login. But
-what if the frontend developer of \href{https://facebook.com}{Facebook} gets into the
-database and steals information of everybody.\\
-So, there is a concept of users in \texttt{SQL}. This removes the
-necessity of having different things in the same place.
-Instead, \texttt{SQL} just puts everything in the same place and
-permits the specific user to the specific information.
-
+\label{sec:orgd61e962}
+In \texttt{SQL} it is necessary to login to access the whole/part of your
+databases.
+\subsection{Why is it important?}
+\label{sec:org619458a}
+\begin{itemize}
+\item Everybody doesn't have the same area of expertise. So,
+its better to lock them in their fields to keep all data safe.
+\item Prevent unauthorised access to private data.
+\end{itemize}
+\subsection{How to Log In?}
+\label{sec:orgf3d47e2}
 Here, is a simple command for logging into \texttt{SQL} using
 \textbf{tom} as the username:
 \begin{verbatim}
@@ -64,9 +70,9 @@ mysql -u tom -p
 After pressing \texttt{RETURN} mysql would ask for a password.
 Enter your password and you are good to go.
 
-Note: During the time of installation the default user is \textbf{root}.
+Note: The default(and the most powerful) user is \textbf{root}.
 \subsection{What is a query?}
-\label{sec:org04b6374}
+\label{sec:org7907976}
 Query is a successful statement in \texttt{SQL} that gets a job done
 by the end user. It can be creating tables or inserting values
 or modifying values etc. The following are some examples of
@@ -77,7 +83,7 @@ use login_db;
 select 1+2 from dual;
 \end{verbatim}
 \subsection{Accessing Databases/Schemas}
-\label{sec:org38fbf5d}
+\label{sec:org12e6ee5}
 Now, since you have logged in you have the control over what
 you have access to. You may not have been permitted to access
 even a single database. To see the schemas run this query:
@@ -85,77 +91,86 @@ even a single database. To see the schemas run this query:
 show databases;
 \end{verbatim}
 \subsection{Accessing Table}
-\label{sec:orgc936a6d}
-Don't you know tables?!
-There can be many tables inside a database. Thats enough
-introduction to tables in \texttt{SQL}
+\label{sec:org1e89228}
+Databases contain tables.
 \begin{verbatim}
 show tables from information_schema;
 \end{verbatim}
-Replace \textbf{information\(_{\text{schema}}\)} with the database of your
-choice.\\
-You can also use:
+Replace \textbf{information\_schema} with the database of your
+choice.
+\subsection{Another way to access a table}
+\label{sec:orgdadd7fb}
+You can also use the follwing if you are using a specific database.
 \begin{verbatim}
 show tables;
 \end{verbatim}
-when you are using a specific database. See \hyperref[sec:org8226490]{Using databases}.
+See \hyperref[sec:org344e2c5]{Using databases}.
 \subsection{Accessing columns}
-\label{sec:org5d83a91}
+\label{sec:org3d61e63}
+\subsubsection{Syntax}
+\label{sec:org61c16c6}
+\begin{verbatim}
+show columns from <database_name>.<table_name>
+\end{verbatim}
+\subsubsection{Example}
+\label{sec:org5d41557}
 \begin{verbatim}
 show columns from information_schema.collations;
 \end{verbatim}
-It is of the form \texttt{<database>.<table>}.\\
-Want a shorter form? Use the following approach:
+\subsubsection{Shorter Command}
+\label{sec:org5495078}
 \begin{verbatim}
 describe information_schema.collations;
 \end{verbatim}
-\subsubsection{Most used types of columns:}
-\label{sec:org23c0eed}
+\subsubsection{Most used columns types:}
+\label{sec:orgd05a022}
 \begin{center}
 \begin{tabular}{ll}
 Type & Description\\
 \hline
 char(n) & A string of characters of length \texttt{n}.\\
- & Same memory consumption for different\\
- & strings.\\
+ & Default memory consumption for each record\\
 varchar(n) & A string of characters of length \texttt{n}.\\
- & Memory consumption according to length\\
+ & Memory consumption according to string\\
 int & An integer field\\
-bigint & An integer field with a large range\\
+bigint & A large range integer field\\
 date & A date of the form \texttt{YYYY-MM-DD}\\
-datetime & A field addressing a date and time\\
- & value.\\
+datetime & A field addressing a date and time value\\
 \end{tabular}
 \end{center}
 \subsection{Using databases}
-\label{sec:org8226490}
+\label{sec:org344e2c5}
 Databases are less in comparison to the tables in
-each database. Therefore, writing \texttt{<database>.<table>}
-can be a bit tedious. So, there is a feature in sql
-and that is using a database:
+each database. Therefore, writing
+\begin{verbatim}
+<database>.<table>
+\end{verbatim}
+can be a bit tedious. So, there is a feature in \texttt{SQL} to
+reduce the work.
+\subsubsection{Syntax}
+\label{sec:org74e3b94}
+\begin{verbatim}
+use <database_name>;
+\end{verbatim}
+\subsubsection{Example}
+\label{sec:orga1685b3}
 \begin{verbatim}
 use information_schema;
 \end{verbatim}
-You can now see columns using:
+\subsubsection{The magic}
+\label{sec:orgfdcc478}
+You can now see column descriptions without using the
+database name:
 \begin{verbatim}
 describe collations;
 \end{verbatim}
-Since you are using the database, you cannot operate
-on a table thats inside another database using a normal
-syntax.
-But you can do two things outside the database. 
-They are:
-\begin{verbatim}
-show databases;
-use performance_schema;
-\end{verbatim}
-Here \textbf{performance\(_{\text{schema}}\)} can be another database you
-would like to use.
+\subsubsection{You will always need it}
+\label{sec:orgf5714c1}
 From now on it will be assumed that you are using a
 database and then the respective query can be run after
 that.
 \subsection{Accessing rows}
-\label{sec:orgedac794}
+\label{sec:org6e91b15}
 See all rows and columns from a table:
 \begin{verbatim}
 select * from collations;
@@ -169,16 +184,16 @@ Filter specific set of rows and columns from a table:
 select is_default, sortlen from collations where id < 50 and is_default='Yes';
 \end{verbatim}
 \section{Creating}
-\label{sec:org969fd05}
+\label{sec:org2652a1f}
 \subsection{Databases}
-\label{sec:org7fc84ad}
+\label{sec:orgd912e22}
 \begin{verbatim}
 create database login_db;
 \end{verbatim}
 \subsection{Tables}
-\label{sec:org7273247}
+\label{sec:orgc11b8a5}
 \subsubsection{Basic table}
-\label{sec:orga2b4373}
+\label{sec:org0f4d339}
 \begin{verbatim}
 create table info(
 	username varchar(20),
@@ -188,11 +203,11 @@ create table info(
 \end{verbatim}
 \texttt{info} is the name of the table to be created. Then
 comes \texttt{username} which is the name of the field/column.
-It is of type =varchar(20)=(see table in \hyperref[sec:org23c0eed]{columns mostly used}).
+It is of type \texttt{varchar(20)} (see table in \hyperref[sec:orgd05a022]{columns mostly used}).
 A similar approach is followed for every column. First
 the name of the column then the type of field.
 \subsubsection{\texttt{NOT NULL} contraint}
-\label{sec:org8adfcc6}
+\label{sec:org9eb11e6}
 By default you can insert \texttt{NULL} values in any
 field. But if a field has to has a value then
 a \texttt{NOT NULL} contraint has to be added like:
@@ -204,11 +219,11 @@ create table info(
 );
 \end{verbatim}
 You would get an error while doing that. See
-\hyperref[org824e6fe]{Droping Tables} and rerun the above query.\\
+\hyperref[orgde38e69]{Droping Tables} and rerun the above query.\\
 The above query will prevent login\(_{\text{time}}\) and id
 from having \texttt{NULL} values.
 \subsubsection{\texttt{UNIQUE} contraint}
-\label{sec:orgd331e12}
+\label{sec:org80cea2f}
 What if you wanted to create a field that had
 unique values. For example, \href{https://mail.google.com}{Gmail} uses this to
 identify whether a user has already created an
@@ -225,37 +240,90 @@ create table info(
 );
 \end{verbatim}
 \subsubsection{\texttt{PRIMARY KEY} constraint}
-\label{sec:org2c94931}
+\label{sec:org906e62f}
+Using this contraint is same as using \texttt{NOT NULL} and
+\texttt{UNIQUE} constraints together on the same column.
+\begin{verbatim}
+create table info(
+	username varchar(20),
+	login_time timestamp not null,
+	id bigint primary key
+);
+\end{verbatim}
+\subsubsection{\texttt{FOREIGN KEY} constraint}
+\label{sec:org0b07181}
+
 \section{Modifying}
-\label{sec:org0e2f576}
+\label{sec:orgf92887c}
 The point in modifying a table in \texttt{SQL} is just
 remembering the '\texttt{alter table}' words. Then comes
 the table name, then the operation to be done on
 the table then the full description of the column.
 \subsection{Tables}
-\label{sec:org3a58b08}
+\label{sec:org1bfff68}
 \subsubsection{Columns}
-\label{sec:orgd875405}
+\label{sec:orga0d626a}
 \begin{verbatim}
 alter table info add birth_date date not null;
 alter table info modify username varchar(20) unique;
 \end{verbatim}
 \section{Droping}
-\label{sec:orgc4e4871}
+\label{sec:orgb5d277f}
 Droping is same as deleting/removing
 \subsection{Columns}
-\label{sec:org68564ba}
+\label{sec:org039768d}
 \begin{verbatim}
 alter table info drop username;
 \end{verbatim}
 \subsection{Tables}
-\label{sec:org28a210e}
+\label{sec:org2bf2eaf}
 \begin{verbatim}
 drop table info;
 \end{verbatim}
 \subsection{Database}
-\label{sec:org63ef02a}
+\label{sec:orgfa9c8cb}
 \begin{verbatim}
 drop database login_db;
 \end{verbatim}
+\section{Selecting}
+\label{sec:org7f80c30}
+Selecting is the process of printing out the records in a table.
+\subsection{The most basic form}
+\label{sec:org847d696}
+A table in \texttt{information\_schema}
+\begin{verbatim}
+select * from plugins;
+\end{verbatim}
+The above query would return(print) all the records in the \texttt{plugins} table.
+\subsection{Selecting specific columns}
+\label{sec:org0b22d93}
+You can select specific columns instead of all of them. This is useful for
+removing clutter from your screen.
+\begin{verbatim}
+select plugin_name, plugin_author, plugin_description
+from   plugins;
+\end{verbatim}
+This has reduced the number of columns to see the columns that interst you.
+\subsection{The \texttt{where} clause}
+\label{sec:orgf47fdc7}
+It might be quite a long table. To see only what you want you have to use the
+\texttt{where} clause to filter your results.
+\begin{verbatim}
+select plugin_name, plugin_author, plugin_description
+from   plugins
+where  plugin_author='MySQL AB';
+\end{verbatim}
+Now you may see the highly compressed form of the table and it has become quite
+readable.
+\subsection{The \texttt{order by} clause}
+\label{sec:org9ad1e89}
+Now lets sort the rows in a specific order.
+\begin{verbatim}
+select   plugin_name, plugin_author, plugin_description
+from     plugins
+where    plugin_author='MySQL AB'
+order by plugin_name asc;
+\end{verbatim}
+We have for ascending order(which is default and optional) and 
+for descending order.
 \end{document}

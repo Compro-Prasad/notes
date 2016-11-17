@@ -7,9 +7,9 @@
 <style type="text/css">
 .underline { text-decoration: underline; }
 </style>
-<link rel="stylesheet" href="file:///home/compro/Dropbox/reveal.js/css/reveal.css"/>
+<link rel="stylesheet" href="http://cdn.jsdelivr.net/reveal.js/3.0.0/css/reveal.css"/>
 
-<link rel="stylesheet" href="file:///home/compro/Dropbox/reveal.js/css/theme/moon.css" id="theme"/>
+<link rel="stylesheet" href="http://cdn.jsdelivr.net/reveal.js/3.0.0/css/theme/moon.css" id="theme"/>
 
 <link rel="stylesheet" href="../custom_reveal.css"/>
 
@@ -19,7 +19,7 @@
         var link = document.createElement( 'link' );
         link.rel = 'stylesheet';
         link.type = 'text/css';
-        link.href = 'file:///home/compro/Dropbox/reveal.js/css/print/pdf.css';
+        link.href = 'http://cdn.jsdelivr.net/reveal.js/3.0.0/css/print/pdf.css';
         document.getElementsByTagName( 'head' )[0].appendChild( link );
     }
 </script>
@@ -27,26 +27,27 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">Structured Query Language(SQL)</h1><h2 class="author">Compro Prasad</h2><p class="date">Created: 2016-11-06 Sun 12:41</p>
+<section id="sec-title-slide"><h1 class="title">Structured Query Language(SQL)</h1><h2 class="author">Compro Prasad</h2><p class="date">Created: 2016-11-17 Thu 12:29</p>
 </section>
 <section id="table-of-contents">
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#/slide-org3c1053a">1. Introduction</a></li>
-<li><a href="#/slide-org02d4205">2. How to read this?</a></li>
-<li><a href="#/slide-org0acf626">3. Basics</a></li>
-<li><a href="#/slide-orgfdbb0c8">4. Creating</a></li>
-<li><a href="#/slide-orgf99dcae">5. Modifying</a></li>
-<li><a href="#/slide-orgaf382d6">6. Droping</a></li>
+<li><a href="#/slide-org37fecf6">1. Introduction</a></li>
+<li><a href="#/slide-org25bce64">2. How to read this?</a></li>
+<li><a href="#/slide-orga4907bf">3. Basics</a></li>
+<li><a href="#/slide-orgcbe2c5f">4. Creating</a></li>
+<li><a href="#/slide-org3e50f9d">5. Modifying</a></li>
+<li><a href="#/slide-org0b493b8">6. Droping</a></li>
+<li><a href="#/slide-orgbcb870e">7. Selecting</a></li>
 </ul>
 </div>
 </div>
 </section>
 <section>
-<section id="slide-org3c1053a">
-<h2 id="org3c1053a"><span class="section-number-2">1</span> Introduction</h2>
+<section id="slide-org37fecf6">
+<h2 id="org37fecf6"><span class="section-number-2">1</span> Introduction</h2>
 <ul>
 <li><code>SQL</code> is an interface for communicating to a binary file which
 is called a <b>database</b> in terms of <code>SQL</code>.</li>
@@ -58,8 +59,8 @@ is called a <b>database</b> in terms of <code>SQL</code>.</li>
 </section>
 </section>
 <section>
-<section id="slide-org02d4205">
-<h2 id="org02d4205"><span class="section-number-2">2</span> How to read this?</h2>
+<section id="slide-org25bce64">
+<h2 id="org25bce64"><span class="section-number-2">2</span> How to read this?</h2>
 <p>
 This is a very basic tutorial for getting accustomed with the way
 you should use <code>SQL</code>. This should not be considered as a standard
@@ -71,19 +72,19 @@ tutorial.
 </section>
 </section>
 <section>
-<section id="slide-org0acf626">
-<h2 id="org0acf626"><span class="section-number-2">3</span> Basics</h2>
+<section id="slide-orga4907bf">
+<h2 id="orga4907bf"><span class="section-number-2">3</span> Basics</h2>
 <div class="outline-text-2" id="text-3">
 </div></section>
-<section id="slide-org6b068b6">
-<h3 id="org6b068b6"><span class="section-number-3">3.1</span> Logging in</h3>
+<section id="slide-org24a05c8">
+<h3 id="org24a05c8"><span class="section-number-3">3.1</span> Logging in</h3>
 <p>
 In <code>SQL</code> it is necessary to login to access the whole/part of your
 databases.
 </p>
 </section>
-<section id="slide-org8987370">
-<h3 id="org8987370"><span class="section-number-3">3.2</span> Why is it important?</h3>
+<section id="slide-orgcf419bc">
+<h3 id="orgcf419bc"><span class="section-number-3">3.2</span> Why is it important?</h3>
 <ul>
 <li>Everybody doesn't have the same area of expertise. So,
 its better to lock them in their fields to keep all data safe.</li>
@@ -91,8 +92,8 @@ its better to lock them in their fields to keep all data safe.</li>
 
 </ul>
 </section>
-<section id="slide-org2aa5c45">
-<h3 id="org2aa5c45"><span class="section-number-3">3.3</span> How to Log In?</h3>
+<section id="slide-org12a9be4">
+<h3 id="org12a9be4"><span class="section-number-3">3.3</span> How to Log In?</h3>
 <p>
 Here, is a simple command for logging into <code>SQL</code> using
 <b>tom</b> as the username:
@@ -111,8 +112,8 @@ Enter your password and you are good to go.
 Note: The default(and the most powerful) user is <b>root</b>.
 </p>
 </section>
-<section id="slide-orge5945fd">
-<h3 id="orge5945fd"><span class="section-number-3">3.4</span> What is a query?</h3>
+<section id="slide-orgb8a9fe4">
+<h3 id="orgb8a9fe4"><span class="section-number-3">3.4</span> What is a query?</h3>
 <p>
 Query is a successful statement in <code>SQL</code> that gets a job done
 by the end user. It can be creating tables or inserting values
@@ -121,14 +122,14 @@ queries in <code>MySQL</code>:
 </p>
 <div class="org-src-container">
 
-<pre  class="src src-sql" id="sql-query-examples"><span style="color: #4f97d7; font-weight: bold;">create</span> <span style="color: #4f97d7; font-weight: bold;">table</span> <span style="color: #bc6ec5; font-weight: bold;">information</span>(column1 <span style="color: #ce537a; font-weight: bold;">int</span>);
+<pre  class="src src-sql" id="sql-query-examples"><span style="color: #00bfff;">create</span> <span style="color: #00bfff;">table</span> <span style="color: #daa520;">information</span>(column1 <span style="color: #98f5ff;">int</span>);
 use login_db;
-<span style="color: #4f97d7; font-weight: bold;">select</span> 1+2 <span style="color: #4f97d7; font-weight: bold;">from</span> dual;
+<span style="color: #00bfff;">select</span> 1+2 <span style="color: #00bfff;">from</span> dual;
 </pre>
 </div>
 </section>
-<section id="slide-org144d257">
-<h3 id="org144d257"><span class="section-number-3">3.5</span> Accessing Databases/Schemas</h3>
+<section id="slide-org14af32c">
+<h3 id="org14af32c"><span class="section-number-3">3.5</span> Accessing Databases/Schemas</h3>
 <p>
 Now, since you have logged in you have the control over what
 you have access to. You may not have been permitted to access
@@ -140,20 +141,25 @@ even a single database. To see the schemas run this query:
 </pre>
 </div>
 </section>
-<section id="slide-org0c91774">
-<h3 id="org0c91774"><span class="section-number-3">3.6</span> Accessing Table</h3>
+<section id="slide-orgee43815">
+<h3 id="orgee43815"><span class="section-number-3">3.6</span> Accessing Table</h3>
 <p>
 Databases contain tables.
 </p>
 <div class="org-src-container">
 
-<pre  class="src src-sql">show tables <span style="color: #4f97d7; font-weight: bold;">from</span> information_schema;
+<pre  class="src src-sql">show tables <span style="color: #00bfff;">from</span> information_schema;
 </pre>
 </div>
 <p>
 Replace <b>information_schema</b> with the database of your
-choice.<br  />
-You can also use:
+choice.
+</p>
+</section>
+<section id="slide-orgee364ce">
+<h3 id="orgee364ce"><span class="section-number-3">3.7</span> Another way to access a table</h3>
+<p>
+You can also use the follwing if you are using a specific database.
 </p>
 <div class="org-src-container">
 
@@ -161,37 +167,37 @@ You can also use:
 </pre>
 </div>
 <p>
-when you are using a specific database. See <a href="#/slide-org74080b4">Using databases</a>.
+See <a href="#/slide-org71dc473">Using databases</a>.
 </p>
 </section>
-<section id="slide-org4a22fb2">
-<h3 id="org4a22fb2"><span class="section-number-3">3.7</span> Accessing columns</h3>
-<div class="outline-text-3" id="text-3-7">
+<section id="slide-org4b4ac7a">
+<h3 id="org4b4ac7a"><span class="section-number-3">3.8</span> Accessing columns</h3>
+<div class="outline-text-3" id="text-3-8">
 </div></section>
-<section id="slide-org0fe11f3">
-<h4 id="org0fe11f3"><span class="section-number-4">3.7.1</span> Syntax</h4>
+<section id="slide-org80c3feb">
+<h4 id="org80c3feb"><span class="section-number-4">3.8.1</span> Syntax</h4>
 <pre class="example">
 show columns from &lt;database_name&gt;.&lt;table_name&gt;
 </pre>
 </section>
-<section id="slide-org8917f0c">
-<h4 id="org8917f0c"><span class="section-number-4">3.7.2</span> Example</h4>
+<section id="slide-org3444c32">
+<h4 id="org3444c32"><span class="section-number-4">3.8.2</span> Example</h4>
 <div class="org-src-container">
 
-<pre  class="src src-sql">show columns <span style="color: #4f97d7; font-weight: bold;">from</span> information_schema.collations;
+<pre  class="src src-sql">show columns <span style="color: #00bfff;">from</span> information_schema.collations;
 </pre>
 </div>
 </section>
-<section id="slide-org55d70e8">
-<h4 id="org55d70e8"><span class="section-number-4">3.7.3</span> Shorter Command</h4>
+<section id="slide-org2ac64d1">
+<h4 id="org2ac64d1"><span class="section-number-4">3.8.3</span> Shorter Command</h4>
 <div class="org-src-container">
 
-<pre  class="src src-sql"><span style="color: #4f97d7; font-weight: bold;">describe</span> information_schema.collations;
+<pre  class="src src-sql"><span style="color: #00bfff;">describe</span> information_schema.collations;
 </pre>
 </div>
 </section>
-<section id="slide-org02ad3d3">
-<h4 id="org02ad3d3"><span class="section-number-4">3.7.4</span> Most used types of columns:</h4>
+<section id="slide-org7a81b20">
+<h4 id="org7a81b20"><span class="section-number-4">3.8.4</span> Most used columns types:</h4>
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -249,56 +255,62 @@ show columns from &lt;database_name&gt;.&lt;table_name&gt;
 </tbody>
 </table>
 </section>
-<section id="slide-org74080b4">
-<h3 id="org74080b4"><span class="section-number-3">3.8</span> Using databases</h3>
+<section id="slide-org71dc473">
+<h3 id="org71dc473"><span class="section-number-3">3.9</span> Using databases</h3>
 <p>
 Databases are less in comparison to the tables in
-each database. Therefore, writing <code>&lt;database&gt;.&lt;table&gt;</code>
-can be a bit tedious. So, there is a feature in sql
-and that is using a database:
+each database. Therefore, writing
 </p>
+<pre class="example">
+&lt;database&gt;.&lt;table&gt;
+</pre>
+<p>
+can be a bit tedious. So, there is a feature in <code>SQL</code> to
+reduce the work.
+</p>
+</section>
+<section id="slide-orge79ba39">
+<h4 id="orge79ba39"><span class="section-number-4">3.9.1</span> Syntax</h4>
+<pre class="example">
+use &lt;database_name&gt;;
+</pre>
+</section>
+<section id="slide-org5af3d00">
+<h4 id="org5af3d00"><span class="section-number-4">3.9.2</span> Example</h4>
 <div class="org-src-container">
 
 <pre  class="src src-sql">use information_schema;
 </pre>
 </div>
+</section>
+<section id="slide-orgf7dcbbf">
+<h4 id="orgf7dcbbf"><span class="section-number-4">3.9.3</span> The magic</h4>
 <p>
-You can now see columns using:
+You can now see column descriptions without using the
+database name:
 </p>
 <div class="org-src-container">
 
-<pre  class="src src-sql"><span style="color: #4f97d7; font-weight: bold;">describe</span> collations;
+<pre  class="src src-sql"><span style="color: #00bfff;">describe</span> collations;
 </pre>
 </div>
+</section>
+<section id="slide-org650a4fe">
+<h4 id="org650a4fe"><span class="section-number-4">3.9.4</span> You will always need it</h4>
 <p>
-Since you are using the database, you cannot operate
-on a table thats inside another database using a normal
-syntax.
-But you can do two things outside the database. 
-They are:
-</p>
-<div class="org-src-container">
-
-<pre  class="src src-sql">show databases;
-use performance_schema;
-</pre>
-</div>
-<p>
-Here <b>performance<sub>schema</sub></b> can be another database you
-would like to use.
 From now on it will be assumed that you are using a
 database and then the respective query can be run after
 that.
 </p>
 </section>
-<section id="slide-org78d6957">
-<h3 id="org78d6957"><span class="section-number-3">3.9</span> Accessing rows</h3>
+<section id="slide-org2243e28">
+<h3 id="org2243e28"><span class="section-number-3">3.10</span> Accessing rows</h3>
 <p>
 See all rows and columns from a table:
 </p>
 <div class="org-src-container">
 
-<pre  class="src src-sql"><span style="color: #4f97d7; font-weight: bold;">select</span> * <span style="color: #4f97d7; font-weight: bold;">from</span> collations;
+<pre  class="src src-sql"><span style="color: #00bfff;">select</span> * <span style="color: #00bfff;">from</span> collations;
 </pre>
 </div>
 <p>
@@ -306,7 +318,7 @@ Filter specific set of rows from a table:
 </p>
 <div class="org-src-container">
 
-<pre  class="src src-sql"><span style="color: #4f97d7; font-weight: bold;">select</span> is_default, sortlen <span style="color: #4f97d7; font-weight: bold;">from</span> collations;
+<pre  class="src src-sql"><span style="color: #00bfff;">select</span> is_default, sortlen <span style="color: #00bfff;">from</span> collations;
 </pre>
 </div>
 <p>
@@ -314,35 +326,35 @@ Filter specific set of rows and columns from a table:
 </p>
 <div class="org-src-container">
 
-<pre  class="src src-sql"><span style="color: #4f97d7; font-weight: bold;">select</span> is_default, sortlen <span style="color: #4f97d7; font-weight: bold;">from</span> collations <span style="color: #4f97d7; font-weight: bold;">where</span> id &lt; 50 <span style="color: #4f97d7; font-weight: bold;">and</span> is_default=<span style="color: #2d9574;">'Yes'</span>;
+<pre  class="src src-sql"><span style="color: #00bfff;">select</span> is_default, sortlen <span style="color: #00bfff;">from</span> collations <span style="color: #00bfff;">where</span> id &lt; 50 <span style="color: #00bfff;">and</span> is_default=<span style="color: #deb887;">'Yes'</span>;
 </pre>
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orgfdbb0c8">
-<h2 id="orgfdbb0c8"><span class="section-number-2">4</span> Creating</h2>
+<section id="slide-orgcbe2c5f">
+<h2 id="orgcbe2c5f"><span class="section-number-2">4</span> Creating</h2>
 <div class="outline-text-2" id="text-4">
 </div></section>
-<section id="slide-org447ce21">
-<h3 id="org447ce21"><span class="section-number-3">4.1</span> Databases</h3>
+<section id="slide-org2786018">
+<h3 id="org2786018"><span class="section-number-3">4.1</span> Databases</h3>
 <div class="org-src-container">
 
-<pre  class="src src-sql"><span style="color: #4f97d7; font-weight: bold;">create</span> database login_db;
+<pre  class="src src-sql"><span style="color: #00bfff;">create</span> database login_db;
 </pre>
 </div>
 </section>
-<section id="slide-orgc9ca7cc">
-<h3 id="orgc9ca7cc"><span class="section-number-3">4.2</span> Tables</h3>
+<section id="slide-orga6da3c4">
+<h3 id="orga6da3c4"><span class="section-number-3">4.2</span> Tables</h3>
 <div class="outline-text-3" id="text-4-2">
 </div></section>
-<section id="slide-orge28b5bb">
-<h4 id="orge28b5bb"><span class="section-number-4">4.2.1</span> Basic table</h4>
+<section id="slide-org6e121c9">
+<h4 id="org6e121c9"><span class="section-number-4">4.2.1</span> Basic table</h4>
 <div class="org-src-container">
 
-<pre  class="src src-sql"><span style="color: #4f97d7; font-weight: bold;">create</span> <span style="color: #4f97d7; font-weight: bold;">table</span> <span style="color: #bc6ec5; font-weight: bold;">info</span>(
-    username <span style="color: #ce537a; font-weight: bold;">varchar</span>(20),
-    login_time <span style="color: #ce537a; font-weight: bold;">timestamp</span>,
+<pre  class="src src-sql"><span style="color: #00bfff;">create</span> <span style="color: #00bfff;">table</span> <span style="color: #daa520;">info</span>(
+    username <span style="color: #98f5ff;">varchar</span>(20),
+    login_time <span style="color: #98f5ff;">timestamp</span>,
     id bigint
 );
 </pre>
@@ -350,13 +362,13 @@ Filter specific set of rows and columns from a table:
 <p>
 <code>info</code> is the name of the table to be created. Then
 comes <code>username</code> which is the name of the field/column.
-It is of type <code>varchar(20)</code> (see table in <a href="#/slide-org02ad3d3">columns mostly used</a>).
+It is of type <code>varchar(20)</code> (see table in <a href="#/slide-org7a81b20">columns mostly used</a>).
 A similar approach is followed for every column. First
 the name of the column then the type of field.
 </p>
 </section>
-<section id="slide-orgba69160">
-<h4 id="orgba69160"><span class="section-number-4">4.2.2</span> <code>NOT NULL</code> contraint</h4>
+<section id="slide-orgebe6bda">
+<h4 id="orgebe6bda"><span class="section-number-4">4.2.2</span> <code>NOT NULL</code> contraint</h4>
 <p>
 By default you can insert <code>NULL</code> values in any
 field. But if a field has to has a value then
@@ -364,22 +376,22 @@ a <code>NOT NULL</code> contraint has to be added like:
 </p>
 <div class="org-src-container">
 
-<pre  class="src src-sql"><span style="color: #4f97d7; font-weight: bold;">create</span> <span style="color: #4f97d7; font-weight: bold;">table</span> <span style="color: #bc6ec5; font-weight: bold;">info</span>(
-    username <span style="color: #ce537a; font-weight: bold;">varchar</span>(20),
-    login_time <span style="color: #ce537a; font-weight: bold;">timestamp</span> <span style="color: #4f97d7; font-weight: bold;">not</span> <span style="color: #4f97d7; font-weight: bold;">null</span>,
-    id bigint <span style="color: #4f97d7; font-weight: bold;">not</span> <span style="color: #4f97d7; font-weight: bold;">null</span>
+<pre  class="src src-sql"><span style="color: #00bfff;">create</span> <span style="color: #00bfff;">table</span> <span style="color: #daa520;">info</span>(
+    username <span style="color: #98f5ff;">varchar</span>(20),
+    login_time <span style="color: #98f5ff;">timestamp</span> <span style="color: #00bfff;">not</span> <span style="color: #00bfff;">null</span>,
+    id bigint <span style="color: #00bfff;">not</span> <span style="color: #00bfff;">null</span>
 );
 </pre>
 </div>
 <p>
 You would get an error while doing that. See
-<a href="#/slide-org4317040">Droping Tables</a> and rerun the above query.<br  />
+<a href="#/slide-org8f55bda">Droping Tables</a> and rerun the above query.<br  />
 The above query will prevent login<sub>time</sub> and id
 from having <code>NULL</code> values.
 </p>
 </section>
-<section id="slide-orgca3c85c">
-<h4 id="orgca3c85c"><span class="section-number-4">4.2.3</span> <code>UNIQUE</code> contraint</h4>
+<section id="slide-org4ffe309">
+<h4 id="org4ffe309"><span class="section-number-4">4.2.3</span> <code>UNIQUE</code> contraint</h4>
 <p>
 What if you wanted to create a field that had
 unique values. For example, <a href="https://mail.google.com/">Gmail</a> uses this to
@@ -392,38 +404,38 @@ name of the users then it would be pretty awkward.
 </p>
 <div class="org-src-container">
 
-<pre  class="src src-sql"><span style="color: #4f97d7; font-weight: bold;">create</span> <span style="color: #4f97d7; font-weight: bold;">table</span> <span style="color: #bc6ec5; font-weight: bold;">info</span>(
-    username <span style="color: #ce537a; font-weight: bold;">varchar</span>(20),
-    login_time <span style="color: #ce537a; font-weight: bold;">timestamp</span> <span style="color: #4f97d7; font-weight: bold;">not</span> <span style="color: #4f97d7; font-weight: bold;">null</span>,
-    id bigint <span style="color: #4f97d7; font-weight: bold;">not</span> <span style="color: #4f97d7; font-weight: bold;">null</span> <span style="color: #4f97d7; font-weight: bold;">unique</span>
+<pre  class="src src-sql"><span style="color: #00bfff;">create</span> <span style="color: #00bfff;">table</span> <span style="color: #daa520;">info</span>(
+    username <span style="color: #98f5ff;">varchar</span>(20),
+    login_time <span style="color: #98f5ff;">timestamp</span> <span style="color: #00bfff;">not</span> <span style="color: #00bfff;">null</span>,
+    id bigint <span style="color: #00bfff;">not</span> <span style="color: #00bfff;">null</span> <span style="color: #00bfff;">unique</span>
 );
 </pre>
 </div>
 </section>
-<section id="slide-org715d5a0">
-<h4 id="org715d5a0"><span class="section-number-4">4.2.4</span> <code>PRIMARY KEY</code> constraint</h4>
+<section id="slide-org251358d">
+<h4 id="org251358d"><span class="section-number-4">4.2.4</span> <code>PRIMARY KEY</code> constraint</h4>
 <p>
 Using this contraint is same as using <code>NOT NULL</code> and
 <code>UNIQUE</code> constraints together on the same column.
 </p>
 <div class="org-src-container">
 
-<pre  class="src src-sql"><span style="color: #4f97d7; font-weight: bold;">create</span> <span style="color: #4f97d7; font-weight: bold;">table</span> <span style="color: #bc6ec5; font-weight: bold;">info</span>(
-    username <span style="color: #ce537a; font-weight: bold;">varchar</span>(20),
-    login_time <span style="color: #ce537a; font-weight: bold;">timestamp</span> <span style="color: #4f97d7; font-weight: bold;">not</span> <span style="color: #4f97d7; font-weight: bold;">null</span>,
-    id bigint <span style="color: #4f97d7; font-weight: bold;">primary</span> <span style="color: #4f97d7; font-weight: bold;">key</span>
+<pre  class="src src-sql"><span style="color: #00bfff;">create</span> <span style="color: #00bfff;">table</span> <span style="color: #daa520;">info</span>(
+    username <span style="color: #98f5ff;">varchar</span>(20),
+    login_time <span style="color: #98f5ff;">timestamp</span> <span style="color: #00bfff;">not</span> <span style="color: #00bfff;">null</span>,
+    id bigint <span style="color: #00bfff;">primary</span> <span style="color: #00bfff;">key</span>
 );
 </pre>
 </div>
 </section>
-<section id="slide-org2670b54">
-<h4 id="org2670b54"><span class="section-number-4">4.2.5</span> <code>FOREIGN KEY</code> constraint</h4>
+<section id="slide-org2870c9d">
+<h4 id="org2870c9d"><span class="section-number-4">4.2.5</span> <code>FOREIGN KEY</code> constraint</h4>
 
 </section>
 </section>
 <section>
-<section id="slide-orgf99dcae">
-<h2 id="orgf99dcae"><span class="section-number-2">5</span> Modifying</h2>
+<section id="slide-org3e50f9d">
+<h2 id="org3e50f9d"><span class="section-number-2">5</span> Modifying</h2>
 <p>
 The point in modifying a table in <code>SQL</code> is just
 remembering the '<code>alter table</code>' words. Then comes
@@ -431,56 +443,130 @@ the table name, then the operation to be done on
 the table then the full description of the column.
 </p>
 </section>
-<section id="slide-orgc9c2c89">
-<h3 id="orgc9c2c89"><span class="section-number-3">5.1</span> Tables</h3>
+<section id="slide-org483d775">
+<h3 id="org483d775"><span class="section-number-3">5.1</span> Tables</h3>
 <div class="outline-text-3" id="text-5-1">
 </div></section>
-<section id="slide-org4751a8c">
-<h4 id="org4751a8c"><span class="section-number-4">5.1.1</span> Columns</h4>
+<section id="slide-org40dc96b">
+<h4 id="org40dc96b"><span class="section-number-4">5.1.1</span> Columns</h4>
 <div class="org-src-container">
 
-<pre  class="src src-sql"><span style="color: #4f97d7; font-weight: bold;">alter</span> <span style="color: #4f97d7; font-weight: bold;">table</span> <span style="color: #bc6ec5; font-weight: bold;">info</span> <span style="color: #4f97d7; font-weight: bold;">add</span> birth_date <span style="color: #ce537a; font-weight: bold;">date</span> <span style="color: #4f97d7; font-weight: bold;">not</span> <span style="color: #4f97d7; font-weight: bold;">null</span>;
-<span style="color: #4f97d7; font-weight: bold;">alter</span> <span style="color: #4f97d7; font-weight: bold;">table</span> <span style="color: #bc6ec5; font-weight: bold;">info</span> <span style="color: #4f97d7; font-weight: bold;">modify</span> username <span style="color: #ce537a; font-weight: bold;">varchar</span>(20) <span style="color: #4f97d7; font-weight: bold;">unique</span>;
+<pre  class="src src-sql"><span style="color: #00bfff;">alter</span> <span style="color: #00bfff;">table</span> <span style="color: #daa520;">info</span> <span style="color: #00bfff;">add</span> birth_date <span style="color: #98f5ff;">date</span> <span style="color: #00bfff;">not</span> <span style="color: #00bfff;">null</span>;
+<span style="color: #00bfff;">alter</span> <span style="color: #00bfff;">table</span> <span style="color: #daa520;">info</span> <span style="color: #00bfff;">modify</span> username <span style="color: #98f5ff;">varchar</span>(20) <span style="color: #00bfff;">unique</span>;
 </pre>
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orgaf382d6">
-<h2 id="orgaf382d6"><span class="section-number-2">6</span> Droping</h2>
+<section id="slide-org0b493b8">
+<h2 id="org0b493b8"><span class="section-number-2">6</span> Droping</h2>
 <p>
 Droping is same as deleting/removing
 </p>
 </section>
-<section id="slide-org19393d5">
-<h3 id="org19393d5"><span class="section-number-3">6.1</span> Columns</h3>
+<section id="slide-org6f6ed55">
+<h3 id="org6f6ed55"><span class="section-number-3">6.1</span> Columns</h3>
 <div class="org-src-container">
 
-<pre  class="src src-sql"><span style="color: #4f97d7; font-weight: bold;">alter</span> <span style="color: #4f97d7; font-weight: bold;">table</span> <span style="color: #bc6ec5; font-weight: bold;">info</span> <span style="color: #4f97d7; font-weight: bold;">drop</span> username;
+<pre  class="src src-sql"><span style="color: #00bfff;">alter</span> <span style="color: #00bfff;">table</span> <span style="color: #daa520;">info</span> <span style="color: #00bfff;">drop</span> username;
 </pre>
 </div>
 </section>
-<section id="slide-org0c15cd0">
-<h3 id="org0c15cd0"><span class="section-number-3">6.2</span> Tables</h3>
+<section id="slide-orgf73244b">
+<h3 id="orgf73244b"><span class="section-number-3">6.2</span> Tables</h3>
 <div class="org-src-container">
 
-<pre  class="src src-sql" id="droping-tables"><span style="color: #4f97d7; font-weight: bold;">drop</span> <span style="color: #4f97d7; font-weight: bold;">table</span> <span style="color: #bc6ec5; font-weight: bold;">info</span>;
+<pre  class="src src-sql" id="droping-tables"><span style="color: #00bfff;">drop</span> <span style="color: #00bfff;">table</span> <span style="color: #daa520;">info</span>;
 </pre>
 </div>
 </section>
-<section id="slide-orgcfcbd70">
-<h3 id="orgcfcbd70"><span class="section-number-3">6.3</span> Database</h3>
+<section id="slide-org86f4467">
+<h3 id="org86f4467"><span class="section-number-3">6.3</span> Database</h3>
 <div class="org-src-container">
 
-<pre  class="src src-sql"><span style="color: #4f97d7; font-weight: bold;">drop</span> database login_db;
+<pre  class="src src-sql"><span style="color: #00bfff;">drop</span> database login_db;
 </pre>
 </div>
 </section>
 </section>
+<section>
+<section id="slide-orgbcb870e">
+<h2 id="orgbcb870e"><span class="section-number-2">7</span> Selecting</h2>
+<p>
+Selecting is the process of printing out the records in a table.
+</p>
+</section>
+<section id="slide-orgc68c458">
+<h3 id="orgc68c458"><span class="section-number-3">7.1</span> The most basic form</h3>
+<p>
+A table in <code>information_schema</code>
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-sql"><span style="color: #00bfff;">select</span> * <span style="color: #00bfff;">from</span> plugins;
+</pre>
+</div>
+<p>
+The above query would return(print) all the records in the <code>plugins</code> table.
+</p>
+</section>
+<section id="slide-org67a3c23">
+<h3 id="org67a3c23"><span class="section-number-3">7.2</span> Selecting specific columns</h3>
+<p>
+You can select specific columns instead of all of them. This is useful for
+removing clutter from your screen.
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-sql"><span style="color: #00bfff;">select</span> plugin_name, plugin_author, plugin_description
+<span style="color: #00bfff;">from</span>   plugins;
+</pre>
+</div>
+<p>
+This has reduced the number of columns to see the columns that interst you.
+</p>
+</section>
+<section id="slide-orga3b1b4c">
+<h3 id="orga3b1b4c"><span class="section-number-3">7.3</span> The <code>where</code> clause</h3>
+<p>
+It might be quite a long table. To see only what you want you have to use the
+<code>where</code> clause to filter your results.
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-sql"><span style="color: #00bfff;">select</span> plugin_name, plugin_author, plugin_description
+<span style="color: #00bfff;">from</span>   plugins
+<span style="color: #00bfff;">where</span>  plugin_author=<span style="color: #deb887;">'MySQL AB'</span>;
+</pre>
+</div>
+<p>
+Now you may see the highly compressed form of the table and it has become quite
+readable.
+</p>
+</section>
+<section id="slide-org2104541">
+<h3 id="org2104541"><span class="section-number-3">7.4</span> The <code>order by</code> clause</h3>
+<p>
+Now lets sort the rows in a specific order.
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-sql"><span style="color: #00bfff;">select</span>   plugin_name, plugin_author, plugin_description
+<span style="color: #00bfff;">from</span>     plugins
+<span style="color: #00bfff;">where</span>    plugin_author=<span style="color: #deb887;">'MySQL AB'</span>
+<span style="color: #00bfff;">order</span> <span style="color: #00bfff;">by</span> plugin_name <span style="color: #00bfff;">asc</span>;
+</pre>
+</div>
+<p>
+We have for ascending order(which is default and optional) and 
+for descending order.
+</p>
+</section>
+</section>
 </div>
 </div>
-<script src="file:///home/compro/Dropbox/reveal.js/lib/js/head.min.js"></script>
-<script src="file:///home/compro/Dropbox/reveal.js/js/reveal.js"></script>
+<script src="http://cdn.jsdelivr.net/reveal.js/3.0.0/lib/js/head.min.js"></script>
+<script src="http://cdn.jsdelivr.net/reveal.js/3.0.0/js/reveal.js"></script>
 
 <script>
 // Full list of configuration options available here:
@@ -507,11 +593,11 @@ multiplex: {
 
 // Optional libraries used to extend on reveal.js
 dependencies: [
- { src: 'file:///home/compro/Dropbox/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
- { src: 'file:///home/compro/Dropbox/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
- { src: 'file:///home/compro/Dropbox/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
- { src: 'file:///home/compro/Dropbox/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
- { src: 'file:///home/compro/Dropbox/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+ { src: 'http://cdn.jsdelivr.net/reveal.js/3.0.0/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: 'http://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'http://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'http://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: 'http://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
 });
 </script>
 </body>
