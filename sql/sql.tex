@@ -1,4 +1,4 @@
-% Created 2016-11-17 Thu 13:02
+% Created 2016-11-17 Thu 13:04
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -31,7 +31,7 @@
 \tableofcontents
 
 \section{Introduction}
-\label{sec:org521ec02}
+\label{sec:org039e645}
 \begin{itemize}
 \item \texttt{SQL} is an interface for communicating to a binary file which
 is called a \textbf{database} in terms of \texttt{SQL}.
@@ -40,7 +40,7 @@ is called a \textbf{database} in terms of \texttt{SQL}.
 \item Tables can also be linked in a \textbf{relation} to each other.
 \end{itemize}
 \section{How to read this?}
-\label{sec:orgcd0e812}
+\label{sec:orgb096b53}
 This is a very basic tutorial for getting accustomed with the way
 you should use \texttt{SQL}. This should not be considered as a standard
 manual for mastering in \texttt{SQL}. But you can start mastering \texttt{SQL}
@@ -48,20 +48,20 @@ after going through this short tutorial. For this reason please
 make sure \texttt{SQL} is installed on your machine before starting this
 tutorial.
 \section{Basics}
-\label{sec:orge37132e}
+\label{sec:org0e14700}
 \subsection{Logging in}
-\label{sec:org74a84f8}
+\label{sec:org8bcb66a}
 In \texttt{SQL} it is necessary to login to access the whole/part of your
 databases.
 \subsection{Why is it important?}
-\label{sec:org36d54fd}
+\label{sec:org9934a28}
 \begin{itemize}
 \item Everybody doesn't have the same area of expertise. So,
 its better to lock them in their fields to keep all data safe.
 \item Prevent unauthorised access to private data.
 \end{itemize}
 \subsection{How to Log In?}
-\label{sec:org7719b7d}
+\label{sec:org49ecb0c}
 Here, is a simple command for logging into \texttt{SQL} using
 \textbf{tom} as the username:
 \begin{verbatim}
@@ -72,7 +72,7 @@ Enter your password and you are good to go.
 
 Note: The default(and the most powerful) user is \textbf{root}.
 \subsection{What is a query?}
-\label{sec:orgcd5a2a8}
+\label{sec:orgc7aff15}
 Query is a successful statement in \texttt{SQL} that gets a job done
 by the end user. It can be creating tables or inserting values
 or modifying values etc. The following are some examples of
@@ -83,7 +83,7 @@ use login_db;
 select 1+2 from dual;
 \end{verbatim}
 \subsection{Accessing Databases/Schemas}
-\label{sec:org38d0027}
+\label{sec:org73306c7}
 Now, since you have logged in you have the control over what
 you have access to. You may not have been permitted to access
 even a single database. To see the schemas run this query:
@@ -91,7 +91,7 @@ even a single database. To see the schemas run this query:
 show databases;
 \end{verbatim}
 \subsection{Accessing Table}
-\label{sec:org4f0c013}
+\label{sec:org977e5fc}
 Databases contain tables.
 \begin{verbatim}
 show tables from information_schema;
@@ -99,31 +99,31 @@ show tables from information_schema;
 Replace \textbf{information\_schema} with the database of your
 choice.
 \subsection{Another way to access a table}
-\label{sec:orgc332ceb}
+\label{sec:org81e91a2}
 You can also use the follwing if you are using a specific database.
 \begin{verbatim}
 show tables;
 \end{verbatim}
-See \hyperref[sec:orgbc374ea]{Using databases}.
+See \hyperref[sec:orgae9a27f]{Using databases}.
 \subsection{Accessing columns}
-\label{sec:org8956ba7}
+\label{sec:org2a352d7}
 \subsubsection{Syntax}
-\label{sec:orgc7bdad8}
+\label{sec:org933fc3a}
 \begin{verbatim}
 show columns from <database_name>.<table_name>
 \end{verbatim}
 \subsubsection{Example}
-\label{sec:org409277f}
+\label{sec:org6e78ede}
 \begin{verbatim}
 show columns from information_schema.collations;
 \end{verbatim}
 \subsubsection{Shorter Command}
-\label{sec:orgcc40dfd}
+\label{sec:orgb714536}
 \begin{verbatim}
 describe information_schema.collations;
 \end{verbatim}
 \subsubsection{Most used columns types:}
-\label{sec:org253510b}
+\label{sec:org596c18d}
 \begin{center}
 \begin{tabular}{ll}
 Type & Description\\
@@ -139,7 +139,7 @@ datetime & A field addressing a date and time value\\
 \end{tabular}
 \end{center}
 \subsection{Using databases}
-\label{sec:orgbc374ea}
+\label{sec:orgae9a27f}
 Databases are less in comparison to the tables in
 each database. Therefore, writing
 \begin{verbatim}
@@ -148,29 +148,29 @@ each database. Therefore, writing
 can be a bit tedious. So, there is a feature in \texttt{SQL} to
 reduce the work.
 \subsubsection{Syntax}
-\label{sec:org935251e}
+\label{sec:orgc86378e}
 \begin{verbatim}
 use <database_name>;
 \end{verbatim}
 \subsubsection{Example}
-\label{sec:orgeab1154}
+\label{sec:orgaa34199}
 \begin{verbatim}
 use information_schema;
 \end{verbatim}
 \subsubsection{The magic}
-\label{sec:orge337661}
+\label{sec:org83eac23}
 You can now see column descriptions without using the
 database name:
 \begin{verbatim}
 describe collations;
 \end{verbatim}
 \subsubsection{You will always need it}
-\label{sec:orgedfc6ba}
+\label{sec:org566f489}
 From now on it will be assumed that you are using a
 database and then the respective query can be run after
 that.
 \subsection{Accessing rows}
-\label{sec:orgc9bcca8}
+\label{sec:org60ac8c8}
 See all rows and columns from a table:
 \begin{verbatim}
 select * from collations;
@@ -184,16 +184,16 @@ Filter specific set of rows and columns from a table:
 select is_default, sortlen from collations where id < 50 and is_default='Yes';
 \end{verbatim}
 \section{Creating}
-\label{sec:orgf9a7dc4}
+\label{sec:org366e64d}
 \subsection{Databases}
-\label{sec:org2998098}
+\label{sec:org67e785b}
 \begin{verbatim}
 create database login_db;
 \end{verbatim}
 \subsection{Tables}
-\label{sec:org598a92e}
+\label{sec:orgc11f656}
 \subsubsection{Basic table}
-\label{sec:org2d8d6e5}
+\label{sec:orged2af16}
 \begin{verbatim}
 create table info(
 	username varchar(20),
@@ -203,11 +203,11 @@ create table info(
 \end{verbatim}
 \texttt{info} is the name of the table to be created. Then
 comes \texttt{username} which is the name of the field/column.
-It is of type \texttt{varchar(20)} (see table in \hyperref[sec:org253510b]{columns mostly used}).
+It is of type \texttt{varchar(20)} (see table in \hyperref[sec:org596c18d]{columns mostly used}).
 A similar approach is followed for every column. First
 the name of the column then the type of field.
 \subsubsection{\texttt{NOT NULL} contraint}
-\label{sec:org5d41197}
+\label{sec:org0c17aa7}
 By default you can insert \texttt{NULL} values in any
 field. But if a field has to has a value then
 a \texttt{NOT NULL} contraint has to be added like:
@@ -219,11 +219,11 @@ create table info(
 );
 \end{verbatim}
 You would get an error while doing that. See
-\hyperref[org28c572d]{Droping Tables} and rerun the above query.\\
+\hyperref[orgda7b6b3]{Droping Tables} and rerun the above query.\\
 The above query will prevent login\(_{\text{time}}\) and id
 from having \texttt{NULL} values.
 \subsubsection{\texttt{UNIQUE} contraint}
-\label{sec:org78b2347}
+\label{sec:org25b9252}
 What if you wanted to create a field that had
 unique values. For example, \href{https://mail.google.com}{Gmail} uses this to
 identify whether a user has already created an
@@ -240,7 +240,7 @@ create table info(
 );
 \end{verbatim}
 \subsubsection{\texttt{PRIMARY KEY} constraint}
-\label{sec:orgb28da9d}
+\label{sec:org5d5e112}
 Using this contraint is same as using \texttt{NOT NULL} and
 \texttt{UNIQUE} constraints together on the same column.
 \begin{verbatim}
@@ -251,52 +251,52 @@ create table info(
 );
 \end{verbatim}
 \subsubsection{\texttt{FOREIGN KEY} constraint}
-\label{sec:orgfe763ea}
+\label{sec:org803ff90}
 
 \section{Modifying}
-\label{sec:org516719f}
+\label{sec:org2772f3a}
 The point in modifying a table in \texttt{SQL} is just
 remembering the '\texttt{alter table}' words. Then comes
 the table name, then the operation to be done on
 the table then the full description of the column.
 \subsection{Tables}
-\label{sec:org6c140cd}
+\label{sec:org0ddd14b}
 \subsubsection{Columns}
-\label{sec:org07ef0ae}
+\label{sec:org71f73c9}
 \begin{verbatim}
 alter table info add birth_date date not null;
 alter table info modify username varchar(20) unique;
 \end{verbatim}
 \section{Droping}
-\label{sec:org0b0d5a9}
+\label{sec:org6d50ec7}
 Droping is same as deleting/removing
 \subsection{Columns}
-\label{sec:org2188253}
+\label{sec:org3c455e3}
 \begin{verbatim}
 alter table info drop username;
 \end{verbatim}
 \subsection{Tables}
-\label{sec:orgdd775a0}
+\label{sec:org43dd3f7}
 \begin{verbatim}
 drop table info;
 \end{verbatim}
 \subsection{Database}
-\label{sec:org376e912}
+\label{sec:org44b5663}
 \begin{verbatim}
 drop database login_db;
 \end{verbatim}
 \section{Selecting}
-\label{sec:org164e1c9}
+\label{sec:org10d4c93}
 Selecting is the process of printing out the records in a table.
 \subsection{The most basic form}
-\label{sec:org7644d34}
+\label{sec:org193f139}
 A table in \texttt{information\_schema}
 \begin{verbatim}
 select * from plugins;
 \end{verbatim}
 The above query would return(print) all the records in the \texttt{plugins} table.
 \subsection{Selecting specific columns}
-\label{sec:org9321815}
+\label{sec:org8d45d02}
 You can select specific columns instead of all of them. This is useful for
 removing clutter from your screen.
 \begin{verbatim}
@@ -305,7 +305,7 @@ from   plugins;
 \end{verbatim}
 This has reduced the number of columns to see the columns that interst you.
 \subsection{The \texttt{where} clause}
-\label{sec:org4c0fe74}
+\label{sec:orgf73ea93}
 It might be quite a long table. To see only what you want you have to use the
 \texttt{where} clause to filter your results.
 \begin{verbatim}
@@ -316,7 +316,7 @@ where  plugin_author='MySQL AB';
 Now you may see the highly compressed form of the table and it has become quite
 readable.
 \subsection{The \texttt{order by} clause}
-\label{sec:orgeb24d13}
+\label{sec:org42a5df7}
 Now lets sort the rows in a specific order.
 \begin{verbatim}
 select   plugin_name, plugin_author, plugin_description
@@ -324,9 +324,6 @@ from     plugins
 where    plugin_author='MySQL AB'
 order by plugin_name asc;
 \end{verbatim}
-We have
-\texttt{asc}
-for ascending order(which is default and optional) and
-\texttt{desc}
-for descending order.
+We have \texttt{asc} for ascending order(which is default and optional) and
+\texttt{desc} for descending order.
 \end{document}
