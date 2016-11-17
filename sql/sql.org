@@ -28,7 +28,7 @@ databases.
 Here, is a simple command for logging into =SQL= using
 *tom* as the username:
 #+BEGIN_SRC sh
-	mysql -u tom -p
+mysql -u tom -p
 #+END_SRC
 After pressing =RETURN= mysql would ask for a password.
 Enter your password and you are good to go.
@@ -99,17 +99,17 @@ can be a bit tedious. So, there is a feature in =SQL= to
 reduce the work.
 *** Syntax
 #+BEGIN_EXAMPLE
-	use <database_name>;
+use <database_name>;
 #+END_EXAMPLE
 *** Example
 #+BEGIN_SRC sql
-   use information_schema;
+use information_schema;
 #+END_SRC
 *** The magic
 You can now see column descriptions without using the
 database name:
 #+BEGIN_SRC sql
-	describe collations;
+describe collations;
 #+END_SRC
 *** You will always need it
 From now on it will be assumed that you are using a

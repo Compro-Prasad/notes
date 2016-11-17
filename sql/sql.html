@@ -27,27 +27,27 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">Structured Query Language(SQL)</h1><h2 class="author">Compro Prasad</h2><p class="date">Created: 2016-11-17 Thu 12:59</p>
+<section id="sec-title-slide"><h1 class="title">Structured Query Language(SQL)</h1><h2 class="author">Compro Prasad</h2><p class="date">Created: 2016-11-17 Thu 13:02</p>
 </section>
 <section id="table-of-contents">
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#/slide-org4f24115">1. Introduction</a></li>
-<li><a href="#/slide-orgdb480e6">2. How to read this?</a></li>
-<li><a href="#/slide-orgace556e">3. Basics</a></li>
-<li><a href="#/slide-org21e99da">4. Creating</a></li>
-<li><a href="#/slide-orga463f60">5. Modifying</a></li>
-<li><a href="#/slide-org7361fb6">6. Droping</a></li>
-<li><a href="#/slide-org4eaebeb">7. Selecting</a></li>
+<li><a href="#/slide-org476718c">1. Introduction</a></li>
+<li><a href="#/slide-org7224802">2. How to read this?</a></li>
+<li><a href="#/slide-orgfa4348f">3. Basics</a></li>
+<li><a href="#/slide-orgbf7baca">4. Creating</a></li>
+<li><a href="#/slide-org5b0fdc4">5. Modifying</a></li>
+<li><a href="#/slide-org804304f">6. Droping</a></li>
+<li><a href="#/slide-org57764a6">7. Selecting</a></li>
 </ul>
 </div>
 </div>
 </section>
 <section>
-<section id="slide-org4f24115">
-<h2 id="org4f24115"><span class="section-number-2">1</span> Introduction</h2>
+<section id="slide-org476718c">
+<h2 id="org476718c"><span class="section-number-2">1</span> Introduction</h2>
 <ul>
 <li><code>SQL</code> is an interface for communicating to a binary file which
 is called a <b>database</b> in terms of <code>SQL</code>.</li>
@@ -59,8 +59,8 @@ is called a <b>database</b> in terms of <code>SQL</code>.</li>
 </section>
 </section>
 <section>
-<section id="slide-orgdb480e6">
-<h2 id="orgdb480e6"><span class="section-number-2">2</span> How to read this?</h2>
+<section id="slide-org7224802">
+<h2 id="org7224802"><span class="section-number-2">2</span> How to read this?</h2>
 <p>
 This is a very basic tutorial for getting accustomed with the way
 you should use <code>SQL</code>. This should not be considered as a standard
@@ -72,19 +72,19 @@ tutorial.
 </section>
 </section>
 <section>
-<section id="slide-orgace556e">
-<h2 id="orgace556e"><span class="section-number-2">3</span> Basics</h2>
+<section id="slide-orgfa4348f">
+<h2 id="orgfa4348f"><span class="section-number-2">3</span> Basics</h2>
 <div class="outline-text-2" id="text-3">
 </div></section>
-<section id="slide-orgb405d4d">
-<h3 id="orgb405d4d"><span class="section-number-3">3.1</span> Logging in</h3>
+<section id="slide-org7f9b937">
+<h3 id="org7f9b937"><span class="section-number-3">3.1</span> Logging in</h3>
 <p>
 In <code>SQL</code> it is necessary to login to access the whole/part of your
 databases.
 </p>
 </section>
-<section id="slide-org8342dcf">
-<h3 id="org8342dcf"><span class="section-number-3">3.2</span> Why is it important?</h3>
+<section id="slide-org1a256af">
+<h3 id="org1a256af"><span class="section-number-3">3.2</span> Why is it important?</h3>
 <ul>
 <li>Everybody doesn't have the same area of expertise. So,
 its better to lock them in their fields to keep all data safe.</li>
@@ -92,8 +92,8 @@ its better to lock them in their fields to keep all data safe.</li>
 
 </ul>
 </section>
-<section id="slide-orgb7752fe">
-<h3 id="orgb7752fe"><span class="section-number-3">3.3</span> How to Log In?</h3>
+<section id="slide-org7818d40">
+<h3 id="org7818d40"><span class="section-number-3">3.3</span> How to Log In?</h3>
 <p>
 Here, is a simple command for logging into <code>SQL</code> using
 <b>tom</b> as the username:
@@ -112,8 +112,8 @@ Enter your password and you are good to go.
 Note: The default(and the most powerful) user is <b>root</b>.
 </p>
 </section>
-<section id="slide-org2a316c4">
-<h3 id="org2a316c4"><span class="section-number-3">3.4</span> What is a query?</h3>
+<section id="slide-org1f00c35">
+<h3 id="org1f00c35"><span class="section-number-3">3.4</span> What is a query?</h3>
 <p>
 Query is a successful statement in <code>SQL</code> that gets a job done
 by the end user. It can be creating tables or inserting values
@@ -128,8 +128,8 @@ use login_db;
 </pre>
 </div>
 </section>
-<section id="slide-org41bce46">
-<h3 id="org41bce46"><span class="section-number-3">3.5</span> Accessing Databases/Schemas</h3>
+<section id="slide-orgba3bf91">
+<h3 id="orgba3bf91"><span class="section-number-3">3.5</span> Accessing Databases/Schemas</h3>
 <p>
 Now, since you have logged in you have the control over what
 you have access to. You may not have been permitted to access
@@ -141,8 +141,8 @@ even a single database. To see the schemas run this query:
 </pre>
 </div>
 </section>
-<section id="slide-org5899eca">
-<h3 id="org5899eca"><span class="section-number-3">3.6</span> Accessing Table</h3>
+<section id="slide-org4634c05">
+<h3 id="org4634c05"><span class="section-number-3">3.6</span> Accessing Table</h3>
 <p>
 Databases contain tables.
 </p>
@@ -156,8 +156,8 @@ Replace <b>information_schema</b> with the database of your
 choice.
 </p>
 </section>
-<section id="slide-orgb6640f1">
-<h3 id="orgb6640f1"><span class="section-number-3">3.7</span> Another way to access a table</h3>
+<section id="slide-org7fccf8f">
+<h3 id="org7fccf8f"><span class="section-number-3">3.7</span> Another way to access a table</h3>
 <p>
 You can also use the follwing if you are using a specific database.
 </p>
@@ -167,37 +167,37 @@ You can also use the follwing if you are using a specific database.
 </pre>
 </div>
 <p>
-See <a href="#/slide-orge143d01">Using databases</a>.
+See <a href="#/slide-org8be0103">Using databases</a>.
 </p>
 </section>
-<section id="slide-org470d30a">
-<h3 id="org470d30a"><span class="section-number-3">3.8</span> Accessing columns</h3>
+<section id="slide-org6946d09">
+<h3 id="org6946d09"><span class="section-number-3">3.8</span> Accessing columns</h3>
 <div class="outline-text-3" id="text-3-8">
 </div></section>
-<section id="slide-org115fa16">
-<h4 id="org115fa16"><span class="section-number-4">3.8.1</span> Syntax</h4>
+<section id="slide-org445248e">
+<h4 id="org445248e"><span class="section-number-4">3.8.1</span> Syntax</h4>
 <pre class="example">
 show columns from &lt;database_name&gt;.&lt;table_name&gt;
 </pre>
 </section>
-<section id="slide-org1c784a2">
-<h4 id="org1c784a2"><span class="section-number-4">3.8.2</span> Example</h4>
+<section id="slide-org29d9ee8">
+<h4 id="org29d9ee8"><span class="section-number-4">3.8.2</span> Example</h4>
 <div class="org-src-container">
 
 <pre  class="src src-sql">show columns <span style="color: #00bfff;">from</span> information_schema.collations;
 </pre>
 </div>
 </section>
-<section id="slide-org1b9084a">
-<h4 id="org1b9084a"><span class="section-number-4">3.8.3</span> Shorter Command</h4>
+<section id="slide-org700767d">
+<h4 id="org700767d"><span class="section-number-4">3.8.3</span> Shorter Command</h4>
 <div class="org-src-container">
 
 <pre  class="src src-sql"><span style="color: #00bfff;">describe</span> information_schema.collations;
 </pre>
 </div>
 </section>
-<section id="slide-org9380b98">
-<h4 id="org9380b98"><span class="section-number-4">3.8.4</span> Most used columns types:</h4>
+<section id="slide-org3f1be1b">
+<h4 id="org3f1be1b"><span class="section-number-4">3.8.4</span> Most used columns types:</h4>
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -255,8 +255,8 @@ show columns from &lt;database_name&gt;.&lt;table_name&gt;
 </tbody>
 </table>
 </section>
-<section id="slide-orge143d01">
-<h3 id="orge143d01"><span class="section-number-3">3.9</span> Using databases</h3>
+<section id="slide-org8be0103">
+<h3 id="org8be0103"><span class="section-number-3">3.9</span> Using databases</h3>
 <p>
 Databases are less in comparison to the tables in
 each database. Therefore, writing
@@ -269,22 +269,22 @@ can be a bit tedious. So, there is a feature in <code>SQL</code> to
 reduce the work.
 </p>
 </section>
-<section id="slide-orgc947d23">
-<h4 id="orgc947d23"><span class="section-number-4">3.9.1</span> Syntax</h4>
+<section id="slide-org4e972b4">
+<h4 id="org4e972b4"><span class="section-number-4">3.9.1</span> Syntax</h4>
 <pre class="example">
 use &lt;database_name&gt;;
 </pre>
 </section>
-<section id="slide-orge45f4c2">
-<h4 id="orge45f4c2"><span class="section-number-4">3.9.2</span> Example</h4>
+<section id="slide-org6b751aa">
+<h4 id="org6b751aa"><span class="section-number-4">3.9.2</span> Example</h4>
 <div class="org-src-container">
 
 <pre  class="src src-sql">use information_schema;
 </pre>
 </div>
 </section>
-<section id="slide-org429c3e8">
-<h4 id="org429c3e8"><span class="section-number-4">3.9.3</span> The magic</h4>
+<section id="slide-orgee3910a">
+<h4 id="orgee3910a"><span class="section-number-4">3.9.3</span> The magic</h4>
 <p>
 You can now see column descriptions without using the
 database name:
@@ -295,16 +295,16 @@ database name:
 </pre>
 </div>
 </section>
-<section id="slide-org56c4b2f">
-<h4 id="org56c4b2f"><span class="section-number-4">3.9.4</span> You will always need it</h4>
+<section id="slide-orgac48ce7">
+<h4 id="orgac48ce7"><span class="section-number-4">3.9.4</span> You will always need it</h4>
 <p>
 From now on it will be assumed that you are using a
 database and then the respective query can be run after
 that.
 </p>
 </section>
-<section id="slide-org2a9fc6c">
-<h3 id="org2a9fc6c"><span class="section-number-3">3.10</span> Accessing rows</h3>
+<section id="slide-orgb7ec5fc">
+<h3 id="orgb7ec5fc"><span class="section-number-3">3.10</span> Accessing rows</h3>
 <p>
 See all rows and columns from a table:
 </p>
@@ -332,24 +332,24 @@ Filter specific set of rows and columns from a table:
 </section>
 </section>
 <section>
-<section id="slide-org21e99da">
-<h2 id="org21e99da"><span class="section-number-2">4</span> Creating</h2>
+<section id="slide-orgbf7baca">
+<h2 id="orgbf7baca"><span class="section-number-2">4</span> Creating</h2>
 <div class="outline-text-2" id="text-4">
 </div></section>
-<section id="slide-org384380a">
-<h3 id="org384380a"><span class="section-number-3">4.1</span> Databases</h3>
+<section id="slide-org9793395">
+<h3 id="org9793395"><span class="section-number-3">4.1</span> Databases</h3>
 <div class="org-src-container">
 
 <pre  class="src src-sql"><span style="color: #00bfff;">create</span> database login_db;
 </pre>
 </div>
 </section>
-<section id="slide-org925c309">
-<h3 id="org925c309"><span class="section-number-3">4.2</span> Tables</h3>
+<section id="slide-orge7fac68">
+<h3 id="orge7fac68"><span class="section-number-3">4.2</span> Tables</h3>
 <div class="outline-text-3" id="text-4-2">
 </div></section>
-<section id="slide-org8ec9f5f">
-<h4 id="org8ec9f5f"><span class="section-number-4">4.2.1</span> Basic table</h4>
+<section id="slide-orgc24255d">
+<h4 id="orgc24255d"><span class="section-number-4">4.2.1</span> Basic table</h4>
 <div class="org-src-container">
 
 <pre  class="src src-sql"><span style="color: #00bfff;">create</span> <span style="color: #00bfff;">table</span> <span style="color: #daa520;">info</span>(
@@ -362,13 +362,13 @@ Filter specific set of rows and columns from a table:
 <p>
 <code>info</code> is the name of the table to be created. Then
 comes <code>username</code> which is the name of the field/column.
-It is of type <code>varchar(20)</code> (see table in <a href="#/slide-org9380b98">columns mostly used</a>).
+It is of type <code>varchar(20)</code> (see table in <a href="#/slide-org3f1be1b">columns mostly used</a>).
 A similar approach is followed for every column. First
 the name of the column then the type of field.
 </p>
 </section>
-<section id="slide-org00b7278">
-<h4 id="org00b7278"><span class="section-number-4">4.2.2</span> <code>NOT NULL</code> contraint</h4>
+<section id="slide-org6ffaf39">
+<h4 id="org6ffaf39"><span class="section-number-4">4.2.2</span> <code>NOT NULL</code> contraint</h4>
 <p>
 By default you can insert <code>NULL</code> values in any
 field. But if a field has to has a value then
@@ -385,13 +385,13 @@ a <code>NOT NULL</code> contraint has to be added like:
 </div>
 <p>
 You would get an error while doing that. See
-<a href="#/slide-org211e6f7">Droping Tables</a> and rerun the above query.<br  />
+<a href="#/slide-org84631ce">Droping Tables</a> and rerun the above query.<br  />
 The above query will prevent login<sub>time</sub> and id
 from having <code>NULL</code> values.
 </p>
 </section>
-<section id="slide-orga079d67">
-<h4 id="orga079d67"><span class="section-number-4">4.2.3</span> <code>UNIQUE</code> contraint</h4>
+<section id="slide-orgfe70875">
+<h4 id="orgfe70875"><span class="section-number-4">4.2.3</span> <code>UNIQUE</code> contraint</h4>
 <p>
 What if you wanted to create a field that had
 unique values. For example, <a href="https://mail.google.com/">Gmail</a> uses this to
@@ -412,8 +412,8 @@ name of the users then it would be pretty awkward.
 </pre>
 </div>
 </section>
-<section id="slide-org9bc40dc">
-<h4 id="org9bc40dc"><span class="section-number-4">4.2.4</span> <code>PRIMARY KEY</code> constraint</h4>
+<section id="slide-orge077c44">
+<h4 id="orge077c44"><span class="section-number-4">4.2.4</span> <code>PRIMARY KEY</code> constraint</h4>
 <p>
 Using this contraint is same as using <code>NOT NULL</code> and
 <code>UNIQUE</code> constraints together on the same column.
@@ -428,14 +428,14 @@ Using this contraint is same as using <code>NOT NULL</code> and
 </pre>
 </div>
 </section>
-<section id="slide-org3c9743a">
-<h4 id="org3c9743a"><span class="section-number-4">4.2.5</span> <code>FOREIGN KEY</code> constraint</h4>
+<section id="slide-org2b9600b">
+<h4 id="org2b9600b"><span class="section-number-4">4.2.5</span> <code>FOREIGN KEY</code> constraint</h4>
 
 </section>
 </section>
 <section>
-<section id="slide-orga463f60">
-<h2 id="orga463f60"><span class="section-number-2">5</span> Modifying</h2>
+<section id="slide-org5b0fdc4">
+<h2 id="org5b0fdc4"><span class="section-number-2">5</span> Modifying</h2>
 <p>
 The point in modifying a table in <code>SQL</code> is just
 remembering the '<code>alter table</code>' words. Then comes
@@ -443,12 +443,12 @@ the table name, then the operation to be done on
 the table then the full description of the column.
 </p>
 </section>
-<section id="slide-org57b6d34">
-<h3 id="org57b6d34"><span class="section-number-3">5.1</span> Tables</h3>
+<section id="slide-orga229aab">
+<h3 id="orga229aab"><span class="section-number-3">5.1</span> Tables</h3>
 <div class="outline-text-3" id="text-5-1">
 </div></section>
-<section id="slide-org77da668">
-<h4 id="org77da668"><span class="section-number-4">5.1.1</span> Columns</h4>
+<section id="slide-org5cc6ea8">
+<h4 id="org5cc6ea8"><span class="section-number-4">5.1.1</span> Columns</h4>
 <div class="org-src-container">
 
 <pre  class="src src-sql"><span style="color: #00bfff;">alter</span> <span style="color: #00bfff;">table</span> <span style="color: #daa520;">info</span> <span style="color: #00bfff;">add</span> birth_date <span style="color: #98f5ff;">date</span> <span style="color: #00bfff;">not</span> <span style="color: #00bfff;">null</span>;
@@ -458,30 +458,30 @@ the table then the full description of the column.
 </section>
 </section>
 <section>
-<section id="slide-org7361fb6">
-<h2 id="org7361fb6"><span class="section-number-2">6</span> Droping</h2>
+<section id="slide-org804304f">
+<h2 id="org804304f"><span class="section-number-2">6</span> Droping</h2>
 <p>
 Droping is same as deleting/removing
 </p>
 </section>
-<section id="slide-orgfc0fc22">
-<h3 id="orgfc0fc22"><span class="section-number-3">6.1</span> Columns</h3>
+<section id="slide-orgac381fb">
+<h3 id="orgac381fb"><span class="section-number-3">6.1</span> Columns</h3>
 <div class="org-src-container">
 
 <pre  class="src src-sql"><span style="color: #00bfff;">alter</span> <span style="color: #00bfff;">table</span> <span style="color: #daa520;">info</span> <span style="color: #00bfff;">drop</span> username;
 </pre>
 </div>
 </section>
-<section id="slide-org0b5bdec">
-<h3 id="org0b5bdec"><span class="section-number-3">6.2</span> Tables</h3>
+<section id="slide-orgfc1da96">
+<h3 id="orgfc1da96"><span class="section-number-3">6.2</span> Tables</h3>
 <div class="org-src-container">
 
 <pre  class="src src-sql" id="droping-tables"><span style="color: #00bfff;">drop</span> <span style="color: #00bfff;">table</span> <span style="color: #daa520;">info</span>;
 </pre>
 </div>
 </section>
-<section id="slide-org2c1f6ff">
-<h3 id="org2c1f6ff"><span class="section-number-3">6.3</span> Database</h3>
+<section id="slide-orgb7d08c9">
+<h3 id="orgb7d08c9"><span class="section-number-3">6.3</span> Database</h3>
 <div class="org-src-container">
 
 <pre  class="src src-sql"><span style="color: #00bfff;">drop</span> database login_db;
@@ -490,14 +490,14 @@ Droping is same as deleting/removing
 </section>
 </section>
 <section>
-<section id="slide-org4eaebeb">
-<h2 id="org4eaebeb"><span class="section-number-2">7</span> Selecting</h2>
+<section id="slide-org57764a6">
+<h2 id="org57764a6"><span class="section-number-2">7</span> Selecting</h2>
 <p>
 Selecting is the process of printing out the records in a table.
 </p>
 </section>
-<section id="slide-orga31b8de">
-<h3 id="orga31b8de"><span class="section-number-3">7.1</span> The most basic form</h3>
+<section id="slide-org899741f">
+<h3 id="org899741f"><span class="section-number-3">7.1</span> The most basic form</h3>
 <p>
 A table in <code>information_schema</code>
 </p>
@@ -510,8 +510,8 @@ A table in <code>information_schema</code>
 The above query would return(print) all the records in the <code>plugins</code> table.
 </p>
 </section>
-<section id="slide-org547985c">
-<h3 id="org547985c"><span class="section-number-3">7.2</span> Selecting specific columns</h3>
+<section id="slide-orgbeded26">
+<h3 id="orgbeded26"><span class="section-number-3">7.2</span> Selecting specific columns</h3>
 <p>
 You can select specific columns instead of all of them. This is useful for
 removing clutter from your screen.
@@ -526,8 +526,8 @@ removing clutter from your screen.
 This has reduced the number of columns to see the columns that interst you.
 </p>
 </section>
-<section id="slide-orgbd51e2e">
-<h3 id="orgbd51e2e"><span class="section-number-3">7.3</span> The <code>where</code> clause</h3>
+<section id="slide-org86adbcf">
+<h3 id="org86adbcf"><span class="section-number-3">7.3</span> The <code>where</code> clause</h3>
 <p>
 It might be quite a long table. To see only what you want you have to use the
 <code>where</code> clause to filter your results.
@@ -544,8 +544,8 @@ Now you may see the highly compressed form of the table and it has become quite
 readable.
 </p>
 </section>
-<section id="slide-org95dac1b">
-<h3 id="org95dac1b"><span class="section-number-3">7.4</span> The <code>order by</code> clause</h3>
+<section id="slide-org3d7080d">
+<h3 id="org3d7080d"><span class="section-number-3">7.4</span> The <code>order by</code> clause</h3>
 <p>
 Now lets sort the rows in a specific order.
 </p>
