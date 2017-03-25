@@ -1,0 +1,117 @@
+% Created 2017-03-26 Sun 03:06
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\author{Compro Prasad}
+\date{\today}
+\title{}
+\hypersetup{
+ pdfauthor={Compro Prasad},
+ pdftitle={},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 25.1.1 (Org mode 9.0.5)},
+ pdflang={English}}
+\begin{document}
+
+\section{Name}
+\label{sec:org7b82c92}
+Abhishek Prasad
+\section{Your email address}
+\label{sec:orgf6de055}
+comproprasad@gmail.com
+\section{The name of the project}
+\label{sec:orge7eba49}
+GNU Clisp
+\section{Summary}
+\label{sec:org9b5ca96}
+In simple terms I will be implementing thread safe hash tables in the core of
+GNU Clisp.
+\section{Benefits}
+\label{sec:org52e1722}
+Having threading support is necessary everywhere from normal computing tasks to
+larger applications running on production environments like servers. The problem
+arises when the data being used in threads are not atomic in nature. Most of
+data structures are thread safe in nature except the hash tables which are also
+extensively used in \href{https://sourceforge.net/p/clocc/hg/ci/default/tree/}{CLOCC}.
+
+Since I am doing this project I will get to know how threads, mutexes and hash
+tables are used in writing a program like GNU Clisp. And overall I would be
+communicating with great people in the GNU community I would learn other side
+stuffs too which will be an additional gift for me.
+\section{Things to be delivered}
+\label{sec:org73d8522}
+Since, my work is consists of threading and hash table so the files to be dealt
+with are \texttt{src/zthread.d}, \texttt{src/xthread.d} and \texttt{src/hashtabl.d} and may be some
+of the related lisp files.
+
+Leapfrog hash tables are faster to probe so they will probably be used
+\section{Plan}
+\label{sec:org5c908e1}
+\begin{center}
+\begin{tabular}{ll}
+Date & Work\\
+\hline
+04-May to 30-May & Talking to the developer team, fixing small bugs and\\
+ & get acquainted with the project\\
+ & \\
+31-May to 11-June & Writing the lisp code to make simple threads and find\\
+ & out where the hash table hits a corner case. Get ready\\
+ & with enough tests.\\
+ & \\
+09-June to 30-June & Write functions to handle the thread safety in the\\
+ & hash tables.\\
+ & \\
+25-June to 15-July & Have the functions run against the test cases\\
+ & \\
+10-July to 20-July & Write the tests that were missed beforehand\\
+ & \\
+18-July to 25-July & Make the code more portable to run on different\\
+ & platforms\\
+ & \\
+23-July to 30-July & Polishing the code to be more readable for future\\
+ & development\\
+\end{tabular}
+\end{center}
+\section{Communication}
+\label{sec:org4ae0a08}
+\href{https://sourceforge.net/p/clisp/mailman/clisp-devel/}{clisp-devel} mailing list archives on source forge is subscribed both via email
+and RSS feeds. \href{https://sourceforge.net/p/clisp/mailman/clisp-announce/}{clisp-announce} is the place where announcements are made.
+User bugs are available on \href{https://sourceforge.net/p/clisp/mailman/clisp-list/}{clisp-list}.
+
+I have also asked some questions to the GNU Clisp developers who have helped me
+most of the time but I am loving the new things that I learn when I communicate.
+\section{Qualification}
+\label{sec:orgfd02e25}
+I have written a mathematical expression calculator and have optimized as much
+as possible. So, I am well acquainted with programming in C/C++ using Makefiles.
+I also like designing/programming core stuff like a compiler or a kernel or a
+DBMS.
+
+Since, I am an Emacs user for around a year so I have started to like ELisp and
+gradually lisp too.
+
+\begin{itemize}
+\item National Institute of Technology, Durgapur
+\item Bachelor's course in Information Technology
+\item Second(2nd year or 4th semester) year
+\item Multi threading concept is in 4th semester
+\item Hash Tables were taught in the 3rd semester
+\item Basics of \texttt{pthread.h}
+\item Written a mathematical expression calculator
+\item Makefiles
+\item Bash
+\end{itemize}
+\end{document}
