@@ -1,7 +1,7 @@
 #+OPTIONS: toc:nil
 * Name
 Abhishek Prasad
-* Your email address
+* Email
 comproprasad@gmail.com
 * The name of the project
 GNU Clisp
