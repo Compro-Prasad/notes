@@ -1,52 +1,46 @@
-#+OPTIONS: toc:nil
+#+OPTIONS: toc:nil num:nil
 * Name
 Abhishek Prasad
 * Email
 comproprasad@gmail.com
-* The name of the project
+* Name of the project
 GNU Clisp
 * Summary
-In simple terms I will be implementing thread safe hash tables in the core of
-GNU Clisp.
+Implementing thread safe hash tables in the core of GNU Clisp.
 * Benefits
+The community:
 Having threading support is necessary everywhere from normal computing tasks to
 larger applications running on production environments like servers. The problem
 arises when the data being used in threads are not atomic in nature. Most of
-data structures are thread safe in nature except the hash tables which are also
-extensively used in [[https://sourceforge.net/p/clocc/hg/ci/default/tree/][CLOCC]].
+data structures are thread safe in GNU Clisp except the hash tables which are
+also extensively used in [[https://sourceforge.net/p/clocc/hg/ci/default/tree/][CLOCC]].
 
+Me:
 Since I am doing this project I will get to know how threads, mutexes and hash
 tables are used in writing a program like GNU Clisp. And overall I would be
-communicating with great people in the GNU community I would learn other side
-stuffs too which will be an additional gift for me.
+communicating with great people in the community I would learn other side stuff
+too which will be an additional gift for me.
 * Things to be delivered
-Since, my work is consists of threading and hash table so the files to be dealt
-with are =src/zthread.d=, =src/xthread.d= and =src/hashtabl.d= and may be some
-of the related lisp files.
+Since, my work consists of threading and hash table support so the files to be
+dealt with are =src/zthread.d=, =src/xthread.d= and =src/hashtabl.d= and may be
+other lisp files.
 
-Leapfrog hash tables are faster to probe so they will probably be used
+Preventing segfaults in MT builds while improving the hash table support. If
+possible reimplementation of hash table will be done using Leapfrog probing
+method.
 * Plan
-| Date               | Work                                                   |
-|--------------------+--------------------------------------------------------|
-| 04-May to 30-May   | Talking to the developer team, fixing small bugs and   |
-|                    | get acquainted with the project                        |
-|                    |                                                        |
-| 31-May to 11-June  | Writing the lisp code to make simple threads and find  |
-|                    | out where the hash table hits a corner case. Get ready |
-|                    | with enough tests.                                     |
-|                    |                                                        |
-| 09-June to 30-June | Write functions to handle the thread safety in the     |
-|                    | hash tables.                                           |
-|                    |                                                        |
-| 25-June to 15-July | Have the functions run against the test cases          |
-|                    |                                                        |
-| 10-July to 20-July | Write the tests that were missed beforehand            |
-|                    |                                                        |
-| 18-July to 25-July | Make the code more portable to run on different        |
-|                    | platforms                                              |
-|                    |                                                        |
-| 23-July to 30-July | Polishing the code to be more readable for future      |
-|                    | development                                            |
+| Date             | Work                                                                                                                            |
+|------------------+---------------------------------------------------------------------------------------------------------------------------------|
+| 23-Apr to 13-May | Semester exams                                                                                                                  |
+| 04-May to 30-May | Talking with the developers, fixing small bugs and get acquainted with the project                                       |
+| 31-May to 11-Jun | Writing the lisp code to make simple threads and find out where the hash table hits a corner case. Get ready with enough tests. |
+| 09-Jun to 30-Jun | Write/Improve functions to handle the thread safety in the hash tables.                                                         |
+| 25-Jun to 15-Jul | Have the functions run against the test cases                                                                                   |
+| 10-Jul to 18-Jul | Write the tests that were missed beforehand                                                                                     |
+| 16-Jul to 22-Jul | Make the code more portable to run on different platforms                                                                       |
+| 20-Jul to 26-Jul | Polishing the code to be more readable for future development                                                                   |
+If possible hash table will be implemented from scratch to have better
+performance and MT support.
 * Communication
 [[https://sourceforge.net/p/clisp/mailman/clisp-devel/][clisp-devel]] mailing list archives on source forge is subscribed both via email
 and RSS feeds. [[https://sourceforge.net/p/clisp/mailman/clisp-announce/][clisp-announce]] is the place where announcements are made.
@@ -55,10 +49,10 @@ User bugs are available on [[https://sourceforge.net/p/clisp/mailman/clisp-list/
 I have also asked some questions to the GNU Clisp developers who have helped me
 most of the time but I am loving the new things that I learn when I communicate.
 * Qualification
-I have written a mathematical expression calculator and have optimized as much
-as possible. So, I am well acquainted with programming in C/C++ using Makefiles.
-I also like designing/programming core stuff like a compiler or a kernel or a
-DBMS.
+I have written a mathematical expression calculator, convex hull problem, AVL
+trees and simple matrix operations. So, I am well acquainted with programming in
+C/C++ using Makefiles. I also like designing/programming core stuff like a
+compiler or a kernel or a DBMS.
 
 Since, I am an Emacs user for around a year so I have started to like ELisp and
 gradually lisp too.
@@ -69,6 +63,3 @@ gradually lisp too.
 + Multi threading concept is in 4th semester
 + Hash Tables were taught in the 3rd semester
 + Basics of =pthread.h=
-+ Written a mathematical expression calculator
-+ Makefiles
-+ Bash
