@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2018-06-29 Fri 20:55 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Socket Programming</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Compro Prasad" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Socket Programming</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org86c9275">1. Create a socket</a></li>
+<li><a href="#orgcfdd5a4">2. Connect socket to a server</a>
+<ul>
+<li><a href="#orgaf9fbda">2.1. <code>sockaddr_in</code> structure</a></li>
+<li><a href="#org3b09847">2.2. <code>htons</code> function</a></li>
+<li><a href="#org6e88505">2.3. <code>inet_addr</code> function</a></li>
+<li><a href="#orge6a4df6">2.4. <code>connect</code> function</a>
+<ul>
+<li><a href="#orgbbe7a1f">2.4.1. Note: <b>Connections are present only in TCP sockets</b></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org8bf1243">3. Sending data over socket</a>
+<ul>
+<li><a href="#org6fc43ab">3.1. <code>send</code> function</a></li>
+</ul>
+</li>
+<li><a href="#org6b3d06d">4. Recieve data on socket</a>
+<ul>
+<li><a href="#orgc0defc7">4.1. <code>recv</code> function</a>
+<ul>
+<li><a href="#org42c3212">4.1.1. Note:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org106f6b9">5. Closing a socket</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org86c9275" class="outline-2">
+<h2 id="org86c9275"><span class="section-number-2">1</span> Create a socket</h2>
+<div class="outline-text-2" id="text-1">
+<div class="org-src-container">
+<pre class="src src-C" id="org89d15df"><span style="color: #228b22;">int</span> <span style="color: #a0522d;">socket_desc</span> = socket(AF_INET, SOCK_STREAM, 0);
+
+<span style="color: #a020f0;">if</span> (socket_desc == -1) {
+        printf(<span style="color: #8b2252;">"Could not create socket"</span>);
+}
+</pre>
+</div>
+<p>
+The above code will create a socket with following properties: [see <a href="http://man7.org/linux/man-pages/man2/socket.2.html"><code>socket man page</code></a>]
+</p>
+<pre class="example">
+  Address Family - AF_INET (this is IP version 4)
+  Type - SOCK_STREAM (this means connection oriented TCP protocol)
+  Protocol - 0 [ or IPPROTO_IP This is IP protocol]
+</pre>
+</div>
+</div>
+<div id="outline-container-orgcfdd5a4" class="outline-2">
+<h2 id="orgcfdd5a4"><span class="section-number-2">2</span> Connect socket to a server</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+We connect to a remote server on a certain port number. So we need
+2 things, <b>ip address</b> and <b>port number</b>.
+</p>
+</div>
+<div id="outline-container-orgaf9fbda" class="outline-3">
+<h3 id="orgaf9fbda"><span class="section-number-3">2.1</span> <code>sockaddr_in</code> structure</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+To connect to a remote server firstly we create <code>sockaddr_in</code>
+structure with proper values.
+</p>
+<div class="org-src-container">
+<pre class="src src-C" id="org045619c">     <span style="color: #a020f0;">struct</span> <span style="color: #228b22;">sockaddr_in</span> <span style="color: #a0522d;">server</span>;
+     server.sin_family = AF_INET;
+</pre>
+</div>
+<p>
+The structure definations are as follows:
+</p>
+<div class="org-src-container">
+<pre class="src src-C" id="org12a8cae"><span style="color: #b22222;">// </span><span style="color: #b22222;">IPv4 AF_INET sockets:</span>
+<span style="color: #a020f0;">struct</span> <span style="color: #228b22;">sockaddr_in</span> {
+        <span style="color: #228b22;">short</span>          <span style="color: #a0522d;">sin_family</span>;    <span style="color: #b22222;">// </span><span style="color: #b22222;">e.g. AF_INET, AF_INET6</span>
+        <span style="color: #228b22;">unsigned</span> <span style="color: #228b22;">short</span> <span style="color: #a0522d;">sin_port</span>;      <span style="color: #b22222;">// </span><span style="color: #b22222;">e.g. htons(3490)</span>
+        <span style="color: #a020f0;">struct</span> <span style="color: #228b22;">in_addr</span> <span style="color: #a0522d;">sin_addr</span>;      <span style="color: #b22222;">// </span><span style="color: #b22222;">see struct in_addr, below</span>
+        <span style="color: #228b22;">char</span>           <span style="color: #a0522d;">sin_zero</span>[8];   <span style="color: #b22222;">// </span><span style="color: #b22222;">zero this if needed</span>
+};
+
+<span style="color: #a020f0;">struct</span> <span style="color: #228b22;">in_addr</span> {
+        <span style="color: #228b22;">unsigned</span> <span style="color: #228b22;">long</span> <span style="color: #a0522d;">s_addr</span>;         <span style="color: #b22222;">// </span><span style="color: #b22222;">load with inet_pton()</span>
+};
+
+<span style="color: #a020f0;">struct</span> <span style="color: #228b22;">sockaddr</span> {
+        <span style="color: #228b22;">unsigned</span> <span style="color: #228b22;">short</span> <span style="color: #a0522d;">sa_faminly</span>;    <span style="color: #b22222;">// </span><span style="color: #b22222;">address family, AF_xxx</span>
+        <span style="color: #228b22;">char</span>           <span style="color: #a0522d;">sa_data</span>;       <span style="color: #b22222;">// </span><span style="color: #b22222;">14 bytes of protocol address</span>
+}
+</pre>
+</div>
+<p>
+<code>s_addr</code> of <code>in_addr</code> structure will contain the <b>IP address</b> in <span class="underline">long format</span>.
+</p>
+</div>
+</div>
+<div id="outline-container-org3b09847" class="outline-3">
+<h3 id="org3b09847"><span class="section-number-3">2.2</span> <code>htons</code> function</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+To give a port number for connection: [see <a href="http://man7.org/linux/man-pages/man3/htons.3.html"><code>htons man page</code></a>]
+</p>
+<div class="org-src-container">
+<pre class="src src-C" id="org0e91f7f">     server.sin_port = htons(80);
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org6e88505" class="outline-3">
+<h3 id="org6e88505"><span class="section-number-3">2.3</span> <code>inet_addr</code> function</h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+To convert an <b>IP address</b> to a <span class="underline">long format</span> <code>inet_addr(const char *)</code>
+function is used. [see <a href="http://man7.org/linux/man-pages/man3/inet_addr.3.html"><code>inet_addr man page</code></a>]
+</p>
+
+<p>
+For example,
+</p>
+<div class="org-src-container">
+<pre class="src src-C" id="org58ceaac">     server.sin_addr.s_addr = inet_addr(<span style="color: #8b2252;">"176.34.135.167"</span>);
+</pre>
+</div>
+<p>
+can be used for connecting to <a href="http://176.34.135.167">DuckDuckGo</a> search engine where <code>176.34.135.167</code> is
+the <b>IP address</b> passed as a <code>string</code> parameter.
+</p>
+</div>
+</div>
+<div id="outline-container-orge6a4df6" class="outline-3">
+<h3 id="orge6a4df6"><span class="section-number-3">2.4</span> <code>connect</code> function</h3>
+<div class="outline-text-3" id="text-2-4">
+<p>
+<code>connect</code> is a function for connecting to a remote server. A sample code is
+given below: [see <a href="http://man7.org/linux/man-pages/man2/connect.2.html"><code>connect man page</code></a>]
+</p>
+<div class="org-src-container">
+<pre class="src src-C" id="org910f43a"><span style="color: #b22222;">// </span><span style="color: #b22222;">Connect to remote server</span>
+<span style="color: #a020f0;">if</span> (connect(socket_desc, (<span style="color: #a020f0;">struct</span> <span style="color: #228b22;">sockaddr</span> *)&amp;server, <span style="color: #a020f0;">sizeof</span>(server)) &lt; 0) {
+        puts(<span style="color: #8b2252;">"connect error\n"</span>);
+        <span style="color: #a020f0;">return</span> 1;
+}
+
+puts(<span style="color: #8b2252;">"Connected\n"</span>);
+</pre>
+</div>
+<p>
+So, we have <b>created</b> a socket and <b>connected</b> it to a server. Now we are going
+to <b>send</b> / <b>transmit</b> data to the remote server.
+</p>
+</div>
+<div id="outline-container-orgbbe7a1f" class="outline-4">
+<h4 id="orgbbe7a1f"><span class="section-number-4">2.4.1</span> Note: <b>Connections are present only in TCP sockets</b></h4>
+<div class="outline-text-4" id="text-2-4-1">
+<p>
+Concept of '<b>connections</b>' apply to <code>SOCK_STREAM</code> / <code>TCP</code> type of sockets. Connection
+means a reliable '<b>stream</b>' of data such that there can be multiple such streams
+communication of its own. It can be considered a pipe <b>not interfered</b> by other data.
+</p>
+
+<p>
+UDP(<a href="https://en.wikipedia.org/wiki/User_Datagram_Protocol">User Datagram Protocol</a>), ICMP(<a href="https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol">Internet Control Message Protocol</a>), ARP(<a href="https://en.wikipedia.org/wiki/Address_Resolution_Protocol">Address Resolution Protocol</a>)
+are <b>non-connection</b> based communication which means packets can be sent to anybody
+and everybody.
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org8bf1243" class="outline-2">
+<h2 id="org8bf1243"><span class="section-number-2">3</span> Sending data over socket</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-org6fc43ab" class="outline-3">
+<h3 id="org6fc43ab"><span class="section-number-3">3.1</span> <code>send</code> function</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+It needs the <b>socket descriptor</b> returned after creating a socket, the <b>data to
+send</b> and <b>its size</b>. We have the following code which sends data to <a href="http://176.34.135.167">DuckDuckGo</a>.
+</p>
+<div class="org-src-container">
+<pre class="src src-C" id="orgac3b058"><span style="color: #b22222;">// </span><span style="color: #b22222;">Send some data</span>
+<span style="color: #228b22;">char</span> *<span style="color: #a0522d;">message</span> = <span style="color: #8b2252;">"GET / HTTP/1.1\n"</span>;
+<span style="color: #a020f0;">if</span> (send(socket_desc, message, strlen(message), 0) &lt; 0) {
+        puts(<span style="color: #8b2252;">"Send failed\n"</span>);
+        <span style="color: #a020f0;">return</span> 1;
+}
+puts(<span style="color: #8b2252;">"Data sent\n"</span>);
+</pre>
+</div>
+<p>
+The <code>message</code> string is actually commanding the server to <b>get</b> the mainpage
+of a website.<br />
+In the next section we try to recieve a reply from the server.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org6b3d06d" class="outline-2">
+<h2 id="org6b3d06d"><span class="section-number-2">4</span> Recieve data on socket</h2>
+<div class="outline-text-2" id="text-4">
+</div>
+<div id="outline-container-orgc0defc7" class="outline-3">
+<h3 id="orgc0defc7"><span class="section-number-3">4.1</span> <code>recv</code> function</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+The <code>recv</code> function will try recieving data through socket from a web server.
+</p>
+<div class="org-src-container">
+<pre class="src src-C" id="orgd63b5b9"><span style="color: #b22222;">// </span><span style="color: #b22222;">Receive a reply from the server</span>
+<span style="color: #228b22;">char</span> <span style="color: #a0522d;">server_reply</span>[2000];
+<span style="color: #a020f0;">if</span> (recv(socket_desc, server_reply, 2000, 0) &lt; 0) {
+        puts(<span style="color: #8b2252;">"recv failed\n"</span>);
+}
+puts(<span style="color: #8b2252;">"Reply received\n"</span>);
+<span style="color: #0000ff;">puts</span>(server_reply);
+</pre>
+</div>
+</div>
+<div id="outline-container-org42c3212" class="outline-4">
+<h4 id="org42c3212"><span class="section-number-4">4.1.1</span> Note:</h4>
+<div class="outline-text-4" id="text-4-1-1">
+<p>
+When receiving data on a socket, we are basically <b>reading</b> it. This is similar
+to reading data from a file(remember the Unix philosophy?). So we can use the
+<code>read</code> function to read data on a socket. For example:
+</p>
+<div class="org-src-container">
+<pre class="src src-C" id="org0a1d527">      <span style="color: #0000ff;">read</span>(socket_desc, server);
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org106f6b9" class="outline-2">
+<h2 id="org106f6b9"><span class="section-number-2">5</span> Closing a socket</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+Just like files, sockets also need to be closed. We can use the primary <code>close</code>
+function which accepts a <b>file descriptor</b> as an argument.
+</p>
+<div class="org-src-container">
+<pre class="src src-C" id="orgfa5f28d">    <span style="color: #0000ff;">close</span>(socket_desc);
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Compro Prasad</p>
+<p class="date">Created: 2018-06-29 Fri 20:55</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

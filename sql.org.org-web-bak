@@ -1,0 +1,254 @@
+#+TITLE: Structured Query Language(SQL)
+#+AUTHOR: Compro Prasad
+#+OPTIONS: toc:1
+#+REVEAL_ROOT: /home/compro/Dropbox/reveal.js
+#+REVEAL_EXTRA_CSS: ../custom_reveal.css
+* Introduction
+- =SQL= is an interface for communicating to a binary file which
+  is called a *database* in terms of =SQL=.
+- A *database* is further divided into *tables*.
+- Tables are further divided into two categories: *columns* and *rows*.
+- Tables can also be linked in a *relation* to each other.
+* How to read this?
+This is a very basic tutorial for getting accustomed with the way
+you should use =SQL=. This should not be considered as a standard
+manual for mastering in =SQL=. But you can start mastering =SQL=
+after going through this short tutorial. For this reason please
+make sure =SQL= is installed on your machine before starting this
+tutorial.
+* Basics
+** Logging in
+In =SQL= it is necessary to login to access the whole/part of your
+databases.
+** Why is it important?
+- Everybody doesn't have the same area of expertise. So,
+  its better to lock them in their fields to keep all data safe.
+- Prevent unauthorised access to private data.
+** How to Log In?
+Here, is a simple command for logging into =SQL= using
+*tom* as the username:
+#+BEGIN_SRC sh
+mysql -u tom -p
+#+END_SRC
+After pressing =RETURN= mysql would ask for a password.
+Enter your password and you are good to go.
+
+Note: The default(and the most powerful) user is *root*.
+** What is a query?
+Query is a successful statement in =SQL= that gets a job done
+by the end user. It can be creating tables or inserting values
+or modifying values etc. The following are some examples of
+queries in =MySQL=:
+#+NAME: sql-query-examples
+#+BEGIN_SRC sql
+   create table information(column1 int);
+   use login_db;
+   select 1+2 from dual;
+#+END_SRC
+** Accessing Databases/Schemas
+Now, since you have logged in you have the control over what
+you have access to. You may not have been permitted to access
+even a single database. To see the schemas run this query:
+#+BEGIN_SRC sql
+   show databases;
+#+END_SRC
+** Accessing Table
+Databases contain tables.
+#+BEGIN_SRC sql
+show tables from information_schema;
+#+END_SRC
+Replace *information\under{}schema* with the database of your
+choice.
+** Another way to access a table
+You can also use the follwing if you are using a specific database.
+#+BEGIN_SRC sql
+show tables;
+#+END_SRC
+See [[*Using databases][Using databases]].
+** Accessing columns
+*** Syntax
+#+BEGIN_EXAMPLE
+show columns from <database_name>.<table_name>
+#+END_EXAMPLE
+*** Example
+#+BEGIN_SRC sql
+show columns from information_schema.collations;
+#+END_SRC
+*** Shorter Command
+#+BEGIN_SRC sql
+describe information_schema.collations;
+#+END_SRC
+*** Most used columns types:
+| Type       | Description                                |
+|------------+--------------------------------------------|
+| char(n)    | A string of characters of length =n=.      |
+|            | Default memory consumption for each record |
+| varchar(n) | A string of characters of length =n=.      |
+|            | Memory consumption according to string     |
+| int        | An integer field                           |
+| bigint     | A large range integer field                |
+| date       | A date of the form =YYYY-MM-DD=            |
+| datetime   | A field addressing a date and time value   |
+** Using databases
+Databases are less in comparison to the tables in
+each database. Therefore, writing
+#+BEGIN_EXAMPLE
+   <database>.<table>
+#+END_EXAMPLE
+can be a bit tedious. So, there is a feature in =SQL= to
+reduce the work.
+*** Syntax
+#+BEGIN_EXAMPLE
+use <database_name>;
+#+END_EXAMPLE
+*** Example
+#+BEGIN_SRC sql
+use information_schema;
+#+END_SRC
+*** The magic
+You can now see column descriptions without using the
+database name:
+#+BEGIN_SRC sql
+describe collations;
+#+END_SRC
+*** You will always need it
+From now on it will be assumed that you are using a
+database and then the respective query can be run after
+that.
+** Accessing rows
+See all rows and columns from a table:
+#+BEGIN_SRC sql
+   select * from collations;
+#+END_SRC
+Filter specific set of rows from a table:
+#+BEGIN_SRC sql
+   select is_default, sortlen from collations;
+#+END_SRC
+Filter specific set of rows and columns from a table:
+#+BEGIN_SRC sql
+   select is_default, sortlen from collations where id < 50 and is_default='Yes';
+#+END_SRC
+* Creating
+** Databases
+#+BEGIN_SRC sql
+create database login_db;
+#+END_SRC
+** Tables
+*** Basic table
+#+BEGIN_SRC sql -i
+create table info(
+	username varchar(20),
+	login_time timestamp,
+	id bigint
+);
+#+END_SRC
+=info= is the name of the table to be created. Then
+comes =username= which is the name of the field/column.
+It is of type =varchar(20)= (see table in [[*Most used columns types:][columns mostly used]]).
+A similar approach is followed for every column. First
+the name of the column then the type of field.
+*** =NOT NULL= contraint
+By default you can insert =NULL= values in any
+field. But if a field has to has a value then
+a =NOT NULL= contraint has to be added like:
+#+BEGIN_SRC sql -i
+create table info(
+    username varchar(20),
+    login_time timestamp not null,
+    id bigint not null
+);
+#+END_SRC
+You would get an error while doing that. See
+[[droping-tables][Droping Tables]] and rerun the above query.\\
+The above query will prevent login_time and id
+from having =NULL= values.
+*** =UNIQUE= contraint
+What if you wanted to create a field that had
+unique values. For example, [[https://mail.google.com][Gmail]] uses this to
+identify whether a user has already created an
+account using the same e-mail.\\
+But not all fields must be unique. For example,
+you may find friends with same name on [[https://www.facebook.com][Facebook]].
+And if [[https://www.facebook.com][Facebook]] used =UNIQUE= contraint on the
+name of the users then it would be pretty awkward.
+#+BEGIN_SRC sql -i
+create table info(
+	username varchar(20),
+	login_time timestamp not null,
+	id bigint not null unique
+);
+#+END_SRC
+*** =PRIMARY KEY= constraint
+Using this contraint is same as using =NOT NULL= and
+=UNIQUE= constraints together on the same column.
+#+BEGIN_SRC sql -i
+create table info(
+	username varchar(20),
+	login_time timestamp not null,
+	id bigint primary key
+);
+#+END_SRC
+*** =FOREIGN KEY= constraint
+
+* Modifying
+The point in modifying a table in =SQL= is just
+remembering the '=alter table=' words. Then comes
+the table name, then the operation to be done on
+the table then the full description of the column.
+** Tables
+*** Columns
+#+BEGIN_SRC sql
+     alter table info add birth_date date not null;
+     alter table info modify username varchar(20) unique;
+#+END_SRC
+* Droping
+Droping is same as deleting/removing
+** Columns
+#+BEGIN_SRC sql
+   alter table info drop username;
+#+END_SRC
+** Tables
+#+NAME: droping-tables
+#+BEGIN_SRC sql
+   drop table info;
+#+END_SRC
+** Database
+#+BEGIN_SRC sql
+   drop database login_db;
+#+END_SRC
+* Selecting
+Selecting is the process of printing out the records in a table.
+** The most basic form
+A table in =information_schema=
+#+BEGIN_SRC sql
+select * from plugins;
+#+END_SRC
+The above query would return(print) all the records in the =plugins= table.
+** Selecting specific columns
+You can select specific columns instead of all of them. This is useful for
+removing clutter from your screen.
+#+BEGIN_SRC sql
+select plugin_name, plugin_author, plugin_description
+from   plugins;
+#+END_SRC
+This has reduced the number of columns to see the columns that interst you.
+** The =where= clause
+It might be quite a long table. To see only what you want you have to use the
+=where= clause to filter your results.
+#+BEGIN_SRC sql
+select plugin_name, plugin_author, plugin_description
+from   plugins
+where  plugin_author='MySQL AB';
+#+END_SRC
+Now you may see the highly compressed form of the table and it has become quite
+readable.
+** The =order by= clause
+Now lets sort the rows in a specific order.
+#+BEGIN_SRC sql
+select   plugin_name, plugin_author, plugin_description
+from     plugins
+where    plugin_author='MySQL AB'
+order by plugin_name asc;
+#+END_SRC
+We have =asc= for ascending order(which is default and optional) and
+=desc= for descending order.

@@ -1,7 +1,7 @@
 #+TITLE: Structured Query Language(SQL)
 #+AUTHOR: Compro Prasad
 #+OPTIONS: toc:1
-#+REVEAL_ROOT: http://cdn.jsdelivr.net/reveal.js/3.0.0/
+#+REVEAL_ROOT: /home/compro/Dropbox/reveal.js
 #+REVEAL_EXTRA_CSS: ../custom_reveal.css
 * Introduction
 - =SQL= is an interface for communicating to a binary file which
